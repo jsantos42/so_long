@@ -1,3 +1,10 @@
+#   NOTE: FOR THIS TO WORK, CHANGE THE PROJECT'S RUNNING CONFIGURATIONS.
+#   On the running configurations window, go the "Environment Variables"
+#   field and add:
+#          DYLD_LIBRARY_PATH=<path_to_dylib_folder>
+#   Note that relative paths don't work! You can just get the absolute
+#   path with the pwd command.
+
 cmake_minimum_required(VERSION 3.17)
 project(so_long C)
 
@@ -10,13 +17,9 @@ include_directories(headers
         libs/minilibx_mms_20200219
         srcs)
 
-#set(CMAKE_MACOSX_RPATH ON)
-
-#find_library(LIBMLX
-#        NAMES libmlx.dylib
-#        PATHS ./)
-#export DYLD_LIBRARY_PATH= libmlx.dylib
-set(LIBMX libmlx.dylib)
+find_library(LIBMLX
+        NAMES libmlx.dylib
+        PATHS ./)
 
 add_executable(so_long
         headers/main.h
