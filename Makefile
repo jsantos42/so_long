@@ -2,7 +2,7 @@ CC	=				gcc
 
 CFLAGS =			-Wall -Werror -Wextra
 
-MLX_FLAGS =			-L $(MINILIBX_FOLDER) -lmlx -framework OpenGL -framework AppKit
+MLX_FLAGS =			-L $(MINILIBX_FOLDER) -framework OpenGL -framework AppKit
 
 RM =				rm -rf
 
@@ -10,11 +10,14 @@ NAME =				so_long
 
 SRCS =				srcs/main.c
 
-HEADERS =			headers/
+HEADERS =			headers
 
-LIBFT_FOLDER =		libs/libft/
+LIBFT_FOLDER =		libs/libft
 
-MINILIBX_FOLDER =	libs/minilibx_opengl_20191021/
+MINILIBX_FOLDER =	libs/minilibx_mms_20200219
+
+LIBS =				$(LIBFT_FOLDER)/libft.a \
+					libmlx.dylib
 
 OBJS =				$(SRCS:.c=.o)
 
@@ -25,9 +28,10 @@ bonus:				all
 compile_libraries:
 						$(MAKE) -C $(LIBFT_FOLDER)
 						$(MAKE) -C $(MINILIBX_FOLDER)
+						mv $(MINILIBX_FOLDER)/libmlx.dylib .
 
 $(NAME):			compile_libraries $(OBJS)
-						$(CC) $(CFLAGS) $(MLX_FLAGS) -o $(NAME) -I $(HEADERS) -L $(LIBFT_FOLDER) -L $(MINILIBX_FOLDER) $(OBJS)
+						$(CC) $(CFLAGS) $(MLX_FLAGS) -o $(NAME) -I $(HEADERS) $(LIBS) $(OBJS)
 
 %.c.o:				%.c
 						$(CC) $(CFLAGS) -I $(HEADERS) -c $< -o $(<:.c=.o)
@@ -39,7 +43,7 @@ clean:
 
 fclean:				clean
 						make fclean -C $(LIBFT_FOLDER)
-						$(RM) $(NAME)
+						$(RM) $(NAME) $(LIBS)
 
 re:					fclean	all
 
