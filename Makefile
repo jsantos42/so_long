@@ -2,7 +2,7 @@ CC	=				gcc
 
 CFLAGS =			-Wall -Werror -Wextra
 
-MLX_FLAGS =			-L $(MINILIBX_FOLDER) -framework OpenGL -framework AppKit
+MLX_FLAGS =			-framework OpenGL -framework AppKit
 
 RM =				rm -rf
 

@@ -2,10 +2,21 @@ cmake_minimum_required(VERSION 3.17)
 project(so_long C)
 
 set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_FLAGS "-Wall -Werror -Wextra")
+set(CMAKE_EXE_LINKER_FLAGS "-Wall -Werror -Wextra -framework OpenGL -framework AppKit")
 
-include_directories(headers)
-include_directories(libs/libft)
-include_directories(libs/minilibx_mms_20200219)
+include_directories(headers
+        libs/libft
+        libs/minilibx_mms_20200219
+        srcs)
+
+#set(CMAKE_MACOSX_RPATH ON)
+
+#find_library(LIBMLX
+#        NAMES libmlx.dylib
+#        PATHS ./)
+#export DYLD_LIBRARY_PATH= libmlx.dylib
+set(LIBMX libmlx.dylib)
 
 add_executable(so_long
         headers/main.h
@@ -53,10 +64,7 @@ add_executable(so_long
         libs/libft/ft_tolower.c
         libs/libft/ft_toupper.c
         libs/libft/libft.h
-        libs/minilibx_mms_20200219/font.c
         libs/minilibx_mms_20200219/mlx.h
-        libs/minilibx_mms_20200219/mlx_png.c
-        libs/minilibx_mms_20200219/mlx_rgb.c
-        libs/minilibx_mms_20200219/mlx_string_put.c
-        libs/minilibx_mms_20200219/mlx_xpm.c
         srcs/main.c)
+
+target_link_libraries(so_long ${LIBMLX})
