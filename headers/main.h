@@ -2,4 +2,6 @@
 # define SO_LONG_MAIN_H
 
 #include "../libs/minilibx_mms_20200219/mlx.h"
+#include "../libs/libft/libft.h"
+
 #endif
