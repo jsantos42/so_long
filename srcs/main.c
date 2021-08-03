@@ -21,6 +21,7 @@ int main()
 		print_line(&data, 0, 50, 255000000);
 		print_line(&data, 0, window_height - 4, 255000000);
 		print_square(&data, 500, 500, 50, 255000000);
+		print_circle(&data, 800, 800, 50, 255000000);
 		mlx_put_image_to_window(connection, window, data.img, 0, 0);
 		mlx_key_hook(window, on_click, (void *)0);
 		mlx_loop(connection);

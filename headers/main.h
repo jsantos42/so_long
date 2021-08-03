@@ -17,5 +17,7 @@ int on_click(int key, void *param);
 void	my_pixel_put(t_data *data, int x, int y, int color);
 void	print_line(t_data *data, int x, int y, int color);
 void	print_square(t_data *data, int starting_x, int starting_y, int size, int color);
+void	print_circle(t_data *data, int center_x, int center_y, int radius, int color);
+int	ft_power(int base, int exp);
 
 #endif
