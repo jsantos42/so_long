@@ -8,8 +8,7 @@ RM =				rm -rf
 
 NAME =				so_long
 
-SRCS =				srcs/main.c \
-					srcs/print_shapes.c
+SRCS =				$(wildcard srcs/*.c)
 
 HEADERS =			headers
 
