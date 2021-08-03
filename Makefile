@@ -8,7 +8,8 @@ RM =				rm -rf
 
 NAME =				so_long
 
-SRCS =				srcs/main.c
+SRCS =				srcs/main.c \
+					srcs/print_shapes.c
 
 HEADERS =			headers
 
