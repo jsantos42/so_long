@@ -67,10 +67,18 @@ void	print_circle(t_data *data, int center_x, int center_y, int radius, int colo
 }
 
 
-int	ft_power(int base, int exp)
+
+////after checking norminette add this one to the libft and to its .h and Makefile
+double  ft_power(double base, double exp)
 {
 	if (exp == 0)
 		return (1);
-	else
+	else if (exp > 0)
 		return (base * ft_power(base, exp - 1));
+	else
+	{
+		base = 1 / base;
+		exp *= -1;
+		return (base * ft_power(base, exp - 1));
+	}
 }

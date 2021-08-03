@@ -13,15 +13,15 @@ int main()
 	connection = mlx_init();
 	if (connection)
 	{
-		window_length = 1920;
-		window_height = 1080;
+		window_length = 1280;
+		window_height = 720;
 		window = mlx_new_window(connection, window_length, window_height, "mlx 42" );
 		data.img = mlx_new_image(connection, window_length, window_height);
 		data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian);
 		print_line(&data, 0, 50, 255000000);
 		print_line(&data, 0, window_height - 4, 255000000);
-		print_square(&data, 500, 500, 50, 255000000);
-		print_circle(&data, 800, 800, 50, 255000000);
+		print_square(&data, 300, 300, 50, 255000000);
+		print_circle(&data, 500, 500, 50, 255000000);
 		mlx_put_image_to_window(connection, window, data.img, 0, 0);
 		mlx_key_hook(window, on_click, (void *)0);
 		mlx_loop(connection);
