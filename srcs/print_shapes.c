@@ -1,4 +1,4 @@
-#include "../headers/main.h"
+#include "../include/main.h"
 
 /*
 **	Here dst gets the sum  of the address of the origin (coordinates 0,0, the
@@ -67,18 +67,3 @@ void	print_circle(t_data *data, int center_x, int center_y, int radius, int colo
 }
 
 
-
-////after checking norminette add this one to the libft and to its .h and Makefile
-double  ft_power(double base, double exp)
-{
-	if (exp == 0)
-		return (1);
-	else if (exp > 0)
-		return (base * ft_power(base, exp - 1));
-	else
-	{
-		base = 1 / base;
-		exp *= -1;
-		return (base * ft_power(base, exp - 1));
-	}
-}

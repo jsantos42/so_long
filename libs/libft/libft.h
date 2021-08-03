@@ -11,7 +11,19 @@ typedef struct s_list
 }				t_list;
 
 /*
-** FIRST PART
+**	Double Linked List: structure for the elements of the stack with content
+**	and a pointer to the previous and the next elements.
+*/
+
+typedef struct	s_stack
+{
+	int		content;
+	struct	s_stack *prev;
+	struct	s_stack	*next;
+}	t_stack;
+
+/*
+**	FIRST PART
 */
 
 int				ft_atoi(const char *str);
@@ -41,7 +53,7 @@ int				ft_tolower(int c);
 int				ft_toupper(int c);
 
 /*
-** SECOND PART
+**	SECOND PART
 */
 
 char			*ft_substr(char const *s, unsigned int start, size_t len);
@@ -56,7 +68,7 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 
 /*
-** BONUS
+**	BONUS
 */
 
 t_list			*ft_lstnew(void *content);
@@ -69,5 +81,22 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
+
+/*
+**	STACKS
+*/
+
+t_stack			*stack_new(int new_content);
+int				stack_pop(t_stack **stack);
+void			stack_push(t_stack **stack, int new_content);
+int				stack_size(t_stack *stack);
+t_stack			*stack_bottom(t_stack *top_element);
+void			stack_clear(t_stack *stack);
+
+/*
+**	MY OWN FUNCTIONS
+*/
+
+double			ft_power(double base, double exp);
 
 #endif

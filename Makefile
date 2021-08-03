@@ -8,9 +8,9 @@ RM =				rm -rf
 
 NAME =				so_long
 
-SRCS =				$(wildcard srcs/*.c)
+INCLUDE =			include
 
-HEADERS =			headers
+SRCS =				$(wildcard srcs/*.c)
 
 LIBFT_FOLDER =		libs/libft
 
@@ -31,10 +31,10 @@ compile_libraries:
 						mv $(MINILIBX_FOLDER)/libmlx.dylib .
 
 $(NAME):			compile_libraries $(OBJS)
-						$(CC) $(CFLAGS) $(MLX_FLAGS) -o $(NAME) -I $(HEADERS) $(LIBS) $(OBJS)
+						$(CC) $(CFLAGS) $(MLX_FLAGS) -o $(NAME) -I $(INCLUDE) $(LIBS) $(OBJS)
 
 %.c.o:				%.c
-						$(CC) $(CFLAGS) -I $(HEADERS) -c $< -o $(<:.c=.o)
+						$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $(<:.c=.o)
 
 clean:
 						make clean -C $(LIBFT_FOLDER)

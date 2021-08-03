@@ -69,6 +69,6 @@ add_executable(so_long
         libs/libft/libft.h
         libs/minilibx_mms_20200219/mlx.h
         srcs/main.c
-        srcs/print_shapes.c)
+        srcs/print_shapes.c libs/libft/ft_power.c)
 
 target_link_libraries(so_long ${LIBMLX})
