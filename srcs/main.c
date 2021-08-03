@@ -13,6 +13,7 @@ typedef struct s_data {
 
 int on_click(int key, void *param);
 void	my_pixel_put(t_data *data, int x, int y, int color);
+void	print_line(t_data *data, int x, int y, int color);
 
 
 int main()
@@ -20,24 +21,19 @@ int main()
 	void    *connection;
 	void    *window;
 	t_data	data;
-	int		x;
-	int 	y;
+	int 	window_height;
+	int		window_length;
 
 	connection = mlx_init();
 	if (connection)
 	{
-		window = mlx_new_window(connection, 1920, 1080, "mlx 42" );
-//		mlx_pixel_put(connection, window, 250, 250, 25500);
-		data.img = mlx_new_image(connection, 1920, 1080);
+		window_length = 1920;
+		window_height = 1080;
+		window = mlx_new_window(connection, window_length, window_height, "mlx 42" );
+		data.img = mlx_new_image(connection, window_length, window_height);
 		data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian);
-		x = 0;
-		y = 1;
-		while (x < data.line_length) // && y < 10)
-		{
-			my_pixel_put(&data, x, y, 0x00FF0000);
-			x++;
-//			y++;
-		}
+		print_line(&data, 0, 50, 255000000);
+		print_line(&data, 0, window_height - 4, 255000000);
 		mlx_put_image_to_window(connection, window, data.img, 0, 0);
 		mlx_key_hook(window, on_click, (void *)0);
 		mlx_loop(connection);
@@ -60,6 +56,17 @@ void	my_pixel_put(t_data *data, int x, int y, int color)
 
 	dst = data->addr + (y * data->line_length + (x * (data->bits_per_pixel / 8)));
 	*(unsigned int*)dst = color;
+}
+
+
+void	print_line(t_data *data, int x, int y, int color)
+{
+	while (x < data->line_length)
+	{
+		my_pixel_put(data, x, y, color);
+		x++;
+	}
+
 }
 
 
