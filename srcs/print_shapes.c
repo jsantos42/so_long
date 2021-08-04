@@ -34,17 +34,22 @@ void	print_line(t_data *data, t_color *colors, int line_size)
 
 void	print_square(t_data *data, t_color	*colors, int side_size)
 {
+	int temp_color;
 	int x;
 	int y;
 
+	temp_color = colors->first_color;
 	x = colors->starting_x;
 	y = colors->starting_y;
 	while (y <  colors->starting_y + side_size)
 	{
 		x = colors->starting_x;
+		temp_color = colors->first_color;
 		while (x < colors->starting_x + side_size)
 		{
-			my_pixel_put(data, x, y, colors->first_color);
+			if (colors->first_color != colors->second_color)
+				temp_color = set_gradient(temp_color, colors->second_color, side_size);
+			my_pixel_put(data, x, y, temp_color);
 			x++;
 		}
 		y++;

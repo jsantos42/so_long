@@ -1,7 +1,5 @@
 #include "../include/main.h"
 
-
-
 int main()
 {
 	void    *connection;
@@ -17,7 +15,7 @@ int main()
 		print_line(&data, &colors, 50);
 		colors = colors_init(0, data.window_height - 4, 0xFF0000, 0xFF0000);
 		print_line(&data, &colors, data.window_length);
-		colors = colors_init(50, 100, 0xFF0000, 0xFF0000);
+		colors = colors_init(50, 100, 0xFF0000, 0x00FF00);
 		print_square(&data, &colors, 100);
 		colors = colors_init(300, 300, 0xFF0000, 0xFF0000);
 		print_circle(&data, &colors, 50);
@@ -56,14 +54,3 @@ int on_click(int key, void *param)
 	ft_putchar_fd('\n', 1);
 	return (0);
 }
-
-/*
- * add_shade is a function that accepts a double (distance) and a int (color) as arguments, 0 will add no shading to the
- * color, whilst 1 will make the color completely dark. 0.5 will dim it halfway, and .25 a quarter way. You get the point.
-get_opposite is a function that accepts a int (color) as argument and that will invert the color accordingly.
- */
-
-//void	add_shade(double distance, int color)
-//{
-//
-//}

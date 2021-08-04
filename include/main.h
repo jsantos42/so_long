@@ -19,6 +19,7 @@ typedef struct s_color {
 	int starting_y;
 	int first_color;
 	int second_color;
+//	int orientation_angle; //to set the gradient
 }	t_color;
 
 
@@ -34,5 +35,6 @@ int		get_alpha(int argb);
 int		get_red(int argb);
 int		get_green(int argb);
 int		get_blue(int argb);
+int		set_gradient(int first_color, int second_color, int distance);
 
 #endif
