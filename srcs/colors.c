@@ -20,22 +20,24 @@ int	create_argb(int a, int r, int g, int b)
 
 /*
 **	The following 4 functions extract one value from the ARGB color, through a
-**	binary AND operation.
+**	binary AND operation and binary SHIFT operations. Note that it needs to do
+**	the second binary shift (to the right) so that it can return a value between
+**	0-255.
 */
 
 int	get_alpha(int argb)
 {
-	return (argb & (0xFF << 24));
+	return ((argb & (0xFF << 24)) >> 24);
 }
 
 int	get_red(int argb)
 {
-	return (argb & (0xFF << 16));
+	return ((argb & (0xFF << 16)) >> 16);
 }
 
 int	get_green(int argb)
 {
-	return (argb & (0xFF << 8));
+	return ((argb & (0xFF << 8)) >> 8);
 }
 
 int	get_blue(int argb)
