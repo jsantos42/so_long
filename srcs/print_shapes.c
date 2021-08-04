@@ -75,10 +75,7 @@ void	print_circle(t_data *data, t_color colors, int radius)
 			+ ft_power(y - colors.starting_x, 2) <= ft_power(radius, 2))
 			{
 				if (colors.first_color != colors.second_color)
-				{
 					temp_color += increment_color(colors.first_color, colors.second_color, radius * 2);
-					//check if any of the argb values is above 255)
-				}
 				my_pixel_put(data, x, y, temp_color);
 			}
 			x++;
