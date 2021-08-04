@@ -11,14 +11,14 @@ int main()
 	if (connection)
 	{
 		win_img_init(connection, &window, &data);
-		colors = colors_init(0, 3, 0xFF0000, 0xFF0000);
-		print_line(&data, &colors, 50);
-		colors = colors_init(0, data.window_height - 4, 0xFF0000, 0xFF0000);
-		print_line(&data, &colors, data.window_length);
+		colors = colors_init(0, 3, 0xFF0000, 0x00FF00);
+		print_line(&data, colors, 200);
+		colors = colors_init(0, data.window_height - 4, 0xFF0000, 0x00FFFF);
+		print_line(&data, colors, data.window_length);
 		colors = colors_init(50, 100, 0xFF0000, 0x00FF00);
-		print_square(&data, &colors, 100);
-		colors = colors_init(300, 300, 0xFF0000, 0xFF0000);
-		print_circle(&data, &colors, 50);
+		print_square(&data, colors, 100);
+		colors = colors_init(300, 300, 0x00FF00, 0x0000FF);
+		print_circle(&data, colors, 100);
 		mlx_put_image_to_window(connection, window, data.img, 0, 0);
 		mlx_key_hook(window, on_click, (void *)0);
 		mlx_loop(connection);

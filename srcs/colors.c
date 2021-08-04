@@ -1,7 +1,7 @@
 #include "../include/main.h"
 
 /*
-**	Creates an integer with a ARGB value.
+**	Creates an unsigned integer with a ARGB value.
 **	A = alpha (transparency)
 **	R = red
 **	G = green
@@ -10,7 +10,7 @@
 **	leaves 8 bits for each of the above values, which then can have 2^8 (256)
 **	values.
 **	The return line has 3 LEFT SHIFT operators and 3 binary OR operators that
-**	place the binary values of the colors on the right spot of the int.
+**	place the binary values of the colors on the right spot of the integer.
 */
 
 int	create_argb(int a, int r, int g, int b)
