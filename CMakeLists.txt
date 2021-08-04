@@ -12,7 +12,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_FLAGS "-Wall -Werror -Wextra")
 set(CMAKE_EXE_LINKER_FLAGS "-Wall -Werror -Wextra -framework OpenGL -framework AppKit")
 
-include_directories(headers
+include_directories(include
         libs/libft
         libs/minilibx_mms_20200219
         srcs)
@@ -22,7 +22,7 @@ find_library(LIBMLX
         PATHS ./)
 
 add_executable(so_long
-        headers/main.h
+        include/main.h
         libs/libft/ft_atoi.c
         libs/libft/ft_bzero.c
         libs/libft/ft_calloc.c
@@ -69,6 +69,6 @@ add_executable(so_long
         libs/libft/libft.h
         libs/minilibx_mms_20200219/mlx.h
         srcs/main.c
-        srcs/print_shapes.c libs/libft/ft_power.c)
+        srcs/print_shapes.c libs/libft/ft_power.c srcs/colors.c)
 
 target_link_libraries(so_long ${LIBMLX})
