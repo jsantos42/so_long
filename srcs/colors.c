@@ -17,3 +17,28 @@ int	create_argb(int a, int r, int g, int b)
 {
 	return (a << 24 | r << 16 | g << 8 | b);
 }
+
+/*
+**	The following 4 functions extract one value from the ARGB color, through a
+**	binary AND operation.
+*/
+
+int	get_alpha(int argb)
+{
+	return (argb & (0xFF << 24));
+}
+
+int	get_red(int argb)
+{
+	return (argb & (0xFF << 16));
+}
+
+int	get_green(int argb)
+{
+	return (argb & (0xFF << 8));
+}
+
+int	get_blue(int argb)
+{
+	return (argb & 0xFF);
+}

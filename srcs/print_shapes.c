@@ -18,48 +18,53 @@ void	my_pixel_put(t_data *data, int x, int y, int color)
 }
 
 
-void	print_line(t_data *data, int x, int y, int color)
-{
-	while (x < data->line_length)
-	{
-		my_pixel_put(data, x, y, color);
-		x++;
-	}
-}
-
-void	print_square(t_data *data, int starting_x, int starting_y, int size, int color)
+void	print_line(t_data *data, t_color *colors, int line_size)
 {
 	int x;
 	int y;
 
-	x = starting_x;
-	y = starting_y;
-	while (y <  starting_y + size)
+	x = colors->starting_x;
+	y = colors->starting_y;
+	while (x < colors->starting_x + line_size)
 	{
-		x = starting_x;
-		while (x < starting_x + size)
+		my_pixel_put(data, x, y, colors->first_color);
+		x++;
+	}
+}
+
+void	print_square(t_data *data, t_color	*colors, int side_size)
+{
+	int x;
+	int y;
+
+	x = colors->starting_x;
+	y = colors->starting_y;
+	while (y <  colors->starting_y + side_size)
+	{
+		x = colors->starting_x;
+		while (x < colors->starting_x + side_size)
 		{
-			my_pixel_put(data, x, y, color);
+			my_pixel_put(data, x, y, colors->first_color);
 			x++;
 		}
 		y++;
 	}
 }
 
-void	print_circle(t_data *data, int center_x, int center_y, int radius, int color)
+void	print_circle(t_data *data, t_color *colors, int radius)
 {
 	int x;
 	int y;
 
-	x = center_x - radius;
-	y = center_y - radius;
-	while (y < center_y + radius)
+	x = colors->starting_x - radius;
+	y = colors->starting_y - radius;
+	while (y < colors->starting_y + radius)
 	{
-		x = center_x - radius;
-		while (x < center_x + radius)
+		x = colors->starting_x - radius;
+		while (x < colors->starting_x + radius)
 		{
-			if (ft_power(x - center_x, 2) + ft_power(y - center_y, 2) <= ft_power(radius, 2))
-				my_pixel_put(data, x, y, color);
+			if (ft_power(x - colors->starting_x, 2) + ft_power(y - colors->starting_x, 2) <= ft_power(radius, 2))
+				my_pixel_put(data, x, y, colors->first_color);
 			x++;
 		}
 		y++;

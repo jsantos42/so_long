@@ -10,14 +10,29 @@ typedef struct s_data {
 	int 	bits_per_pixel;
 	int 	line_length;
 	int 	endian;
+	int 	window_height;
+	int		window_length;
 }	t_data;
 
+typedef struct s_color {
+	int starting_x;
+	int starting_y;
+	int first_color;
+	int second_color;
+}	t_color;
 
-int on_click(int key, void *param);
+
+void	win_img_init(void *connection, void **window, t_data *data);
+t_color	colors_init(int starting_x, int starting_y, int first_color, int second_color);
+int		on_click(int key, void *param);
 void	my_pixel_put(t_data *data, int x, int y, int color);
-void	print_line(t_data *data, int x, int y, int color);
-void	print_square(t_data *data, int starting_x, int starting_y, int size, int color);
-void	print_circle(t_data *data, int center_x, int center_y, int radius, int color);
-int	create_argb(int a, int r, int g, int b);
+void	print_line(t_data *data, t_color *colors, int line_size);
+void	print_square(t_data *data, t_color	*colors, int side_size);
+void	print_circle(t_data *data, t_color *colors, int radius);
+int		create_argb(int a, int r, int g, int b);
+int		get_alpha(int argb);
+int		get_red(int argb);
+int		get_green(int argb);
+int		get_blue(int argb);
 
 #endif

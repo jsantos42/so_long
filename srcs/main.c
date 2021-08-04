@@ -7,21 +7,17 @@ int main()
 	void    *connection;
 	void    *window;
 	t_data	data;
-	int 	window_height;
-	int		window_length;
+	t_color colors;
 
 	connection = mlx_init();
 	if (connection)
 	{
-		window_length = 1280;
-		window_height = 720;
-		window = mlx_new_window(connection, window_length, window_height, "mlx 42" );
-		data.img = mlx_new_image(connection, window_length, window_height);
-		data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian);
-		print_line(&data, 0, 50, 255000000);
-		print_line(&data, 0, window_height - 4, 255000000);
-		print_square(&data, 300, 300, 50, 255000000);
-		print_circle(&data, 500, 500, 50, 255000000);
+		win_img_init(connection, &window, &data);
+		colors = colors_init(0, 3, 0xFF0000, 0xFF0000);
+		print_line(&data, &colors, 50);
+//		print_line(&data, 0, data.window_height - 4, 255000000);
+//		print_square(&data, 300, 300, 50, 255000000);
+//		print_circle(&data, 500, 500, 50, 255000000);
 		mlx_put_image_to_window(connection, window, data.img, 0, 0);
 		mlx_key_hook(window, on_click, (void *)0);
 		mlx_loop(connection);
@@ -29,7 +25,25 @@ int main()
 	return 0;
 }
 
+void	win_img_init(void *connection, void **window, t_data *data)
+{
+	data->window_length = 1280;
+	data->window_height = 720;
+	*window = mlx_new_window(connection, data->window_length, data->window_height, "mlx 42" );
+	data->img = mlx_new_image(connection, data->window_length, data->window_height);
+	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
+}
 
+t_color	colors_init(int starting_x, int starting_y, int first_color, int second_color)
+{
+	t_color	colors;
+
+	colors.starting_x = starting_x;
+	colors.starting_y = starting_y;
+	colors.first_color = first_color;
+	colors.second_color = second_color;
+	return (colors);
+}
 
 int on_click(int key, void *param)
 {
