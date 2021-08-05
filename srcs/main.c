@@ -6,11 +6,18 @@ int main(int argc, char **argv)
 	void    *window;
 	t_data	data;
 	t_color colors;
+	char	**map;
 
-//	if (argc != 2)
-//		error_management(ILLEGAL_INPUT);
-	(void)argc;
-	(void)argv;
+	if (argc != 2)
+		error_management(ILLEGAL_INPUT);
+	if (check_map_extension)
+		error_management(WRONG_EXTENSION);
+
+	map = import_map(argv[1]);
+
+	//open map
+	//gnl to double array
+	//check if map is ok
 	connection = mlx_init();
 	if (connection)
 	{

@@ -1,4 +1,4 @@
-#include "get_next_line.h"
+#include "../include/main.h"
 
 #define FD_SIZE 4096
 
