@@ -11,6 +11,8 @@
 
 # define ILLEGAL_INPUT		1
 # define WRONG_EXTENSION	2
+# define ERROR_READING_FILE	3
+# define WRONG_MAP_SHAPE	4
 
 typedef struct s_data {
 	void	*img;

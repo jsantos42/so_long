@@ -17,29 +17,49 @@ char	**import_map(char **str)
 {
 	int		fd;
 	char	*line;
-//	size_t 	size;
+	size_t 	line_counter;
+	size_t	line_length;
 	char 	**map;
 	t_list	*line_list;
 	t_list	*temp;
-//	int 	line_counter;
 
-	//new stack
 
-	fd = open(*str, O_RDONLY); //create a condition here in case it fails
+	fd = open(*str, O_RDONLY);
+	if (fd < 0)
+		error_management(ERROR_READING_FILE);
+	line_counter = 0;
+//this could go into a separate function
 	while (get_next_line(fd, &line))
 	{
-		//check is the line is the same as length as the previous ones
-		temp = ft_lstnew(line);
+		if (!line_length)
+			line_length = ft_strlen(line);
+		else
+			if (line_length != ft_strlen(line))
+				error_management(WRONG_MAP_SHAPE);
+		temp = ft_lstnew(line); //I think its constantly changing the line value
+		//on different nodes, because its always the same pointer. Maybe creating a
+		//new temp string for each would help
 		if (!line_list)
 			line_list = temp;
 		else
 			ft_lstadd_front(&line_list, temp);
+		line_counter++;
 	}
-	// check how many nodes the list has, thats the number of rows
-	//create a matrix with that number as the size of the malloc of the first value and
-	//the ft_strlen (line) as the second number
 
+	map = malloc(sizeof(char*) * line_counter);
 
+//this could go into a separate function
+	t_list	*temp2;
+	size_t	i = 0;
+	while (i < line_counter)
+	{
+		temp2 = line_list->next;
+		map[i] = malloc(sizeof(char) * (line_length + 1));
+		map[i] = line_list->content;
+		free(line_list);
+		line_list = temp;
+		i++;
+	}
 
 }
 
