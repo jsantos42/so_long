@@ -4,6 +4,12 @@
 #include "../libs/minilibx_mms_20200219/mlx.h"
 #include "../libs/libft/libft.h"
 
+/*
+**	ERRORS
+*/
+
+# define ILLEGAL_INPUT 1
+
 typedef struct s_data {
 	void	*img;
 	char	*addr;
@@ -23,8 +29,10 @@ typedef struct s_color {
 }	t_color;
 
 
+void	error_management(int error);
 void	win_img_init(void *connection, void **window, t_data *data);
 t_color	colors_init(int starting_x, int starting_y, int first_color, int second_color);
+int		on_key_press(int key, void *param);
 int		on_click(int key, void *param);
 void	my_pixel_put(t_data *data, int x, int y, int color);
 void	print_line(t_data *data, t_color colors, int line_size);

@@ -1,16 +1,20 @@
 #include "../include/main.h"
 
-int main()
+int main(int argc, char **argv)
 {
 	void    *connection;
 	void    *window;
 	t_data	data;
 	t_color colors;
 
+	if (argc != 2)
+		error_management(ILLEGAL_INPUT);
 	connection = mlx_init();
 	if (connection)
 	{
 		win_img_init(connection, &window, &data);
+
+		// output shapes
 		colors = colors_init(0, 3, 0x00FF00, 0xFF0000);
 		print_line(&data, colors, 200);
 		colors = colors_init(0, data.window_height - 4, 0xFF0000, 0x00FF00);
@@ -20,7 +24,10 @@ int main()
 		colors = colors_init(300, 300, 0x00FF00, 0x0000FF);
 		print_circle(&data, colors, 100);
 		mlx_put_image_to_window(connection, window, data.img, 0, 0);
-		mlx_key_hook(window, on_click, (void *)0);
+
+
+		mlx_key_hook(window, on_key_press, (void *)0);
+		mlx_mouse_hook(window, on_click, (void *)0);
 		mlx_loop(connection);
 	}
 	return 0;
@@ -46,11 +53,3 @@ t_color	colors_init(int starting_x, int starting_y, int first_color, int second_
 	return (colors);
 }
 
-int on_click(int key, void *param)
-{
-	(void)key;
-	(void)param;
-	ft_putnbr_fd(key, 1);
-	ft_putchar_fd('\n', 1);
-	return (0);
-}
