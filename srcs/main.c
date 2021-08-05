@@ -7,8 +7,10 @@ int main(int argc, char **argv)
 	t_data	data;
 	t_color colors;
 
-	if (argc != 2)
-		error_management(ILLEGAL_INPUT);
+//	if (argc != 2)
+//		error_management(ILLEGAL_INPUT);
+	(void)argc;
+	(void)argv;
 	connection = mlx_init();
 	if (connection)
 	{

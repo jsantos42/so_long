@@ -10,39 +10,42 @@ NAME =				so_long
 
 INCLUDE =			include
 
-SRCS =				$(wildcard srcs/*.c)
+SRCS_DIR = 		srcs
+SRCS	 =		$(wildcard srcs/*.c)
 
-LIBFT_FOLDER =		libs/libft
+OBJS_DIR =		objs
+OBJS =			$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
-MINILIBX_FOLDER =	libs/minilibx_mms_20200219
+LIBFT_DIR =		libs/libft
 
-LIBS =				$(LIBFT_FOLDER)/libft.a \
+MINILIBX_DIR =	libs/minilibx_mms_20200219
+
+LIBS =				$(LIBFT_DIR)/libft.a \
 					libmlx.dylib
-
-OBJS =				$(SRCS:.c=.o)
 
 all:				$(NAME)
 
 bonus:				all
 
 compile_libraries:
-						$(MAKE) -C $(LIBFT_FOLDER)
-						$(MAKE) -C $(MINILIBX_FOLDER)
-						mv $(MINILIBX_FOLDER)/libmlx.dylib .
+						$(MAKE) -C $(LIBFT_DIR)
+						$(MAKE) -C $(MINILIBX_DIR)
+						mv $(MINILIBX_DIR)/libmlx.dylib .
+
+$(OBJS_DIR)/%.o: %.c
+					mkdir -p $(dir $@)
+					$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 
 $(NAME):			compile_libraries $(OBJS)
 						$(CC) $(CFLAGS) $(MLX_FLAGS) -o $(NAME) -I $(INCLUDE) $(LIBS) $(OBJS)
 
-%.c.o:				%.c
-						$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $(<:.c=.o)
-
 clean:
-						make clean -C $(LIBFT_FOLDER)
-						make clean -C $(MINILIBX_FOLDER)
-						$(RM) $(OBJS)
+						make clean -C $(LIBFT_DIR)
+						make clean -C $(MINILIBX_DIR)
+						$(RM) $(OBJS_DIR)
 
 fclean:				clean
-						make fclean -C $(LIBFT_FOLDER)
+						make fclean -C $(LIBFT_DIR)
 						$(RM) $(NAME) $(LIBS)
 
 re:					fclean	all

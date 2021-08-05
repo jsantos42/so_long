@@ -3,6 +3,6 @@
 void	error_management(int error)
 {
 	if (error == 1)
-		ft_putstr_fd("Wrong input. Please run ./so_long <path_to_file.ber>\n");
+		ft_putstr_fd("Wrong input. Please run ./so_long <path_to_file.ber>\n", 1);
 	exit(error);
 }
