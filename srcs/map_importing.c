@@ -1,5 +1,11 @@
 #include "../include/main.h"
 
+/*
+**	Checks if the file passed as an argument has a .ber extension. If so,
+**	returns 0; otherwise returns an integer greater than or less than 0, which
+**	corresponds to the difference of characters of the two strings compared.
+*/
+
 int		check_map_extension(char *str)
 {
 	size_t	size;
@@ -7,11 +13,20 @@ int		check_map_extension(char *str)
 	int 	output;
 
 	size = ft_strlen(str);
-	extension = ft_substr(str, size - 5, 4);
+	extension = ft_substr(str, size - 4, 4);
 	output = ft_strncmp(extension, ".ber", 4);
 	free(extension);
 	return (output);
 }
+
+/*
+**	Imports the map from the file passed as an argument to a matrix. As it does
+**	not know the number of lines in the map when it starts reading it, it cannot
+**	allocate memory to the first array of the matrix. Therefore, and in order to
+**	avoid reading the file more than once, it saves each read line to a node in
+**	a linked list. After finishing reading the file, it can allocate memory to
+**	the matrix (map) and move the lines' content to the it.
+*/
 
 char	**import_map(char *str)
 {
@@ -31,13 +46,19 @@ char	**import_map(char *str)
 }
 
 
+/*
+**	Parses through the file and saves every read line to a new node on a linked
+**	list. Before doing so, it does check if the size of every line is the same,
+**	because the program requires a rectangular map.
+*/
+
 t_list	*map_lines_to_linked_list(int fd, size_t *line_count, size_t *line_length)
 {
 	char	*line;
 	t_list	*temp;
 	t_list	*line_list;
 
-	line_count = 0;
+	*line_count = 0;
 	while (get_next_line(fd, &line))
 	{
 		if (!*line_length)
@@ -46,9 +67,6 @@ t_list	*map_lines_to_linked_list(int fd, size_t *line_count, size_t *line_length
 			if (*line_length != ft_strlen(line))
 				error_management(WRONG_MAP_SHAPE);
 		temp = ft_lstnew(line);
-		//I think its constantly changing the line value
-		//on different nodes, because its always the same pointer. Maybe creating a
-		//new temp string for each would help
 		if (!line_list)
 			line_list = temp;
 		else
@@ -58,6 +76,9 @@ t_list	*map_lines_to_linked_list(int fd, size_t *line_count, size_t *line_length
 	return (line_list);
 }
 
+/*
+**	Moves the lines' content to a matrix and frees the linked list.
+*/
 
 char	**linked_list_to_matrix(t_list *line_list, size_t line_count)
 {
@@ -77,4 +98,3 @@ char	**linked_list_to_matrix(t_list *line_list, size_t line_count)
 	}
 	return (map);
 }
-
