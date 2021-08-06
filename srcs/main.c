@@ -12,12 +12,9 @@ int main(int argc, char **argv)
 		error_management(ILLEGAL_INPUT);
 	if (check_map_extension(argv[1]))
 		error_management(WRONG_EXTENSION);
-
 	map = import_map(argv[1]);
-
-	//open map
-	//gnl to double array
 	//check if map is ok
+
 	connection = mlx_init();
 	if (connection)
 	{
