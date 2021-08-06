@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 		error_management(ILLEGAL_INPUT);
-	if (check_map_extension)
+	if (check_map_extension(argv[1]))
 		error_management(WRONG_EXTENSION);
 
 	map = import_map(argv[1]);

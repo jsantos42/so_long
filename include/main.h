@@ -34,7 +34,9 @@ typedef struct s_color {
 
 
 int		check_map_extension(char *str);
-char	**import_map(char **str);
+char	**import_map(char *str);
+t_list	*map_lines_to_linked_list(int fd, size_t *line_count, size_t *line_length);
+char	**linked_list_to_matrix(t_list *line_list, size_t line_count);
 void	error_management(int error);
 void	win_img_init(void *connection, void **window, t_data *data);
 t_color	colors_init(int starting_x, int starting_y, int first_color, int second_color);
@@ -68,14 +70,9 @@ typedef struct s_args
 	int		nl_index;
 }	t_args;
 
-size_t	ft_strlen(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_left_over(char const *s, unsigned int start);
 int		get_nl_chr(char *str);
 int		get_next_line(int fd, char **line);
-char	*ft_strdup(const char *s1);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	carry_checker(char **carry, char *buff, t_args args);
 int		ft_line_writer(int fd, char **line, t_args args, char **carry);
 

@@ -13,53 +13,68 @@ int		check_map_extension(char *str)
 	return (output);
 }
 
-char	**import_map(char **str)
+char	**import_map(char *str)
 {
 	int		fd;
-	char	*line;
-	size_t 	line_counter;
+	size_t 	line_count;
 	size_t	line_length;
 	char 	**map;
 	t_list	*line_list;
-	t_list	*temp;
 
 
-	fd = open(*str, O_RDONLY);
+	fd = open(str, O_RDONLY);
 	if (fd < 0)
 		error_management(ERROR_READING_FILE);
-	line_counter = 0;
-//this could go into a separate function
+	line_list = map_lines_to_linked_list(fd, &line_count, &line_length);
+	map = linked_list_to_matrix(line_list, line_count);
+	return (map);
+}
+
+
+t_list	*map_lines_to_linked_list(int fd, size_t *line_count, size_t *line_length)
+{
+	char	*line;
+	t_list	*temp;
+	t_list	*line_list;
+
+	line_count = 0;
 	while (get_next_line(fd, &line))
 	{
-		if (!line_length)
-			line_length = ft_strlen(line);
+		if (!*line_length)
+			*line_length = ft_strlen(line);
 		else
-			if (line_length != ft_strlen(line))
+			if (*line_length != ft_strlen(line))
 				error_management(WRONG_MAP_SHAPE);
-		temp = ft_lstnew(line); //I think its constantly changing the line value
+		temp = ft_lstnew(line);
+		//I think its constantly changing the line value
 		//on different nodes, because its always the same pointer. Maybe creating a
 		//new temp string for each would help
 		if (!line_list)
 			line_list = temp;
 		else
-			ft_lstadd_front(&line_list, temp);
-		line_counter++;
+			ft_lstadd_back(&line_list, temp);
+		(*line_count)++;
 	}
+	return (line_list);
+}
 
-	map = malloc(sizeof(char*) * line_counter);
 
-//this could go into a separate function
-	t_list	*temp2;
-	size_t	i = 0;
-	while (i < line_counter)
+char	**linked_list_to_matrix(t_list *line_list, size_t line_count)
+{
+	t_list	*temp;
+	size_t	i;
+	char	**map;
+
+	map = malloc(sizeof(char*) * line_count);
+	i= 0;
+	while (i < line_count)
 	{
-		temp2 = line_list->next;
-		map[i] = malloc(sizeof(char) * (line_length + 1));
+		temp = line_list->next;
 		map[i] = line_list->content;
 		free(line_list);
 		line_list = temp;
 		i++;
 	}
-
+	return (map);
 }
 
