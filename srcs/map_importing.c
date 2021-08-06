@@ -1,5 +1,11 @@
 #include "../include/main.h"
 
+static void	free_and_throw_error(int error, t_list *line_list)
+{
+	ft_lstclear(&line_list, erase_str);
+	error_management(FAILED_MALLOC);
+}
+
 /*
 **	Checks if the file passed as an argument has a .ber extension. If so,
 **	returns 0; otherwise returns an integer greater than or less than 0, which
@@ -14,6 +20,8 @@ int		check_map_extension(char *str)
 
 	size = ft_strlen(str);
 	extension = ft_substr(str, size - 4, 4);
+	if (!extension)
+		error_management(FAILED_MALLOC);
 	output = ft_strncmp(extension, ".ber", 4);
 	free(extension);
 	return (output);
@@ -45,7 +53,6 @@ char	**import_map(char *str)
 	return (map);
 }
 
-
 /*
 **	Parses through the file and saves every read line to a new node on a linked
 **	list. Before doing so, it does check if the size of every line is the same,
@@ -59,14 +66,18 @@ t_list	*map_lines_to_linked_list(int fd, size_t *line_count, size_t *line_length
 	t_list	*line_list;
 
 	*line_count = 0;
+	*line_length = 0;
 	while (get_next_line(fd, &line))
 	{
+		if (!line)
+			free_and_throw_error(FAILED_MALLOC, line_list);
 		if (!*line_length)
 			*line_length = ft_strlen(line);
-		else
-			if (*line_length != ft_strlen(line))
-				error_management(WRONG_MAP_SHAPE);
+		else if (*line_length != ft_strlen(line))
+			free_and_throw_error(WRONG_MAP_SHAPE, line_list);
 		temp = ft_lstnew(line);
+		if (!temp)
+			free_and_throw_error(FAILED_MALLOC, line_list);
 		if (!line_list)
 			line_list = temp;
 		else
@@ -87,6 +98,7 @@ char	**linked_list_to_matrix(t_list *line_list, size_t line_count)
 	char	**map;
 
 	map = malloc(sizeof(char*) * line_count);
+	///protect here
 	i= 0;
 	while (i < line_count)
 	{

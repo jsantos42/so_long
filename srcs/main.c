@@ -14,7 +14,15 @@ int main(int argc, char **argv)
 		error_management(WRONG_EXTENSION);
 	map = import_map(argv[1]);
 	//check if map is ok
-
+/*
+ The map must be composed of only 5 possible characters: 0 for an empty space, 1 for a wall, C for a collectible, E for map exit and P for the player’s starting position.
+This is a simple valid map:
+◦ The map must be closed/surrounded by walls, if not the program must return an error.
+◦ Map must have at least one exit, one collectible, and one starting position.
+◦ You don’t need to check if there’s a valid path in the map.
+◦ The map must be rectangular.
+◦ You must be able to parse any kind of map, as long as it respects the rules of the map.
+ */
 	connection = mlx_init();
 	if (connection)
 	{

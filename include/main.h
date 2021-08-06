@@ -10,9 +10,10 @@
 */
 
 # define ILLEGAL_INPUT		1
-# define WRONG_EXTENSION	2
-# define ERROR_READING_FILE	3
-# define WRONG_MAP_SHAPE	4
+# define FAILED_MALLOC		2
+# define WRONG_EXTENSION	3
+# define ERROR_READING_FILE	4
+# define WRONG_MAP_SHAPE	5
 
 typedef struct s_data {
 	void	*img;
@@ -36,6 +37,7 @@ typedef struct s_color {
 int		check_map_extension(char *str);
 char	**import_map(char *str);
 t_list	*map_lines_to_linked_list(int fd, size_t *line_count, size_t *line_length);
+void	erase_str(void *str);
 char	**linked_list_to_matrix(t_list *line_list, size_t line_count);
 void	error_management(int error);
 void	win_img_init(void *connection, void **window, t_data *data);
