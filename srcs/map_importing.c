@@ -1,10 +1,6 @@
 #include "../include/main.h"
 
-static void	free_and_throw_error(int error, t_list *line_list)
-{
-	ft_lstclear(&line_list, erase_str);
-	error_management(FAILED_MALLOC);
-}
+static void	free_and_throw_error(int error, t_list *line_list);
 
 /*
 **	Checks if the file passed as an argument has a .ber extension. If so,
@@ -98,7 +94,8 @@ char	**linked_list_to_matrix(t_list *line_list, size_t line_count)
 	char	**map;
 
 	map = malloc(sizeof(char*) * line_count);
-	///protect here
+	if (!map)
+		free_and_throw_error(FAILED_MALLOC, line_list);
 	i= 0;
 	while (i < line_count)
 	{
@@ -109,4 +106,15 @@ char	**linked_list_to_matrix(t_list *line_list, size_t line_count)
 		i++;
 	}
 	return (map);
+}
+
+/*
+**	This static function deletes and frees the existing nodes on the linked list
+**	and calls error_management to throw an error message before exiting.
+*/
+
+static void	free_and_throw_error(int error, t_list *line_list)
+{
+	ft_lstclear(&line_list, erase_str);
+	error_management(error);
 }
