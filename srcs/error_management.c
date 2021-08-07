@@ -45,13 +45,17 @@ void	free_list_and_exit(int error, t_list *line_list)
 **	before exiting.
 */
 
-void	free_matrix_and_exit(int error, char **map, size_t lines)
+void	free_matrix_and_exit(int error, t_matrix *map)
 {
 	size_t	line_i;
 
 	line_i = 0;
-	while (line_i <  lines)
-		free(map[line_i++]);
+	while (line_i < map->lines)
+		free(map->matrix[line_i++]);
+	free(map->matrix);
 	free(map);
-	error_management(error);
+	if (error)
+		error_management(error);
+	else
+		exit(0);
 }

@@ -1,8 +1,9 @@
 #include "../include/main.h"
 
-int on_key_press(int key, void *param)
+int on_key_press(int key, t_matrix *map)
 {
-	(void)param;
+	if (key == 53)
+		free_matrix_and_exit(0, map);
 	ft_putnbr_fd(key, 1);
 	ft_putchar_fd('\n', 1);
 	return (0);

@@ -9,7 +9,7 @@
 **	(P). The rest should be empty space (0).
 */
 
-int	check_map_criteria(char **map, size_t line_count, size_t line_length)
+int	check_map_criteria(t_matrix *map)
 {
 	size_t	char_0;
 	size_t	char_1;
@@ -17,21 +17,21 @@ int	check_map_criteria(char **map, size_t line_count, size_t line_length)
 	size_t	char_e;
 	size_t	char_p;
 
-	char_0 = find_char_in_map(map, line_count, '0');
-	char_1 = find_char_in_map(map, line_count, '1');
-	char_c = find_char_in_map(map, line_count, 'C');
-	char_e = find_char_in_map(map, line_count, 'E');
-	char_p = find_char_in_map(map, line_count, 'P');
-	if (char_0 + char_1 + char_c + char_e + char_p != line_count * line_length
+	char_0 = find_char_in_map(map, '0');
+	char_1 = find_char_in_map(map, '1');
+	char_c = find_char_in_map(map, 'C');
+	char_e = find_char_in_map(map, 'E');
+	char_p = find_char_in_map(map, 'P');
+	if (char_0 + char_1 + char_c + char_e + char_p != map->lines * map->columns
 		|| char_c < 1 || char_e < 1 || char_p < 1)
 		return (1);
-	if (check_map_walls(map, line_count, line_length))
+	if (check_map_walls(map))
 		return (1);
 	return (0);
 }
 
 
-int	find_char_in_map(char **map, size_t line_count, char letter)
+int	find_char_in_map(t_matrix *map, char letter)
 {
 	int 	char_count;
 	size_t	column;
@@ -40,12 +40,12 @@ int	find_char_in_map(char **map, size_t line_count, char letter)
 	char_count = 0;
 	column = 0;
 	line = 0;
-	while (line < line_count)
+	while (line < map->lines)
 	{
 		column = 0;
-		while (map[line][column] != '\0')
+		while (map->matrix[line][column] != '\0')
 		{
-			if (map[line][column] == letter)
+			if (map->matrix[line][column] == letter)
 				char_count++;
 			column++;
 		}
@@ -55,22 +55,24 @@ int	find_char_in_map(char **map, size_t line_count, char letter)
 }
 
 
-int	check_map_walls(char **map, size_t line_count, size_t line_length)
+int	check_map_walls(t_matrix *map)
 {
 	size_t	line;
 	size_t	column;
 
 	line = 0;
 	column = 0;
-	while (column < line_length)
+	while (column < map->columns)
 	{
-		if (map[0][column] != '1' || map[line_count - 1][column] != '1')
+		if (map->matrix[0][column] != '1'
+			|| map->matrix[map->lines - 1][column] != '1')
 			return (1);
 		column++;
 	}
-	while (line < line_count)
+	while (line < map->lines)
 	{
-		if (map[line][0] != '1' || map[line][line_length - 1] != '1')
+		if (map->matrix[line][0] != '1'
+			|| map->matrix[line][map->columns - 1] != '1')
 			return (1);
 		line++;
 	}

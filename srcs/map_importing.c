@@ -30,21 +30,20 @@ int		check_map_extension(char *str)
 **	the matrix (map) and move the lines' content to the it.
 */
 
-char	**import_map(char *str)
+t_matrix *import_map(char *str)
 {
-	int		fd;
-	size_t 	line_count;
-	size_t	line_length;
-	char 	**map;
-	t_list	*line_list;
+	int			fd;
+	t_list		*line_list;
+	t_matrix	*map;
 
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
 		error_management(ERROR_READING_FILE);
-	line_list = map_lines_to_linked_list(fd, &line_count, &line_length);
-	map = linked_list_to_matrix(line_list, line_count);
-	if (check_map_criteria(map, line_count, line_length))
-		free_matrix_and_exit(INVALID_MAP, map, line_count);
+	map = malloc(sizeof(t_matrix));
+	line_list = map_lines_to_linked_list(fd, &map->lines, &map->columns);
+	map->matrix = linked_list_to_matrix(line_list, map->lines);
+	if (check_map_criteria(map))
+		free_matrix_and_exit(INVALID_MAP, map);
 	return (map);
 }
 
@@ -90,19 +89,19 @@ char	**linked_list_to_matrix(t_list *line_list, size_t line_count)
 {
 	t_list	*temp;
 	size_t	i;
-	char	**map;
+	char	**matrix;
 
-	map = malloc(sizeof(char*) * line_count);
-	if (!map)
+	matrix = malloc(sizeof(char*) * line_count);
+	if (!matrix)
 		free_list_and_exit(FAILED_MALLOC, line_list);
 	i= 0;
 	while (i < line_count)
 	{
 		temp = line_list->next;
-		map[i] = line_list->content;
+		matrix[i] = line_list->content;
 		free(line_list);
 		line_list = temp;
 		i++;
 	}
-	return (map);
+	return (matrix);
 }
