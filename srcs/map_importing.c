@@ -1,7 +1,5 @@
 #include "../include/main.h"
 
-static void	free_and_throw_error(int error, t_list *line_list);
-
 /*
 **	Checks if the file passed as an argument has a .ber extension. If so,
 **	returns 0; otherwise returns an integer greater than or less than 0, which
@@ -40,12 +38,13 @@ char	**import_map(char *str)
 	char 	**map;
 	t_list	*line_list;
 
-
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
 		error_management(ERROR_READING_FILE);
 	line_list = map_lines_to_linked_list(fd, &line_count, &line_length);
 	map = linked_list_to_matrix(line_list, line_count);
+	if (check_map_criteria(map, line_count, line_length))
+		free_matrix_and_exit(INVALID_MAP, map, line_count);
 	return (map);
 }
 
@@ -66,14 +65,14 @@ t_list	*map_lines_to_linked_list(int fd, size_t *line_count, size_t *line_length
 	while (get_next_line(fd, &line))
 	{
 		if (!line)
-			free_and_throw_error(FAILED_MALLOC, line_list);
+			free_list_and_exit(FAILED_MALLOC, line_list);
 		if (!*line_length)
 			*line_length = ft_strlen(line);
 		else if (*line_length != ft_strlen(line))
-			free_and_throw_error(WRONG_MAP_SHAPE, line_list);
+			free_list_and_exit(INVALID_MAP, line_list);
 		temp = ft_lstnew(line);
 		if (!temp)
-			free_and_throw_error(FAILED_MALLOC, line_list);
+			free_list_and_exit(FAILED_MALLOC, line_list);
 		if (!line_list)
 			line_list = temp;
 		else
@@ -95,7 +94,7 @@ char	**linked_list_to_matrix(t_list *line_list, size_t line_count)
 
 	map = malloc(sizeof(char*) * line_count);
 	if (!map)
-		free_and_throw_error(FAILED_MALLOC, line_list);
+		free_list_and_exit(FAILED_MALLOC, line_list);
 	i= 0;
 	while (i < line_count)
 	{
@@ -106,15 +105,4 @@ char	**linked_list_to_matrix(t_list *line_list, size_t line_count)
 		i++;
 	}
 	return (map);
-}
-
-/*
-**	This static function deletes and frees the existing nodes on the linked list
-**	and calls error_management to throw an error message before exiting.
-*/
-
-static void	free_and_throw_error(int error, t_list *line_list)
-{
-	ft_lstclear(&line_list, erase_str);
-	error_management(error);
 }

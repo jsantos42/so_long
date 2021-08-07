@@ -75,6 +75,6 @@ add_executable(so_long
         srcs/hooks.c
         srcs/error_management.c
         srcs/map_importing.c
-        srcs/get_next_line.c srcs/utils.c)
+        srcs/get_next_line.c srcs/utils.c srcs/map_checking.c)
 
 target_link_libraries(so_long ${LIBMLX})
