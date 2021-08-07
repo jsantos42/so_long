@@ -14,6 +14,7 @@
 # define WRONG_EXTENSION	3
 # define ERROR_READING_FILE	4
 # define INVALID_MAP		5
+# define DESTROY_NOTIFY_X11_EVENT	17
 # define ESC				53
 
 typedef struct s_data {
@@ -55,6 +56,7 @@ void	win_img_init(void *connection, void **window, t_data *data);
 t_color	colors_init(int starting_x, int starting_y, int first_color, int second_color);
 int on_key_press(int key, t_matrix *map);
 int		on_click(int key, void *param);
+int red_cross_clicking(int key, t_matrix *map);
 void	my_pixel_put(t_data *data, int x, int y, int color);
 void	print_line(t_data *data, t_color colors, int line_size);
 void	print_square(t_data *data, t_color	colors, int side_size);

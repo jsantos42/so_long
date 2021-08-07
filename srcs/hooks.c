@@ -21,3 +21,10 @@ int	on_click(int key, void *param)
 	ft_putchar_fd('\n', 1);
 	return (0);
 }
+
+int red_cross_clicking(int key, t_matrix *map)
+{
+	(void)key;
+	free_matrix_and_exit(0, map);
+	return (0);
+}
