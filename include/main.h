@@ -14,6 +14,7 @@
 # define WRONG_EXTENSION	3
 # define ERROR_READING_FILE	4
 # define INVALID_MAP		5
+# define ESC				53
 
 typedef struct s_data {
 	void	*img;
