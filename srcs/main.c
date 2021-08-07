@@ -13,7 +13,6 @@ int main(int argc, char **argv)
 	if (check_map_extension(argv[1]))
 		error_management(WRONG_EXTENSION);
 	map = import_map(argv[1]);
-	//check if map is ok
 
 //	connection = mlx_init();
 //	if (connection)

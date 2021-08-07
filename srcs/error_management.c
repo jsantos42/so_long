@@ -30,8 +30,8 @@ void	error_management(int error)
 
 
 /*
-**	This static function deletes and frees the existing nodes on the linked list
-**	and calls error_management to throw an error message before exiting.
+**	Deletes and frees the existing nodes on the linked list and calls
+**	error_management to throw an error message before exiting.
 */
 
 void	free_list_and_exit(int error, t_list *line_list)
@@ -39,6 +39,11 @@ void	free_list_and_exit(int error, t_list *line_list)
 	ft_lstclear(&line_list, erase_str);
 	error_management(error);
 }
+
+/*
+**	Frees the given matrix and calls error_management to throw an error message
+**	before exiting.
+*/
 
 void	free_matrix_and_exit(int error, char **map, size_t lines)
 {
