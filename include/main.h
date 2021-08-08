@@ -61,6 +61,7 @@ void	my_pixel_put(t_data *data, int x, int y, int color);
 void	print_line(t_data *data, t_color colors, int line_size);
 void	print_square(t_data *data, t_color	colors, int side_size);
 void	print_circle(t_data *data, t_color colors, int radius);
+//void	print_image(t_data *data, t_color colors, t_matrix *map, int side_size);
 int 	create_trgb(int a, int r, int g, int b);
 int		get_transparency(int trgb);
 int		get_red(int trgb);

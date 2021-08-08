@@ -85,3 +85,30 @@ void	print_circle(t_data *data, t_color colors, int radius)
 }
 
 
+//void	print_image(void *mxl_ptr, t_data *data, t_color colors, t_matrix *map, size_t side_size)
+//{
+//	size_t	x;
+//	size_t	y;
+//	size_t	i;
+//	size_t	j;
+//
+//	y = colors.starting_y;
+//	i = 0;
+//	j = 0;
+//	while (y < colors.starting_y + side_size && i < map->lines)
+//	{
+//		x = colors.starting_x;
+//		j = 0;
+//		while (x < colors.starting_x + side_size && j < map->columns)
+//		{
+//			mlx_string_put(mxl_ptr, )
+//			x++;
+//			j++;
+//		}
+//		y++;
+//		i++;
+//
+//	}
+//
+//
+//}

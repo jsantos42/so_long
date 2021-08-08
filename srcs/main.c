@@ -18,16 +18,22 @@ int main(int argc, char **argv)
 	if (connection)
 	{
 		win_img_init(connection, &window, &data);
+//		mlx_string_put(connection, window, 500, 500, 0xFF0000, "oooooola");//map->matrix[1]);
 
+int size1 = 30;
+int size2 = 30;
+mlx_png_file_to_image(connection, "./brick.png", &size1, &size2);
+
+//		mlx_png_file_to_image(connection, "brick", )
 		// output shapes
 		colors = colors_init(0, 3, 0x00FF00, 0xFF0000);
 		print_line(&data, colors, 200);
-		colors = colors_init(0, data.window_height - 4, 0xFF0000, 0x00FF00);
-		print_line(&data, colors, data.window_length - 4);
-		colors = colors_init(50, 100, 0xFF0000, 0x00FF00);
-		print_square(&data, colors, 100);
-		colors = colors_init(300, 300, 0x00FF00, 0x0000FF);
-		print_circle(&data, colors, 100);
+//		colors = colors_init(0, data.window_height - 4, 0xFF0000, 0x00FF00);
+//		print_line(&data, colors, data.window_length - 4);
+//		colors = colors_init(50, 100, 0xFF0000, 0x00FF00);
+//		print_square(&data, colors, 100);
+//		colors = colors_init(300, 300, 0x00FF00, 0x0000FF);
+//		print_circle(&data, colors, 100);
 		mlx_put_image_to_window(connection, window, data.img, 0, 0);
 		mlx_key_hook(window, on_key_press, map);
 		mlx_mouse_hook(window, on_click, map);

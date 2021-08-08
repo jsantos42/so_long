@@ -22,7 +22,7 @@ int	increment_color(int first_color, int second_color, int distance)
 	int new_g;
 	int	new_b;
 
-	new_a = get_new_value(get_alpha, first_color, second_color, distance);
+	new_a = get_new_value(get_transparency, first_color, second_color, distance);
 	new_r = get_new_value(get_red, first_color, second_color, distance);
 	new_g = get_new_value(get_green, first_color, second_color, distance);
 	new_b = get_new_value(get_blue, first_color, second_color, distance);
