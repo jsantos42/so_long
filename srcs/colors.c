@@ -2,7 +2,8 @@
 
 /*
 **	Creates an unsigned integer with a ARGB value.
-**	A = alpha (transparency)
+**	T = transparency (for historical reasons, on the MiniLibX the alpha byte
+**	represents transparency instead of opacity)
 **	R = red
 **	G = green
 **	B = blue
@@ -13,9 +14,9 @@
 **	place the binary values of the colors on the right spot of the integer.
 */
 
-int	create_argb(int a, int r, int g, int b)
+int	create_trgb(int t, int r, int g, int b)
 {
-	return (a << 24 | r << 16 | g << 8 | b);
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 /*
@@ -25,22 +26,22 @@ int	create_argb(int a, int r, int g, int b)
 **	0-255.
 */
 
-int	get_alpha(int argb)
+int	get_transparency(int trgb)
 {
-	return ((argb & (0xFF << 24)) >> 24);
+	return ((trgb & (0xFF << 24)) >> 24);
 }
 
-int	get_red(int argb)
+int	get_red(int trgb)
 {
-	return ((argb & (0xFF << 16)) >> 16);
+	return ((trgb & (0xFF << 16)) >> 16);
 }
 
-int	get_green(int argb)
+int	get_green(int trgb)
 {
-	return ((argb & (0xFF << 8)) >> 8);
+	return ((trgb & (0xFF << 8)) >> 8);
 }
 
-int	get_blue(int argb)
+int	get_blue(int trgb)
 {
-	return (argb & 0xFF);
+	return (trgb & 0xFF);
 }

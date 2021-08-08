@@ -48,25 +48,25 @@ void	erase_str(void *str);
 void	free_list_and_exit(int error, t_list *line_list);
 void	free_matrix_and_exit(int error, t_matrix *map);
 char	**linked_list_to_matrix(t_list *line_list, size_t line_count);
-int	check_map_criteria(t_matrix *map);
-int	find_char_in_map(t_matrix *map, char letter);
-int	check_map_walls(t_matrix *map);
+int		check_map_criteria(t_matrix *map);
+int		find_char_in_map(t_matrix *map, char letter);
+int		check_map_walls(t_matrix *map);
 void	error_management(int error);
 void	win_img_init(void *connection, void **window, t_data *data);
 t_color	colors_init(int starting_x, int starting_y, int first_color, int second_color);
-int on_key_press(int key, t_matrix *map);
-int		on_click(int key, void *param);
-int red_cross_clicking(int key, t_matrix *map);
+int		on_key_press(int key, t_matrix *map);
+int		on_click(int button, int x, int y, void *param);
+int		red_cross_clicking(t_matrix *map);
 void	my_pixel_put(t_data *data, int x, int y, int color);
 void	print_line(t_data *data, t_color colors, int line_size);
 void	print_square(t_data *data, t_color	colors, int side_size);
 void	print_circle(t_data *data, t_color colors, int radius);
-int 		create_argb(int a, int r, int g, int b);
-int		get_alpha(int argb);
-int		get_red(int argb);
-int		get_green(int argb);
-int		get_blue(int argb);
-int	increment_color(int first_color, int second_color, int distance);
+int 	create_trgb(int a, int r, int g, int b);
+int		get_transparency(int trgb);
+int		get_red(int trgb);
+int		get_green(int trgb);
+int		get_blue(int trgb);
+int		increment_color(int first_color, int second_color, int distance);
 
 
 /*

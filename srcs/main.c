@@ -30,11 +30,8 @@ int main(int argc, char **argv)
 		print_circle(&data, colors, 100);
 		mlx_put_image_to_window(connection, window, data.img, 0, 0);
 		mlx_key_hook(window, on_key_press, map);
-
-		//this was supposed to work when clicking the red cross, but somehow it does not send the
-		// correct pointer to map??? see on debug
+		mlx_mouse_hook(window, on_click, map);
 		mlx_hook(window, DESTROY_NOTIFY_X11_EVENT, 1L << 0, red_cross_clicking, map);
-		mlx_mouse_hook(window, on_click, (void *)0);
 		mlx_loop(connection);
 	}
 	return 0;
