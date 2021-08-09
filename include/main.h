@@ -32,6 +32,9 @@ typedef struct s_vars {
 	int 	window_height;
 	int		window_width;
 	int 	**brick;
+	int 	**beagle_boy;
+	int 	**coin;
+	int 	**uncle_scrooge;
 }	t_vars;
 
 typedef struct s_temp {
@@ -54,13 +57,13 @@ typedef struct s_color {
 
 typedef struct s_matrix {
 	char	**matrix;
-	size_t 	lines;
-	size_t	columns;
+	int 	lines;
+	int		columns;
 }	t_matrix;
 
 int		check_map_extension(char *str);
 t_matrix *import_map(char *str);
-t_list	*map_lines_to_linked_list(int fd, size_t *line_count, size_t *line_length);
+t_list	*map_lines_to_linked_list(int fd, int *line_count, int *line_length);
 void	erase_str(void *str);
 void	free_list_and_exit(int error, t_list *line_list);
 void	free_matrix_and_exit(int error, t_matrix *map);
@@ -69,7 +72,7 @@ int		check_map_criteria(t_matrix *map);
 int		find_char_in_map(t_matrix *map, char letter);
 int		check_map_walls(t_matrix *map);
 void	error_management(int error);
-void	win_img_init(void *connection, void **window, t_vars *data);
+void	win_img_init(void *connection, void **window, t_vars *vars, t_matrix *map);
 t_color	colors_init(int starting_x, int starting_y, int first_color, int second_color);
 int		on_key_press(int key, t_matrix *map);
 int		on_click(int button, int x, int y, void *param);

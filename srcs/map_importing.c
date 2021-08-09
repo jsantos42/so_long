@@ -53,7 +53,7 @@ t_matrix *import_map(char *str)
 **	because the program requires a rectangular map.
 */
 
-t_list	*map_lines_to_linked_list(int fd, size_t *line_count, size_t *line_length)
+t_list	*map_lines_to_linked_list(int fd, int *line_count, int *line_length)
 {
 	char	*line;
 	t_list	*temp;
@@ -67,7 +67,7 @@ t_list	*map_lines_to_linked_list(int fd, size_t *line_count, size_t *line_length
 			free_list_and_exit(FAILED_MALLOC, line_list);
 		if (!*line_length)
 			*line_length = ft_strlen(line);
-		else if (*line_length != ft_strlen(line))
+		else if (*line_length != (int)ft_strlen(line))
 			free_list_and_exit(INVALID_MAP, line_list);
 		temp = ft_lstnew(line);
 		if (!temp)

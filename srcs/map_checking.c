@@ -11,11 +11,11 @@
 
 int	check_map_criteria(t_matrix *map)
 {
-	size_t	char_0;
-	size_t	char_1;
-	size_t	char_c;
-	size_t	char_e;
-	size_t	char_p;
+	int	char_0;
+	int	char_1;
+	int	char_c;
+	int	char_e;
+	int	char_p;
 
 	char_0 = find_char_in_map(map, '0');
 	char_1 = find_char_in_map(map, '1');
@@ -34,8 +34,8 @@ int	check_map_criteria(t_matrix *map)
 int	find_char_in_map(t_matrix *map, char letter)
 {
 	int 	char_count;
-	size_t	column;
-	size_t	line;
+	int	column;
+	int	line;
 
 	char_count = 0;
 	column = 0;
@@ -57,8 +57,8 @@ int	find_char_in_map(t_matrix *map, char letter)
 
 int	check_map_walls(t_matrix *map)
 {
-	size_t	line;
-	size_t	column;
+	int	line;
+	int	column;
 
 	line = 0;
 	column = 0;

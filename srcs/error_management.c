@@ -49,7 +49,7 @@ void	free_list_and_exit(int error, t_list *line_list)
 
 void	free_matrix_and_exit(int error, t_matrix *map)
 {
-	size_t	line_i;
+	int	line_i;
 
 	line_i = 0;
 	while (line_i < map->lines)
