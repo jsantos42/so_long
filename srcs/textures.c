@@ -11,10 +11,9 @@ int	**load_image_as_texture(void *connection, char *path)
 	int	**image;
 
 	texture_init(&image);
-	printf("%s\n", strerror(errno));
+//	printf("%s\n", strerror(errno));
 	temp.img = mlx_xpm_file_to_image(connection, path, &temp.img_width, &temp.img_height);
-	printf("%s\n", strerror(errno));
-//	exit(0);
+//	printf("%s\n", strerror(errno));
 	if (!temp.img)
 		error_management(ERROR_READING_IMAGE_FILE);
 	//what do I have to free here??
@@ -31,6 +30,7 @@ int	**load_image_as_texture(void *connection, char *path)
 		y++;
 	}
 	mlx_destroy_image(connection, temp.img);
+	//free temp?
 	return (image);
 }
 
@@ -44,9 +44,6 @@ void	texture_init(int ***image)
 	while (i < IMG_HEIGHT)
 	{
 		(*image)[i] = ft_calloc(IMG_WIDTH,sizeof (int));
-//		for (int j = 0; j < IMG_WIDTH; j++)
-//			printf("%d", (*image)[i][j]);
-//		printf("\n");
 		i++;
 	}
 }

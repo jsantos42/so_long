@@ -18,8 +18,6 @@ int main(int argc, char **argv)
 	if (connection)
 	{
 		win_img_init(connection, &window, &vars, map);
-//		int size1 = 300;
-//		int size2 = 300;
 		vars.brick = load_image_as_texture(connection, "/Users/jsantos/Desktop/so_long/imgs/brick.xpm");
 		vars.beagle_boy = load_image_as_texture(connection, "/Users/jsantos/Desktop/so_long/imgs/beagle_boy.xpm");
 		vars.coin = load_image_as_texture(connection, "/Users/jsantos/Desktop/so_long/imgs/coin.xpm");
@@ -36,6 +34,12 @@ int main(int argc, char **argv)
 			{
 				if (map->matrix[y][x] == '1')
 					print_image(vars.brick, (x * 128), (y * 128), &vars);
+				else if (map->matrix[y][x] == 'P')
+					print_image(vars.uncle_scrooge, (x * 128), (y * 128), &vars);
+				else if (map->matrix[y][x] == 'C')
+					print_image(vars.coin, (x * 128), (y * 128), &vars);
+				else if (map->matrix[y][x] == 'C')
+					print_image(vars.coin, (x * 128), (y * 128), &vars);
 				x++;
 			}
 			y++;
