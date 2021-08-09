@@ -31,7 +31,7 @@ typedef struct s_vars {
 	int 	endian;
 	int 	window_height;
 	int		window_width;
-	char 	**brick;
+	int 	**brick;
 }	t_vars;
 
 typedef struct s_temp {
@@ -86,8 +86,10 @@ int		get_green(int trgb);
 int		get_blue(int trgb);
 int		increment_color(int first_color, int second_color, int distance);
 
-char	**load_image_as_texture(void *connection, char *path);
-void	texture_init(char ***image);
+int	**load_image_as_texture(void *connection, char *path);
+//void	texture_init(char ***image);
+void	texture_init(int ***image);
+void	print_image(int **texture, int starting_x, int starting_y, t_vars *vars);
 
 /*
 ** gnl stuff

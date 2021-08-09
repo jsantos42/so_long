@@ -18,6 +18,10 @@ void	my_pixel_put(t_vars *vars, int x, int y, int color)
 }
 
 
+/////protect against printing outside of window
+
+
+
 void	print_line(t_vars *vars, t_color colors, int line_size)
 {
 	int	temp_color;

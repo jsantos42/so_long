@@ -20,8 +20,10 @@ int main(int argc, char **argv)
 		win_img_init(connection, &window, &vars);
 //		int size1 = 300;
 //		int size2 = 300;
-		vars.brick = load_image_as_texture(connection, "brick.xpm");
+		vars.brick = load_image_as_texture(connection, "/Users/jsantos/Desktop/so_long/brick.xpm");
+		print_image(vars.brick, 500, 500, &vars);
 
+//		mlx_put_image_to_window(connection, window, vars.brick, 50, 500);
 
 
 
@@ -36,7 +38,6 @@ int main(int argc, char **argv)
 		colors = colors_init(300, 300, 0x00FF00, 0x0000FF);
 		print_circle(&vars, colors, 100);
 		mlx_put_image_to_window(connection, window, vars.img, 0, 0);
-//		mlx_put_image_to_window(connection, window, new_img, 0, 0);
 		mlx_string_put(connection, window, 50, 50, 0xFF0000, map->matrix[0]);//map->matrix[1]);
 		mlx_key_hook(window, on_key_press, map);
 		mlx_mouse_hook(window, on_click, map);
