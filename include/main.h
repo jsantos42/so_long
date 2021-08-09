@@ -23,18 +23,36 @@
 # define DESTROY_NOTIFY_X11_EVENT	17
 # define ESC				53
 
+typedef struct s_matrix {
+	char	**matrix;
+	int 	lines;
+	int		columns;
+}	t_matrix;
+
+/*
+**	Due to the limitations of the MiniLibX, which has some functions (namely,
+**	the hook ones) to which we can only pass a single argument, the following
+**	structure has quite a bit of elements inside of it. The first ones are
+**	related to the connection established by the MiniLibX and its data.
+**	After that, there's a map variable which saves the map passed as an argument
+**	to the program, followed by the textures used on this program.
+*/
+
 typedef struct s_vars {
-	void	*img;
-	char	*addr;
-	int 	bits_per_pixel;
-	int 	line_length;
-	int 	endian;
-	int 	window_height;
-	int		window_width;
-	int 	**brick;
-	int 	**beagle_boy;
-	int 	**coin;
-	int 	**uncle_scrooge;
+	void 		*connection;
+	void		*window;
+	void		*img;
+	char		*addr;
+	int 		bits_per_pixel;
+	int 		line_length;
+	int 		endian;
+	int 		window_height;
+	int			window_width;
+	t_matrix	*map;
+	int 		**brick;
+	int 		**beagle_boy;
+	int 		**coin;
+	int 		**uncle_scrooge;
 }	t_vars;
 
 typedef struct s_temp {
@@ -55,11 +73,6 @@ typedef struct s_color {
 //	int orientation_angle; //to set the gradient
 }	t_color;
 
-typedef struct s_matrix {
-	char	**matrix;
-	int 	lines;
-	int		columns;
-}	t_matrix;
 
 int		check_map_extension(char *str);
 t_matrix *import_map(char *str);
@@ -72,10 +85,10 @@ int		check_map_criteria(t_matrix *map);
 int		find_char_in_map(t_matrix *map, char letter);
 int		check_map_walls(t_matrix *map);
 void	error_management(int error);
-t_vars *img_init(void *connection, t_matrix *map);
-void	print_map(t_matrix *map, t_vars *vars);
+void	img_init(t_vars *vars);
+void	print_map(t_vars *vars);
 t_color	colors_init(int starting_x, int starting_y, int first_color, int second_color);
-int		on_key_press(int key, t_matrix *map);
+int		on_key_press(int key, t_vars *vars);
 int		on_click(int button, int x, int y, void *param);
 int		red_cross_clicking(t_matrix *map);
 void	my_pixel_put(t_vars *data, int x, int y, int color);

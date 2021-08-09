@@ -1,8 +1,4 @@
 #include "../include/main.h"
-#include <errno.h>
-#include <stdio.h>
-#include <string.h>
-
 
 int	**load_image_as_texture(void *connection, char *path)
 {
@@ -12,9 +8,7 @@ int	**load_image_as_texture(void *connection, char *path)
 	int	**image;
 
 	texture_init(&image);
-//	printf("%s\n", strerror(errno));
 	temp.img = mlx_xpm_file_to_image(connection, path, &temp.img_width, &temp.img_height);
-//	printf("%s\n", strerror(errno));
 	if (!temp.img)
 		error_management(ERROR_READING_IMAGE_FILE);
 	//what do I have to free here??
@@ -71,12 +65,3 @@ void	print_image(int **texture, int starting_x, int starting_y, t_vars *vars)
 		y++;
 	}
 }
-
-
-//void	my_pixel_put(t_vars *vars, int x, int y, int color)
-//{
-//	char	*dst;
-//
-//	dst = vars->addr + (y * vars->line_length + (x * (vars->bits_per_pixel / 8)));
-//	*(int *)dst = color;
-//}

@@ -1,11 +1,17 @@
 #include "../include/main.h"
 
-int on_key_press(int key, t_matrix *map)
+int on_key_press(int key, t_vars *vars)
 {
 	if (key == ESC)
 	{
 		//mlx_destroy_window needed??
-		free_matrix_and_exit(0, map);
+		free_matrix_and_exit(0, vars->map);
+	}
+	else if (key == 126)
+	{
+		vars->map->matrix[2][1] = 'P'; //function to switch values if zero
+		print_map(vars);
+		mlx_put_image_to_window(vars->connection, vars->window, vars->img, 0, 0);
 	}
 	ft_putnbr_fd(key, 1);
 	ft_putchar_fd('\n', 1);
