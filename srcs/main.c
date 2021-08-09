@@ -83,13 +83,13 @@ void	print_map(t_matrix *map, t_vars *vars)
 		while (x < map->columns)
 		{
 			if (map->matrix[y][x] == '1')
-				print_image(vars->brick, (x * 128), (y * 128), vars);
+				print_image(vars->brick, x * IMG_WIDTH, y * IMG_HEIGHT, vars);
 			else if (map->matrix[y][x] == 'P')
-				print_image(vars->uncle_scrooge, (x * 128), (y * 128), vars);
+				print_image(vars->uncle_scrooge, x * IMG_WIDTH, y * IMG_HEIGHT, vars);
 			else if (map->matrix[y][x] == 'C')
-				print_image(vars->coin, (x * 128), (y * 128), vars);
+				print_image(vars->coin, x * IMG_WIDTH, y * IMG_HEIGHT, vars);
 			else if (map->matrix[y][x] == 'C')
-				print_image(vars->coin, (x * 128), (y * 128), vars);
+				print_image(vars->coin, x * IMG_WIDTH, y * IMG_HEIGHT, vars);
 			x++;
 		}
 		y++;
