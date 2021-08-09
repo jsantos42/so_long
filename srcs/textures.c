@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
+
 int	**load_image_as_texture(void *connection, char *path)
 {
 	t_temp	temp;
