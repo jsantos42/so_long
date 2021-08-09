@@ -9,16 +9,16 @@
 **	of bytes used in each pixel).
 */
 
-void	my_pixel_put(t_data *data, int x, int y, int color)
+void	my_pixel_put(t_vars *vars, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->line_length + (x * (data->bits_per_pixel / 8)));
+	dst = vars->addr + (y * vars->line_length + (x * (vars->bits_per_pixel / 8)));
 	*(int *)dst = color;
 }
 
 
-void	print_line(t_data *data, t_color colors, int line_size)
+void	print_line(t_vars *vars, t_color colors, int line_size)
 {
 	int	temp_color;
 	int x;
@@ -31,12 +31,12 @@ void	print_line(t_data *data, t_color colors, int line_size)
 	{
 		if (colors.first_color != colors.second_color)
 			temp_color += increment_color(temp_color, colors.second_color, line_size);
-		my_pixel_put(data, x, y, temp_color);
+		my_pixel_put(vars, x, y, temp_color);
 		x++;
 	}
 }
 
-void	print_square(t_data *data, t_color	colors, int side_size)
+void	print_square(t_vars *vars, t_color	colors, int side_size)
 {
 	int	temp_color;
 	int x;
@@ -51,14 +51,14 @@ void	print_square(t_data *data, t_color	colors, int side_size)
 		{
 			if (colors.first_color != colors.second_color)
 				temp_color += increment_color(temp_color, colors.second_color, side_size);
-			my_pixel_put(data, x, y, temp_color);
+			my_pixel_put(vars, x, y, temp_color);
 			x++;
 		}
 		y++;
 	}
 }
 
-void	print_circle(t_data *data, t_color colors, int radius)
+void	print_circle(t_vars *vars, t_color colors, int radius)
 {
 	int	temp_color;
 	int x;
@@ -76,7 +76,7 @@ void	print_circle(t_data *data, t_color colors, int radius)
 			{
 				if (colors.first_color != colors.second_color)
 					temp_color += increment_color(colors.first_color, colors.second_color, radius * 2);
-				my_pixel_put(data, x, y, temp_color);
+				my_pixel_put(vars, x, y, temp_color);
 			}
 			x++;
 		}
@@ -85,7 +85,7 @@ void	print_circle(t_data *data, t_color colors, int radius)
 }
 
 
-//void	print_image(void *mxl_ptr, t_data *data, t_color colors, t_matrix *map, size_t side_size)
+//void	print_image(void *mxl_ptr, t_vars *vars, t_color colors, t_matrix *map, size_t side_size)
 //{
 //	size_t	x;
 //	size_t	y;

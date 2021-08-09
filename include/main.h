@@ -12,20 +12,37 @@
 # define ILLEGAL_INPUT		1
 # define FAILED_MALLOC		2
 # define WRONG_EXTENSION	3
-# define ERROR_READING_FILE	4
+# define ERROR_READING_MAP_FILE	4
 # define INVALID_MAP		5
+# define ERROR_READING_IMAGE_FILE 6
+
+
+# define IMG_HEIGHT 128
+# define IMG_WIDTH	128
+
 # define DESTROY_NOTIFY_X11_EVENT	17
 # define ESC				53
 
-typedef struct s_data {
+typedef struct s_vars {
 	void	*img;
 	char	*addr;
 	int 	bits_per_pixel;
 	int 	line_length;
 	int 	endian;
 	int 	window_height;
-	int		window_length;
-}	t_data;
+	int		window_width;
+	char 	**brick;
+}	t_vars;
+
+typedef struct s_temp {
+	void	*img;
+	char	*addr;
+	int 	bits_per_pixel;
+	int 	line_length;
+	int 	endian;
+	int 	img_height;
+	int		img_width;
+}	t_temp;
 
 typedef struct s_color {
 	int starting_x;
@@ -52,16 +69,16 @@ int		check_map_criteria(t_matrix *map);
 int		find_char_in_map(t_matrix *map, char letter);
 int		check_map_walls(t_matrix *map);
 void	error_management(int error);
-void	win_img_init(void *connection, void **window, t_data *data);
+void	win_img_init(void *connection, void **window, t_vars *data);
 t_color	colors_init(int starting_x, int starting_y, int first_color, int second_color);
 int		on_key_press(int key, t_matrix *map);
 int		on_click(int button, int x, int y, void *param);
 int		red_cross_clicking(t_matrix *map);
-void	my_pixel_put(t_data *data, int x, int y, int color);
-void	print_line(t_data *data, t_color colors, int line_size);
-void	print_square(t_data *data, t_color	colors, int side_size);
-void	print_circle(t_data *data, t_color colors, int radius);
-//void	print_image(t_data *data, t_color colors, t_matrix *map, int side_size);
+void	my_pixel_put(t_vars *data, int x, int y, int color);
+void	print_line(t_vars *data, t_color colors, int line_size);
+void	print_square(t_vars *data, t_color	colors, int side_size);
+void	print_circle(t_vars *data, t_color colors, int radius);
+//void	print_image(t_vars *data, t_color colors, t_matrix *map, int side_size);
 int 	create_trgb(int a, int r, int g, int b);
 int		get_transparency(int trgb);
 int		get_red(int trgb);
@@ -69,6 +86,8 @@ int		get_green(int trgb);
 int		get_blue(int trgb);
 int		increment_color(int first_color, int second_color, int distance);
 
+char	**load_image_as_texture(void *connection, char *path);
+void	texture_init(char ***image);
 
 /*
 ** gnl stuff

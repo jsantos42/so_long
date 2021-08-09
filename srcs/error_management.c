@@ -12,7 +12,7 @@ void	error_management(int error)
 		ft_putstr_fd("The given map has not a .ber extension.\n", 1);
 		ft_putstr_fd("Please provide the correct file.\n", 1);
 	}
-	else if (error == ERROR_READING_FILE)
+	else if (error == ERROR_READING_MAP_FILE)
 		ft_putstr_fd("Couldn't read the given map file.\n", 1);
 	else if (error == INVALID_MAP)
 	{
@@ -25,6 +25,8 @@ void	error_management(int error)
 		ft_putstr_fd(" and one starting position (P). The rest should", 1);
 		ft_putstr_fd(" be empty space (0).\n", 1);
 	}
+	else if (error == ERROR_READING_IMAGE_FILE)
+		ft_putstr_fd("Couldn't read one or more of the images files.\n", 1);
 	exit(error);
 }
 

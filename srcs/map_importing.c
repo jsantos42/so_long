@@ -38,7 +38,7 @@ t_matrix *import_map(char *str)
 
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
-		error_management(ERROR_READING_FILE);
+		error_management(ERROR_READING_MAP_FILE);
 	map = malloc(sizeof(t_matrix));
 	line_list = map_lines_to_linked_list(fd, &map->lines, &map->columns);
 	map->matrix = linked_list_to_matrix(line_list, map->lines);

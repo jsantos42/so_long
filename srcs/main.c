@@ -4,7 +4,7 @@ int main(int argc, char **argv)
 {
 	void    *connection;
 	void    *window;
-	t_data	data;
+	t_vars	vars;
 	t_color colors;
 	t_matrix	*map;
 
@@ -17,24 +17,27 @@ int main(int argc, char **argv)
 	connection = mlx_init();
 	if (connection)
 	{
-		win_img_init(connection, &window, &data);
-//		mlx_string_put(connection, window, 500, 500, 0xFF0000, "oooooola");//map->matrix[1]);
+		win_img_init(connection, &window, &vars);
+//		int size1 = 300;
+//		int size2 = 300;
+		vars.brick = load_image_as_texture(connection, "brick.xpm");
 
-int size1 = 30;
-int size2 = 30;
-mlx_png_file_to_image(connection, "./brick.png", &size1, &size2);
 
-//		mlx_png_file_to_image(connection, "brick", )
+
+
+
 		// output shapes
 		colors = colors_init(0, 3, 0x00FF00, 0xFF0000);
-		print_line(&data, colors, 200);
-//		colors = colors_init(0, data.window_height - 4, 0xFF0000, 0x00FF00);
-//		print_line(&data, colors, data.window_length - 4);
-//		colors = colors_init(50, 100, 0xFF0000, 0x00FF00);
-//		print_square(&data, colors, 100);
-//		colors = colors_init(300, 300, 0x00FF00, 0x0000FF);
-//		print_circle(&data, colors, 100);
-		mlx_put_image_to_window(connection, window, data.img, 0, 0);
+		print_line(&vars, colors, 200);
+		colors = colors_init(0, vars.window_height - 4, 0xFF0000, 0x00FF00);
+		print_line(&vars, colors, vars.window_width - 4);
+		colors = colors_init(50, 100, 0xFF0000, 0x00FF00);
+		print_square(&vars, colors, 100);
+		colors = colors_init(300, 300, 0x00FF00, 0x0000FF);
+		print_circle(&vars, colors, 100);
+		mlx_put_image_to_window(connection, window, vars.img, 0, 0);
+//		mlx_put_image_to_window(connection, window, new_img, 0, 0);
+		mlx_string_put(connection, window, 50, 50, 0xFF0000, map->matrix[0]);//map->matrix[1]);
 		mlx_key_hook(window, on_key_press, map);
 		mlx_mouse_hook(window, on_click, map);
 		mlx_hook(window, DESTROY_NOTIFY_X11_EVENT, 1L << 0, red_cross_clicking, map);
@@ -43,13 +46,13 @@ mlx_png_file_to_image(connection, "./brick.png", &size1, &size2);
 	return 0;
 }
 
-void	win_img_init(void *connection, void **window, t_data *data)
+void	win_img_init(void *connection, void **window, t_vars *vars)
 {
-	data->window_length = 1280;
-	data->window_height = 720;
-	*window = mlx_new_window(connection, data->window_length, data->window_height, "mlx 42" );
-	data->img = mlx_new_image(connection, data->window_length, data->window_height);
-	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
+	vars->window_width = 1280;
+	vars->window_height = 720;
+	*window = mlx_new_window(connection, vars->window_width, vars->window_height, "mlx 42" );
+	vars->img = mlx_new_image(connection, vars->window_width, vars->window_height);
+	vars->addr = mlx_get_data_addr(vars->img, &vars->bits_per_pixel, &vars->line_length, &vars->endian);
 }
 
 t_color	colors_init(int starting_x, int starting_y, int first_color, int second_color)
