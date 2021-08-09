@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 //		int size1 = 300;
 //		int size2 = 300;
 		vars.brick = load_image_as_texture(connection, "/Users/jsantos/Desktop/so_long/brick.xpm");
-		print_image(vars.brick, 500, 500, &vars);
+		print_image(vars.brick, 100, 100, &vars);
 
 //		mlx_put_image_to_window(connection, window, vars.brick, 50, 500);
 
