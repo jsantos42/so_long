@@ -1,4 +1,4 @@
-#include "../include/main.h"
+#include "../include/print_shapes.h"
 
 /*
 **	Here dst gets the sum  of the address of the origin (coordinates 0,0, the

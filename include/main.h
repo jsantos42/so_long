@@ -1,149 +1,28 @@
-#ifndef SO_LONG_MAIN_H
-# define SO_LONG_MAIN_H
+#ifndef MAIN_H
+# define MAIN_H
 
-#include "../libs/minilibx_mms_20200219/mlx.h"
-#include "../libs/libft/libft.h"
-#include <fcntl.h>
+# include "../libs/minilibx_mms_20200219/mlx.h"
+# include "../libs/libft/libft.h"
+# include <fcntl.h>
+//# include <stdlib.h>
+//# include <unistd.h>
 
-/*
-**	ERRORS
-*/
-
-# define ILLEGAL_INPUT		1
-# define FAILED_MALLOC		2
-# define WRONG_EXTENSION	3
-# define ERROR_READING_MAP_FILE	4
-# define INVALID_MAP		5
-# define ERROR_READING_IMAGE_FILE 6
-
-
-# define IMG_HEIGHT 50
-# define IMG_WIDTH	50
-
-# define DESTROY_NOTIFY_X11_EVENT	17
-
-/*
-**	KEYS
-*/
-
-# define ESC				53
-# define MOVE_UP 			126
-# define MOVE_DOWN 			125
-# define MOVE_RIGHT 		124
-# define MOVE_LEFT			123
+# include "types.h"
+# include "print_shapes.h"
+# include "colors.h"
+# include "gradients.h"
+# include "hooks.h"
+# include "error_management.h"
+# include "map_importing.h"
+# include "get_next_line.h"
+# include "utils.h"
+# include "map_checking.h"
+# include "textures.h"
+# include "move_player.h"
 
 
-typedef struct s_matrix {
-	char	**matrix;
-	int 	lines;
-	int		columns;
-	int 	player_coord_x;
-	int 	player_coord_y;
-}	t_matrix;
-
-/*
-**	Due to the limitations of the MiniLibX, which has some functions (namely,
-**	the hook ones) to which we can only pass a single argument, the following
-**	structure has quite a bit of elements inside of it. The first ones are
-**	related to the connection established by the MiniLibX and its data.
-**	After that, there's a map variable which saves the map passed as an argument
-**	to the program, followed by the textures used on this program.
-*/
-
-typedef struct s_vars {
-	void 		*connection;
-	void		*window;
-	void		*img;
-	char		*addr;
-	int 		bits_per_pixel;
-	int 		line_length;
-	int 		endian;
-	int 		window_height;
-	int			window_width;
-	t_matrix	*map;
-	int 		**wall;
-	int 		**exit;
-	int 		**enemy;
-	int 		**collectible;
-	int 		**player;
-}	t_vars;
-
-typedef struct s_temp {
-	void	*img;
-	char	*addr;
-	int 	bits_per_pixel;
-	int 	line_length;
-	int 	endian;
-	int 	img_height;
-	int		img_width;
-}	t_temp;
-
-typedef struct s_color {
-	int starting_x;
-	int starting_y;
-	int first_color;
-	int second_color;
-//	int orientation_angle; //to set the gradient
-}	t_color;
-
-
-int		check_map_extension(char *str);
-t_matrix *import_map(char *str);
-t_list	*map_lines_to_linked_list(int fd, int *line_count, int *line_length);
-void	erase_str(void *str);
-void	free_list_and_exit(int error, t_list *line_list);
-void	free_matrix_and_exit(int error, t_matrix *map);
-char	**linked_list_to_matrix(t_list *line_list, size_t line_count);
-int		check_map_criteria(t_matrix *map);
-int		find_char_in_map(t_matrix *map, char letter);
-int		check_map_walls(t_matrix *map);
-void	error_management(int error);
 void	img_init(t_vars *vars);
-void	print_map(t_vars *vars);
 t_color	colors_init(int starting_x, int starting_y, int first_color, int second_color);
-int		on_key_press(int key, t_vars *vars);
-int		on_click(int button, int x, int y, void *param);
-int		red_cross_clicking(t_matrix *map);
-void	my_pixel_put(t_vars *data, int x, int y, int color);
-void	print_line(t_vars *data, t_color colors, int line_size);
-void	print_square(t_vars *data, t_color	colors, int side_size);
-void	print_circle(t_vars *data, t_color colors, int radius);
-int 	create_trgb(int a, int r, int g, int b);
-int		get_transparency(int trgb);
-int		get_red(int trgb);
-int		get_green(int trgb);
-int		get_blue(int trgb);
-int		increment_color(int first_color, int second_color, int distance);
-
-int	**load_image_as_texture(void *connection, char *path);
-//void	texture_init(char ***image);
-void	texture_init(int ***image);
-void	print_image(int **texture, int starting_x, int starting_y, t_vars *vars);
-
-
-
-void	move_player(char *current_position, char *new_position);
-
-/*
-** gnl stuff
-*/
-
-# include <stdlib.h>
-# include <unistd.h>
-
-#define BUFFER_SIZE 2
-
-typedef struct s_args
-{
-	int		reading;
-	char	*temp;
-	int		nl_index;
-}	t_args;
-
-char	*ft_left_over(char const *s, unsigned int start);
-int		get_nl_chr(char *str);
-int		get_next_line(int fd, char **line);
-void	carry_checker(char **carry, char *buff, t_args args);
-int		ft_line_writer(int fd, char **line, t_args args, char **carry);
+void	print_map(t_vars *vars);
 
 #endif

@@ -1,4 +1,4 @@
-#include "../include/main.h"
+#include "../include/map_importing.h"
 
 /*
 **	Checks if the file passed as an argument has a .ber extension. If so,

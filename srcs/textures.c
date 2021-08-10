@@ -1,4 +1,4 @@
-#include "../include/main.h"
+#include "../include/textures.h"
 
 int	**load_image_as_texture(void *connection, char *path)
 {

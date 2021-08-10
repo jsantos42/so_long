@@ -1,4 +1,4 @@
-#include "../include/main.h"
+#include "../include/utils.h"
 
 void	erase_str(void *str)
 {

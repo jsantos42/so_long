@@ -1,4 +1,4 @@
-#include "../include/main.h"
+#include "../include/hooks.h"
 
 int on_key_press(int key, t_vars *vars)
 {

@@ -1,4 +1,4 @@
-#include "../include/main.h"
+#include "../include/error_management.h"
 
 void	error_management(int error)
 {

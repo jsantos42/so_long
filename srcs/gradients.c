@@ -1,4 +1,4 @@
-#include "../include/main.h"
+#include "../include/gradients.h"
 
 ///add this to libft
 //static int ft_abs(int a)

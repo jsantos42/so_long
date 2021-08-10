@@ -23,6 +23,17 @@ find_library(LIBMLX
 
 add_executable(so_long
         include/main.h
+        include/print_shapes.h
+        include/colors.h
+        include/gradients.h
+        include/hooks.h
+        include/error_management.h
+        include/map_importing.h
+        include/get_next_line.h
+        include/utils.h
+        include/map_checking.h
+        include/textures.h
+        include/move_player.h
         libs/libft/ft_atoi.c
         libs/libft/ft_bzero.c
         libs/libft/ft_calloc.c
@@ -47,6 +58,7 @@ add_executable(so_long
         libs/libft/ft_memcpy.c
         libs/libft/ft_memmove.c
         libs/libft/ft_memset.c
+        libs/libft/ft_power.c
         libs/libft/ft_putchar_fd.c
         libs/libft/ft_putendl_fd.c
         libs/libft/ft_putnbr_fd.c
@@ -69,12 +81,16 @@ add_executable(so_long
         libs/libft/libft.h
         libs/minilibx_mms_20200219/mlx.h
         srcs/main.c
-        srcs/print_shapes.c libs/libft/ft_power.c
+        srcs/print_shapes.c
         srcs/colors.c
         srcs/gradients.c
         srcs/hooks.c
         srcs/error_management.c
         srcs/map_importing.c
-        srcs/get_next_line.c srcs/utils.c srcs/map_checking.c srcs/textures.c srcs/move_player.c)
+        srcs/get_next_line.c
+        srcs/utils.c
+        srcs/map_checking.c
+        srcs/textures.c
+        srcs/move_player.c include/types.h)
 
 target_link_libraries(so_long ${LIBMLX})

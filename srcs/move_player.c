@@ -1,4 +1,4 @@
-#include "../include/main.h"
+#include "../include/move_player.h"
 
 void	move_player(char *current_position, char *new_position)
 {

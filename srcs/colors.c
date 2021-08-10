@@ -1,4 +1,4 @@
-#include "../include/main.h"
+#include "../include/colors.h"
 
 /*
 **	Creates an unsigned integer with a ARGB value.
