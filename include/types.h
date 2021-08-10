@@ -1,8 +1,6 @@
 #ifndef TYPES_H
 # define TYPES_H
 
-
-
 # define IMG_HEIGHT 50
 # define IMG_WIDTH	50
 

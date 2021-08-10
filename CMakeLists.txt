@@ -91,6 +91,6 @@ add_executable(so_long
         srcs/utils.c
         srcs/map_checking.c
         srcs/textures.c
-        srcs/move_player.c include/types.h)
+        srcs/move_player.c include/types.h srcs/map_printing.c srcs/map_printing.h)
 
 target_link_libraries(so_long ${LIBMLX})

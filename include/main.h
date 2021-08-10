@@ -19,10 +19,10 @@
 # include "map_checking.h"
 # include "textures.h"
 # include "move_player.h"
+# include "map_printing.h"
 
 
 void	img_init(t_vars *vars);
 t_color	colors_init(int starting_x, int starting_y, int first_color, int second_color);
-void	print_map(t_vars *vars);
 
 #endif

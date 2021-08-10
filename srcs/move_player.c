@@ -20,28 +20,3 @@ void	move_player(char *current_position, char *new_position)
 	*current_position = temp;
 }
 
-
-//char	*get_player_position(t_matrix *map)
-//{
-//	int	line;
-//	int	column;
-//
-//	line = 0;
-//	while (line < map->lines)
-//	{
-//		column = 0;
-//		while (map->matrix[line][column] != '\0')
-//		{
-//			if (map->matrix[line][column] == 'P')
-//				char_count++;
-//			column++;
-//		}
-//		line++;
-//
-//}
-
-
-//void	*parse_map(t_vars *vars,
-//{
-//
-//}
