@@ -1,9 +1,24 @@
 #include "../include/hooks.h"
 
+/*
+**	If the user presses the ESC key, the program frees the allocated memory and
+**	exits (since there's no error, it passes 0 to free_matrix_and_exit.
+**	If the user presses one of the moving keys (WASD), it calls its own action
+**	by passing the current position of the player and the supposed new position
+**	if the keystroke is indeed applied. This only changes the position of the
+** 	chars on the map->matrix, before on_key_press can reprint the map to the
+**	image/window.
+**	The result variable's content will trigger the GAMEOVER or FINISHED_GAME
+**	message.
+*/
+
+///print the message based on the result value.
+
 int on_key_press(int key, t_vars *vars)
 {
 	int x;
 	int y;
+	int result;
 
 	x = vars->map->player_coord_x;
 	y = vars->map->player_coord_y;
@@ -13,13 +28,13 @@ int on_key_press(int key, t_vars *vars)
 		free_matrix_and_exit(0, vars->map);
 	}
 	else if (key == MOVE_UP)
-		move_player(&vars->map->matrix[y][x], &vars->map->matrix[y - 1][x]);
+		result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y - 1][x], vars->map->collectible_count);
 	else if (key == MOVE_DOWN)
-		move_player(&vars->map->matrix[y][x], &vars->map->matrix[y + 1][x]);
+		result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y + 1][x], vars->map->collectible_count);
 	else if (key == MOVE_RIGHT)
-		move_player(&vars->map->matrix[y][x], &vars->map->matrix[y][x + 1]);
+		result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y][x + 1], vars->map->collectible_count);
 	else if (key == MOVE_LEFT)
-		move_player(&vars->map->matrix[y][x], &vars->map->matrix[y][x - 1]);
+		result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y][x - 1], vars->map->collectible_count);
 	print_map(vars);
 	mlx_put_image_to_window(vars->connection, vars->window, vars->img, 0, 0);
 	ft_putnbr_fd(key, 1);

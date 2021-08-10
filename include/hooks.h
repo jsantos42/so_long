@@ -8,10 +8,10 @@
 */
 
 # define ESC				53
-# define MOVE_UP 			126
-# define MOVE_DOWN 			125
-# define MOVE_RIGHT 		124
-# define MOVE_LEFT			123
+# define MOVE_UP 			13
+# define MOVE_DOWN 			1
+# define MOVE_RIGHT 		2
+# define MOVE_LEFT			0
 
 int on_key_press(int key, t_vars *vars);
 int	on_click(int button, int x, int y, void *param);

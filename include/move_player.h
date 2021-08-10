@@ -3,6 +3,10 @@
 
 # include "main.h"
 
-void	move_player(char *current_position, char *new_position);
+# define CONTINUE_GAME	0
+# define FINISH_GAME	1
+# define HIT_ENEMY		2
+
+int	move_player(char *current_position, char *new_position, int collectible_count);
 
 #endif

@@ -6,6 +6,7 @@ void	print_map(t_vars *vars)
 	int y;
 	t_color colors;
 
+	vars->map->collectible_count = 0;
 	y = 0;
 	while (y < vars->map->lines)
 	{
@@ -26,7 +27,10 @@ void	print_map(t_vars *vars)
 				vars->map->player_coord_y = y;
 			}
 			else if (vars->map->matrix[y][x] == 'C')
+			{
 				print_image(vars->collectible, x * IMG_WIDTH, y * IMG_HEIGHT, vars);
+				vars->map->collectible_count++;
+			}
 			else if (vars->map->matrix[y][x] == 'E')
 				print_image(vars->exit, x * IMG_WIDTH, y * IMG_HEIGHT, vars);
 			x++;

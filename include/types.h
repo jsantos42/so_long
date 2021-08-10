@@ -13,6 +13,7 @@ typedef struct s_matrix {
 	int		columns;
 	int 	player_coord_x;
 	int 	player_coord_y;
+	int 	collectible_count;
 }	t_matrix;
 
 /*
