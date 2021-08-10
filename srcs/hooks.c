@@ -20,7 +20,6 @@ int on_key_press(int key, t_vars *vars)
 		move_player(&vars->map->matrix[y][x], &vars->map->matrix[y][x + 1]);
 	else if (key == MOVE_LEFT)
 		move_player(&vars->map->matrix[y][x], &vars->map->matrix[y][x - 1]);
-	mlx_clear_window(vars->connection, vars->window);
 	print_map(vars);
 	mlx_put_image_to_window(vars->connection, vars->window, vars->img, 0, 0);
 	ft_putnbr_fd(key, 1);
