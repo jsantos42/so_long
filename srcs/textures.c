@@ -35,6 +35,7 @@ void	texture_init(int ***image)
 	int	i;
 
 	*image = ft_calloc(IMG_HEIGHT, sizeof(int*));
+	///protect against calloc
 	i = 0;
 	while (i < IMG_HEIGHT)
 	{
