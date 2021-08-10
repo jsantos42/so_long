@@ -17,8 +17,8 @@
 # define ERROR_READING_IMAGE_FILE 6
 
 
-# define IMG_HEIGHT 128
-# define IMG_WIDTH	128
+# define IMG_HEIGHT 50
+# define IMG_WIDTH	50
 
 # define DESTROY_NOTIFY_X11_EVENT	17
 
@@ -61,10 +61,11 @@ typedef struct s_vars {
 	int 		window_height;
 	int			window_width;
 	t_matrix	*map;
-	int 		**brick;
-	int 		**beagle_boy;
-	int 		**coin;
-	int 		**uncle_scrooge;
+	int 		**wall;
+	int 		**exit;
+	int 		**enemy;
+	int 		**collectible;
+	int 		**player;
 }	t_vars;
 
 typedef struct s_temp {
