@@ -79,7 +79,11 @@ void	print_map(t_vars *vars)
 			if (vars->map->matrix[y][x] == '1')
 				print_image(vars->brick, x * IMG_WIDTH, y * IMG_HEIGHT, vars);
 			else if (vars->map->matrix[y][x] == 'P')
+			{
 				print_image(vars->uncle_scrooge, x * IMG_WIDTH, y * IMG_HEIGHT, vars);
+				vars->map->player_coord_x = x;
+				vars->map->player_coord_y = y;
+			}
 			else if (vars->map->matrix[y][x] == 'C')
 				print_image(vars->coin, x * IMG_WIDTH, y * IMG_HEIGHT, vars);
 //			else if (vars->map->matrix[y][x] == 'E')

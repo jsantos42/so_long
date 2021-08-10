@@ -21,12 +21,24 @@
 # define IMG_WIDTH	128
 
 # define DESTROY_NOTIFY_X11_EVENT	17
+
+/*
+**	KEYS
+*/
+
 # define ESC				53
+# define MOVE_UP 			126
+# define MOVE_DOWN 			125
+# define MOVE_RIGHT 		124
+# define MOVE_LEFT			123
+
 
 typedef struct s_matrix {
 	char	**matrix;
 	int 	lines;
 	int		columns;
+	int 	player_coord_x;
+	int 	player_coord_y;
 }	t_matrix;
 
 /*
@@ -106,6 +118,10 @@ int	**load_image_as_texture(void *connection, char *path);
 //void	texture_init(char ***image);
 void	texture_init(int ***image);
 void	print_image(int **texture, int starting_x, int starting_y, t_vars *vars);
+
+
+
+void	move_player(char *current_position, char *new_position);
 
 /*
 ** gnl stuff

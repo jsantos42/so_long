@@ -33,12 +33,11 @@ int	check_map_criteria(t_matrix *map)
 
 int	find_char_in_map(t_matrix *map, char letter)
 {
-	int 	char_count;
-	int	column;
+	int	char_count;
 	int	line;
+	int	column;
 
 	char_count = 0;
-	column = 0;
 	line = 0;
 	while (line < map->lines)
 	{
