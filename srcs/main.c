@@ -3,11 +3,13 @@
 int main(int argc, char **argv)
 {
 	t_vars		*vars;
+	char		*init_message;
 
 	if (argc != 2)
 		error_management(ILLEGAL_INPUT);
 	if (check_map_extension(argv[1]))
 		error_management(WRONG_EXTENSION);
+	init_message = "MOVES: 0";
 	vars = malloc(sizeof(t_vars));
 	vars->map = import_map(argv[1]);
 	vars->connection = mlx_init();
@@ -17,7 +19,9 @@ int main(int argc, char **argv)
 		vars->window = mlx_new_window(vars->connection, vars->window_width, vars->window_height, "mlx 42" );
 		print_map(vars);
 		mlx_put_image_to_window(vars->connection, vars->window, vars->img, 0, 0);
-		put_str_to_window(vars, "MOVES: 0");
+		put_str_to_window(vars, init_message);
+		ft_putstr_fd(init_message, 1);
+		ft_putchar_fd('\n', 1);
 //		mlx_loop_hook(vars->connection, print_map)
 		mlx_key_hook(vars->window, on_key_press, vars);
 		mlx_mouse_hook(vars->window, on_click, vars);

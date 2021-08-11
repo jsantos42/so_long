@@ -43,11 +43,11 @@ int on_key_press(int key, t_vars *vars)
 		str = ft_strjoin("MOVES: ", ft_itoa(vars->map->moves_count));
 		print_map(vars);
 		mlx_put_image_to_window(vars->connection, vars->window, vars->img, 0, 0);
+		ft_putstr_fd(str, 1);
+		ft_putchar_fd('\n', 1);
 		put_str_to_window(vars, str);
 		free(str);
 	}
-	ft_putnbr_fd(key, 1);
-	ft_putchar_fd('\n', 1);
 	return (0);
 }
 
