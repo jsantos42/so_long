@@ -34,6 +34,8 @@ add_executable(so_long
         include/map_checking.h
         include/textures.h
         include/move_player.h
+        include/types.h
+        include/map_printing.h
         libs/libft/ft_atoi.c
         libs/libft/ft_bzero.c
         libs/libft/ft_calloc.c
@@ -91,6 +93,7 @@ add_executable(so_long
         srcs/utils.c
         srcs/map_checking.c
         srcs/textures.c
-        srcs/move_player.c include/types.h srcs/map_printing.c srcs/map_printing.h)
+        srcs/move_player.c
+        srcs/map_printing.c)
 
 target_link_libraries(so_long ${LIBMLX})
