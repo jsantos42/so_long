@@ -1,26 +1,6 @@
 #include "../include/print_shapes.h"
 
-/*
-**	Here dst gets the sum  of the address of the origin (coordinates 0,0, the
-**	leftmost and uppermost point) and the offset of the desired coordinates
-**	(in order to print to pixel (5,5), for example, it needs to go down y times
-**	(and each step it goes down corresponds to a whole line_length) and needs
-**	to go right x times (and each step it goes right corresponds to the number
-**	of bytes used in each pixel).
-*/
-
-void	my_pixel_put(t_vars *vars, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = vars->addr + (y * vars->line_length + (x * (vars->bits_per_pixel / 8)));
-	*(int *)dst = color;
-}
-
-
 /////protect against printing outside of window
-
-
 
 void	print_line(t_vars *vars, t_color colors, int line_size)
 {

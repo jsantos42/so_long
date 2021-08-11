@@ -14,6 +14,10 @@ typedef struct s_matrix {
 	int 	player_coord_x;
 	int 	player_coord_y;
 	int 	collectible_count;
+	int 	moves_count;
+	int 	text_x;
+	int 	text_y;
+	int 	text_color;
 }	t_matrix;
 
 /*

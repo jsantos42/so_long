@@ -19,9 +19,11 @@ int on_key_press(int key, t_vars *vars)
 	int x;
 	int y;
 	int result;
+	char *str;
 
 	x = vars->map->player_coord_x;
 	y = vars->map->player_coord_y;
+	result = NOT_ALLOWED;
 	if (key == ESC)
 	{
 		//mlx_destroy_window needed??
@@ -35,8 +37,15 @@ int on_key_press(int key, t_vars *vars)
 		result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y][x + 1], vars->map->collectible_count);
 	else if (key == MOVE_LEFT)
 		result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y][x - 1], vars->map->collectible_count);
-	print_map(vars);
-	mlx_put_image_to_window(vars->connection, vars->window, vars->img, 0, 0);
+	if (result != NOT_ALLOWED)
+	{
+		vars->map->moves_count++;
+		str = ft_strjoin("MOVES: ", ft_itoa(vars->map->moves_count));
+		print_map(vars);
+		mlx_put_image_to_window(vars->connection, vars->window, vars->img, 0, 0);
+		put_str_to_window(vars, str);
+		free(str);
+	}
 	ft_putnbr_fd(key, 1);
 	ft_putchar_fd('\n', 1);
 	return (0);

@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 		vars->window = mlx_new_window(vars->connection, vars->window_width, vars->window_height, "mlx 42" );
 		print_map(vars);
 		mlx_put_image_to_window(vars->connection, vars->window, vars->img, 0, 0);
-//		mlx_string_put(connection, window, 50, 50, 0xFF0000, map->matrix[0]);//map->matrix[1]);
+		put_str_to_window(vars, "MOVES: 0");
 //		mlx_loop_hook(vars->connection, print_map)
 		mlx_key_hook(vars->window, on_key_press, vars);
 		mlx_mouse_hook(vars->window, on_click, vars);

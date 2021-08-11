@@ -45,24 +45,3 @@ void	texture_init(int ***image)
 }
 
 
-void	print_image(int **texture, int starting_x, int starting_y, t_vars *vars)
-{
-	int x;
-	int y;
-
-	y = starting_y;
-	while (y <  starting_y + IMG_HEIGHT)
-	{
-		x = starting_x;
-		while (x < starting_x + IMG_WIDTH)
-		{
-			my_pixel_put(vars, x, y, texture[y - starting_y][x - starting_x]);
-//			my_pixel_put(vars, 2 * x, 2 * y, texture[y - starting_y][x - starting_x]);
-//			my_pixel_put(vars, (2 * x) - 1, (2 * y) - 1, texture[y - starting_y][x - starting_x]);
-//			my_pixel_put(vars, (2 * x) - 1, (2 * y), texture[y - starting_y][x - starting_x]);
-//			my_pixel_put(vars, (2 * x), (2 * y) - 1, texture[y - starting_y][x - starting_x]);
-			x++;
-		}
-		y++;
-	}
-}

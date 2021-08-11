@@ -20,6 +20,11 @@ int	move_player(char *current_position, char *new_position, int collectible_coun
 		*current_position = '0';
 		return (FINISH_GAME);
 	}
+	if (*new_position == 'T')
+	{
+		*current_position = '0';
+		return (GAMEOVER);
+	}
 	if (*new_position == 'C')
 		*new_position = '0';
 	if (*new_position == '0')
@@ -27,7 +32,8 @@ int	move_player(char *current_position, char *new_position, int collectible_coun
 		temp = *new_position;
 		*new_position = *current_position;
 		*current_position = temp;
+		return (SUCCESSFUL_MOVE);
 	}
-	return (CONTINUE_GAME);
+	return (NOT_ALLOWED);
 }
 

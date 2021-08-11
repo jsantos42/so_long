@@ -44,6 +44,10 @@ t_matrix *import_map(char *str)
 	map->matrix = linked_list_to_matrix(line_list, map->lines);
 	if (check_map_criteria(map))
 		free_matrix_and_exit(INVALID_MAP, map);
+	map->moves_count = 0;
+	map->text_color = 0xFFFFFF;
+	map->text_x = IMG_WIDTH * 1;
+	map->text_y = IMG_HEIGHT * 0.57;
 	return (map);
 }
 
