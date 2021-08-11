@@ -41,6 +41,7 @@ typedef struct s_vars {
 	int			window_width;
 	t_matrix	*map;
 	int 		**wall;
+	int 		**free_space;
 	int 		**exit;
 	int 		**enemy;
 	int 		**collectible;

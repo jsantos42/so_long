@@ -109,3 +109,28 @@ char	**linked_list_to_matrix(t_list *line_list, size_t line_count)
 	}
 	return (matrix);
 }
+
+void	import_player_xy_and_collectible_count(t_vars *vars)
+{
+	int x;
+	int y;
+
+	vars->map->collectible_count = 0;
+	y = 0;
+	while (y < vars->map->lines)
+	{
+		x = 0;
+		while (x < vars->map->columns)
+		{
+			if (vars->map->matrix[y][x] == 'P')
+			{
+				vars->map->player_coord_x = x;
+				vars->map->player_coord_y = y;
+			}
+			else if (vars->map->matrix[y][x] == 'C')
+				vars->map->collectible_count++;
+			x++;
+		}
+		y++;
+	}
+}

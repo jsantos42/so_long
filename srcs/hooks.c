@@ -19,7 +19,6 @@ int on_key_press(int key, t_vars *vars)
 	int x;
 	int y;
 	int result;
-	char *str;
 
 	x = vars->map->player_coord_x;
 	y = vars->map->player_coord_y;
@@ -40,13 +39,10 @@ int on_key_press(int key, t_vars *vars)
 	if (result != NOT_ALLOWED)
 	{
 		vars->map->moves_count++;
-		str = ft_strjoin("MOVES: ", ft_itoa(vars->map->moves_count));
-		print_map(vars);
-		mlx_put_image_to_window(vars->connection, vars->window, vars->img, 0, 0);
-		ft_putstr_fd(str, 1);
-		ft_putchar_fd('\n', 1);
-		put_str_to_window(vars, str);
-		free(str);
+		if (result == CAUGHT_COLLECTIBLE)
+			vars->map->collectible_count--;
+		update_player_position(vars->map, key);
+		reprint_map(vars);
 	}
 	return (0);
 }

@@ -33,7 +33,7 @@ add_executable(so_long
         include/utils.h
         include/map_checking.h
         include/textures.h
-        include/move_player.h
+        include/move_player_and_update_position.h
         include/types.h
         include/map_printing.h
         include/put_to_window_img.h
@@ -94,7 +94,7 @@ add_executable(so_long
         srcs/utils.c
         srcs/map_checking.c
         srcs/textures.c
-        srcs/move_player.c
+        srcs/move_player_and_update_position.c
         srcs/map_printing.c
         srcs/put_to_window_img.c)
 

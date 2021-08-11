@@ -12,6 +12,7 @@ int main(int argc, char **argv)
 	init_message = "MOVES: 0";
 	vars = malloc(sizeof(t_vars));
 	vars->map = import_map(argv[1]);
+	import_player_xy_and_collectible_count(vars);
 	vars->connection = mlx_init();
 	if (vars->connection)
 	{
@@ -39,6 +40,7 @@ void	img_init(t_vars *vars)
 	vars->img = mlx_new_image(vars->connection, vars->window_width, vars->window_height);
 	vars->addr = mlx_get_data_addr(vars->img, &vars->bits_per_pixel, &vars->line_length, &vars->endian);
 	vars->wall = load_image_as_texture(vars->connection, "imgs/wall.xpm");
+	vars->free_space = load_image_as_texture(vars->connection, "imgs/free_space.xpm");
 	vars->exit = load_image_as_texture(vars->connection, "imgs/exit.xpm");
 	vars->enemy = load_image_as_texture(vars->connection, "imgs/enemy.xpm");
 	vars->collectible = load_image_as_texture(vars->connection, "imgs/collectible.xpm");

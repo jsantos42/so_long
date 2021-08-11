@@ -20,7 +20,7 @@
 # include "map_checking.h"
 # include "map_importing.h"
 # include "map_printing.h"
-# include "move_player.h"
+# include "move_player_and_update_position.h"
 # include "print_shapes.h"
 # include "put_to_window_img.h"
 # include "textures.h"
