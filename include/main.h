@@ -15,19 +15,21 @@
 # include "colors.h"
 # include "error_management.h"
 # include "get_next_line.h"
-# include "gradients.h"
 # include "hooks.h"
 # include "map_checking.h"
 # include "map_importing.h"
 # include "map_printing.h"
 # include "move_player_and_update_position.h"
-# include "print_shapes.h"
 # include "put_to_window_img.h"
 # include "textures.h"
 # include "utils.h"
 
+/*
+**	X11 Events
+*/
+
+# define DESTROY_NOTIFY	17
 
 void	img_init(t_vars *vars);
-t_color	colors_init(int starting_x, int starting_y, int first_color, int second_color);
 
 #endif

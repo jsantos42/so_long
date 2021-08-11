@@ -21,6 +21,6 @@
 
 int on_key_press(int key, t_vars *vars);
 int	on_click(int button, int x, int y, void *param);
-int red_cross_clicking(t_matrix *map);
+int red_cross_click(t_matrix *map);
 
 #endif

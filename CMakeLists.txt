@@ -23,9 +23,7 @@ find_library(LIBMLX
 
 add_executable(so_long
         include/main.h
-        include/print_shapes.h
         include/colors.h
-        include/gradients.h
         include/hooks.h
         include/error_management.h
         include/map_importing.h
@@ -84,9 +82,7 @@ add_executable(so_long
         libs/libft/libft.h
         libs/minilibx_mms_20200219/mlx.h
         srcs/main.c
-        srcs/print_shapes.c
         srcs/colors.c
-        srcs/gradients.c
         srcs/hooks.c
         srcs/error_management.c
         srcs/map_importing.c

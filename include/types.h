@@ -4,7 +4,6 @@
 # define IMG_HEIGHT 50
 # define IMG_WIDTH	50
 
-# define DESTROY_NOTIFY_X11_EVENT	17
 
 
 typedef struct s_matrix {

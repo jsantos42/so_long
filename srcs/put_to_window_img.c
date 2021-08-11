@@ -34,5 +34,7 @@ void	put_str_to_window(t_vars *vars, char *str)
 	x = vars->map->text_x;
 	y = vars->map->text_y;
 	color = vars->map->text_color;
+	ft_putstr_fd(str, 1);
+	ft_putchar_fd('\n', 1);
 	mlx_string_put(vars->connection, vars->window, x, y, color, str);
 }
