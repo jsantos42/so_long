@@ -11,7 +11,7 @@ OBJS_DIR =			objs
 LIBFT_DIR =			libs/libft
 MINILIBX_DIR =		libs/minilibx_mms_20200219
 
-SRCS =				$(wildcard srcs/*.c)
+SRCS =				$(wildcard $(SRCS_DIR)/*.c)
 OBJS =				$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 LIBS =				$(LIBFT_DIR)/libft.a \
 					libmlx.dylib

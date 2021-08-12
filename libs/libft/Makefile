@@ -1,33 +1,34 @@
-CC =		gcc
+CC =				gcc
+CFLAGS =			-Wall -Werror -Wextra
+RM =				rm -fr
 
-CFLAGS =	-Wall -Werror -Wextra
+NAME =				libft.a
+INCLUDE =			include
 
-RM =		rm -fr
+SRCS_DIR =			srcs
+OBJS_DIR =			objs
 
-NAME =		libft.a
+SRCS =				$(wildcard $(SRCS_DIR)/*/*.c)
+OBJS =				$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
-INCLUDE =	libft.h
+all:				$(NAME)
 
-SRCS =		$(wildcard *.c)
+$(NAME):			$(OBJS)
+						@ar -rcs $(NAME) $(OBJS)
+						@echo "$(NAME) successfully compiled!\n"
 
-OBJS =		$(SRCS:.c=.o)
-
-all:		$(NAME)
-
-$(NAME):	$(OBJS) $(INCLUDE)
-				ar -rcs $(NAME) $(OBJS)
-
-%.c.o: %.c
-				$(CC) $(CFLAGS) -I. -c $< -o $(<:.c=.o)
+$(OBJS_DIR)/%.o:	%.c
+						@mkdir -p $(dir $@)
+						@$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 
 clean:
-				$(RM) *.o
+						$(RM) $(OBJS_DIR)
 
-fclean:		clean
-				$(RM) $(NAME)
+fclean:				clean
+						$(RM) $(NAME)
 
-re:			fclean all
+re:					fclean all
 
-rebonus:	fclean bonus
+rebonus:			fclean bonus
 
-.PHONY:		all	bonus	clean	fclean	re	rebonus
+.PHONY:				all	bonus	clean	fclean	re	rebonus

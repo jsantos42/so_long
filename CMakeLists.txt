@@ -22,21 +22,19 @@ find_library(LIBMLX
         PATHS ./)
 
 add_executable(so_long
-        include/main.h
-        include/colors.h
-        include/hooks.h
-        include/error_management.h
-        include/map_importing.h
-        include/get_next_line.h
-        include/utils.h
-        include/map_checking.h
-        include/textures.h
-        include/move_player_and_update_position.h
+        include/0_main.h
+        include/8_hooks.h
+        include/1_error_management.h
+        include/3_map_importing.h
+        include/4_get_next_line.h
+        include/2_map_checking.h
+        include/5_textures_loading.h
+        include/9_move_player_and_update_position.h
         include/types.h
-        include/map_printing.h
-        include/put_to_window_img.h
-        libs/libft/ft_atoi.c
-        libs/libft/ft_bzero.c
+        include/6_map_printing.h
+        include/7_put_to_window_img.h
+        libs/libft/srcs/ft_atoi.c
+        libs/libft/srcs/ft_bzero.c
         libs/libft/ft_calloc.c
         libs/libft/ft_isalnum.c
         libs/libft/ft_isalpha.c
@@ -81,17 +79,15 @@ add_executable(so_long
         libs/libft/ft_toupper.c
         libs/libft/libft.h
         libs/minilibx_mms_20200219/mlx.h
-        srcs/main.c
-        srcs/colors.c
-        srcs/hooks.c
-        srcs/error_management.c
-        srcs/map_importing.c
-        srcs/get_next_line.c
-        srcs/utils.c
-        srcs/map_checking.c
-        srcs/textures.c
-        srcs/move_player_and_update_position.c
-        srcs/map_printing.c
-        srcs/put_to_window_img.c)
+        srcs/0_main.c
+        srcs/8_hooks.c
+        srcs/1_error_management.c
+        srcs/3_map_importing.c
+        srcs/4_get_next_line.c
+        srcs/2_map_checking.c
+        srcs/5_textures_loading.c
+        srcs/9_move_player_and_update_position.c
+        srcs/6_map_printing.c
+        srcs/7_put_to_window_img.c)
 
 target_link_libraries(so_long ${LIBMLX})
