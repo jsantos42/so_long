@@ -2,6 +2,30 @@
 
 void	print_map(t_vars *vars)
 {
+	char *str;
+
+	if (vars->map->end_of_game == 1)
+	{
+		str = ft_strdup("YOU WON");
+		print_overlay(vars);
+	}
+	else if (vars->map->end_of_game == -1)
+	{
+		str = ft_strdup("GAME OVER");
+		print_overlay(vars);
+	}
+	else
+	{
+		str = ft_strjoin("MOVES: ", ft_itoa(vars->map->moves_count));
+		choose_texture_to_print(vars);
+	}
+	mlx_put_image_to_window(vars->connection, vars->window, vars->img, 0, 0);
+	put_str_to_window(vars, str);
+	free(str);
+}
+
+void	choose_texture_to_print(t_vars *vars)
+{
 	int x;
 	int y;
 
@@ -45,13 +69,20 @@ void	print_texture(int **texture, int starting_x, int starting_y, t_vars *vars)
 	}
 }
 
-void	reprint_map(t_vars *vars)
+void	print_overlay(t_vars *vars)
 {
-	char *str;
+	int x;
+	int y;
 
-	str = ft_strjoin("MOVES: ", ft_itoa(vars->map->moves_count));
-	print_map(vars);
-	mlx_put_image_to_window(vars->connection, vars->window, vars->img, 0, 0);
-	put_str_to_window(vars, str);
-	free(str);
+	y = 0;
+	while (y < vars->map->lines)
+	{
+		x = 0;
+		while (x < vars->map->columns)
+		{
+			print_texture(vars->end, x * IMG_WIDTH, y * IMG_HEIGHT, vars);
+			x++;
+		}
+		y++;
+	}
 }

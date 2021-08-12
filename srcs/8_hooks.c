@@ -8,11 +8,8 @@
 **	if the keystroke is indeed applied. This only changes the position of the
 ** 	chars on the map->matrix, before on_key_press can reprint the map to the
 **	image/window.
-**	The result variable's content will trigger the GAMEOVER or FINISHED_GAME
-**	message.
+**	The result variable's content will trigger the GAME OVER or YOU WON message.
 */
-
-///print the message based on the result value.
 
 int on_key_press(int key, t_vars *vars)
 {
@@ -28,21 +25,28 @@ int on_key_press(int key, t_vars *vars)
 		//mlx_destroy_window needed??
 		free_matrix_and_exit(0, vars->map);
 	}
-	else if (key == MOVE_UP)
-		result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y - 1][x], vars->map->collectible_count);
-	else if (key == MOVE_DOWN)
-		result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y + 1][x], vars->map->collectible_count);
-	else if (key == MOVE_RIGHT)
-		result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y][x + 1], vars->map->collectible_count);
-	else if (key == MOVE_LEFT)
-		result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y][x - 1], vars->map->collectible_count);
-	if (result != NOT_ALLOWED)
+	else if (!vars->map->end_of_game)
 	{
-		vars->map->moves_count++;
-		if (result == CAUGHT_COLLECTIBLE)
-			vars->map->collectible_count--;
-		update_player_position(vars->map, key);
-		reprint_map(vars);
+		if (key == MOVE_UP)
+			result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y - 1][x], vars->map->collectible_count);
+		else if (key == MOVE_DOWN)
+			result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y + 1][x], vars->map->collectible_count);
+		else if (key == MOVE_RIGHT)
+			result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y][x + 1], vars->map->collectible_count);
+		else if (key == MOVE_LEFT)
+			result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y][x - 1], vars->map->collectible_count);
+		if (result != NOT_ALLOWED)
+		{
+			vars->map->moves_count++;
+			if (result == CAUGHT_COLLECTIBLE)
+				vars->map->collectible_count--;
+			if (result == GAMEOVER)
+				vars->map->end_of_game = -1;
+			if (result == FINISH_GAME)
+				vars->map->end_of_game = 1;
+			update_player_position(vars->map, key);
+			print_map(vars);
+		}
 	}
 	return (0);
 }
