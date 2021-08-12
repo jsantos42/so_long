@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "../../include/libft.h"
 
 /*
 **	Returns the absolute value of the given number.

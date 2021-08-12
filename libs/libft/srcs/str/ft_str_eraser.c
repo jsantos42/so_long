@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "../../include/libft.h"
 
 /*
 **	Deletes the string passed as a parameter. If first sets its memory bytes to

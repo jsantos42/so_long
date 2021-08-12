@@ -15,17 +15,19 @@ all:				$(NAME)
 
 $(NAME):			$(OBJS)
 						@ar -rcs $(NAME) $(OBJS)
-						@echo "$(NAME) successfully compiled!\n"
+						@echo "$(NAME) successfully compiled!"
 
 $(OBJS_DIR)/%.o:	%.c
 						@mkdir -p $(dir $@)
 						@$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 
 clean:
-						$(RM) $(OBJS_DIR)
+						@$(RM) $(OBJS_DIR)
+						@echo "Successfuly cleaned all object files of $(NAME)!"
 
 fclean:				clean
-						$(RM) $(NAME)
+						@$(RM) $(NAME)
+						@echo "Successfuly cleaned all executable files of $(NAME)!"
 
 re:					fclean all
 

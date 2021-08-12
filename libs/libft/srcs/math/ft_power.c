@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "../../include/libft.h"
 
 double	ft_power(double base, double exp)
 {

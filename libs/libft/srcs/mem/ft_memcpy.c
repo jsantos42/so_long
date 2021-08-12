@@ -3,7 +3,7 @@
 ** strings but with memory, which is not null terminated.
 */
 
-#include "libft.h"
+#include "../../include/libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {

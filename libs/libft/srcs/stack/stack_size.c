@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "../../include/libft.h"
 
 /*
 **	determines the number of elements on the stack

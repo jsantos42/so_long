@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "../../include/libft.h"
 
 /*
 **  pops/removes the top node of the stack (first element of the linked list)

@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "../../include/libft.h"
 
 void	int_to_char(int n, int sign, int fd)
 {

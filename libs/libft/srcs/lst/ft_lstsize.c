@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "../../include/libft.h"
 
 /*
 ** If you're trying to calculate the number of elements of the keys array

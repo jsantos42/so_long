@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "../../include/libft.h"
 
 /*
 **	Gets the bottom element of a stack, passed as a pointer to its top element.

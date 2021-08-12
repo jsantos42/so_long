@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "../../include/libft.h"
 
 /*
 **  pushes/inserts a new node at the top of the stack (head of the linked list)
