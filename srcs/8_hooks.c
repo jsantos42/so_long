@@ -23,7 +23,7 @@ int on_key_press(int key, t_vars *vars)
 	if (key == ESC)
 	{
 		//mlx_destroy_window needed??
-		free_matrix_and_exit(0, vars->map);
+		free_matrix_and_exit(0, vars);
 	}
 	else if (!vars->map->end_of_game)
 	{

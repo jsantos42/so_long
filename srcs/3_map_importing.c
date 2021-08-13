@@ -34,16 +34,25 @@ t_matrix *import_map(char *str)
 {
 	int			fd;
 	t_list		*line_list;
-	t_matrix	*map;
+	t_vars		*vars;
 
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
 		error_management(ERROR_READING_MAP_FILE);
-	map = malloc(sizeof(t_matrix));
-	line_list = map_lines_to_linked_list(fd, &map->lines, &map->columns);
+	vars = malloc(sizeof(t_vars));
+	if (!vars)
+		free_vars_and_exit(FAILED_MALLOC, vars);
+	vars->map = malloc(sizeof(t_matrix));
+	if (!vars->map)
+		free_vars_and_exit(FAILED_MALLOC, vars);
+	line_list = map_lines_to_linked_list(fd, &map->lines, &map->columns, vars);
+	if (!line_list)
+		free_vars_and_exit(FAILED_MALLOC, vars);
+
+	// UNTIL HERE all mem leaks were checked!
 	map->matrix = linked_list_to_matrix(line_list, map->lines);
 	if (check_map_criteria(map))
-		free_matrix_and_exit(INVALID_MAP, map);
+		free_vars_and_exit(INVALID_MAP, map);
 	map->moves_count = 0;
 	map->end_of_game = 0;
 	map->text_color = 0xFFFFFF;
@@ -61,7 +70,7 @@ t_matrix *import_map(char *str)
 **	because the program requires a rectangular map.
 */
 
-t_list	*map_lines_to_linked_list(int fd, int *line_count, int *line_length)
+t_list	*map_lines_to_linked_list(int fd, int *line_count, int *line_length, t_vars *vars)
 {
 	char	*line;
 	t_list	*temp;
@@ -72,14 +81,17 @@ t_list	*map_lines_to_linked_list(int fd, int *line_count, int *line_length)
 	while (get_next_line(fd, &line))
 	{
 		if (!line)
-			free_list_and_exit(FAILED_MALLOC, line_list);
+			return (free_list(line_list));
 		if (!*line_length)
 			*line_length = ft_strlen(line);
 		else if (*line_length != (int)ft_strlen(line))
-			free_list_and_exit(INVALID_MAP, line_list);
+		{
+			free_list(line_list);
+			free_vars_and_exit(INVALID_MAP, vars);
+		}
 		temp = ft_lstnew(line);
 		if (!temp)
-			free_list_and_exit(FAILED_MALLOC, line_list);
+			return (free_list(line_list));
 		if (!line_list)
 			line_list = temp;
 		else

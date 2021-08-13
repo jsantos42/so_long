@@ -13,9 +13,10 @@
 # define ERROR_READING_MAP_FILE	4
 # define INVALID_MAP		5
 # define ERROR_READING_IMAGE_FILE 6
+# define NO_CONNECTION		7
 
 void	error_management(int error);
-void	free_list_and_exit(int error, t_list *line_list);
-void	free_matrix_and_exit(int error, t_matrix *map);
+void	*free_list(t_list *line_list);
+void	free_vars_and_exit(int error, t_vars *vars);
 
 #endif

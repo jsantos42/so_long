@@ -8,8 +8,7 @@ int main(int argc, char **argv)
 		error_management(ILLEGAL_INPUT);
 	if (check_map_extension(argv[1]))
 		error_management(WRONG_EXTENSION);
-	vars = malloc(sizeof(t_vars));
-	vars->map = import_map(argv[1]);
+	vars = import_map(argv[1]);
 	vars->connection = mlx_init();
 	if (vars->connection)
 	{
@@ -20,7 +19,7 @@ int main(int argc, char **argv)
 		mlx_hook(vars->window, DESTROY_NOTIFY, 1L, red_cross_click, vars->map);
 		mlx_loop(vars->connection);
 	}
-	free(vars);
+	free_vars_and_exit(NO_CONNECTION, vars);
 	return (0);
 }
 
