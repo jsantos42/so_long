@@ -17,9 +17,18 @@ OBJS =				$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 LIBS =				$(LIBFT_DIR)/libft.a \
 					libmlx.dylib
 
+$(NAME):			CFLAGS:= $(CFLAGS) -D BONUS=0
+bonus:				CFLAGS:= $(CFLAGS) -D BONUS=1
+
 all:				$(NAME)
 
-bonus:				all
+$(NAME):			compile_libraries $(OBJS)
+						@$(CC) $(CFLAGS) $(MLX_FLAGS) -o $(NAME) -I $(INCLUDE) $(LIBS) $(OBJS)
+						@echo "$(NAME) mandatory successfully compiled!"
+
+bonus:				compile_libraries $(OBJS)
+						@$(CC) $(CFLAGS) $(MLX_FLAGS) -o $(NAME) -I $(INCLUDE) $(LIBS) $(OBJS)
+						@echo "$(NAME) bonus successfully compiled!"
 
 compile_libraries:
 						@$(MAKE) -C $(LIBFT_DIR)
@@ -30,10 +39,6 @@ compile_libraries:
 $(OBJS_DIR)/%.o:	%.c
 						@mkdir -p $(dir $@)
 						@$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
-
-$(NAME):			compile_libraries $(OBJS)
-						@$(CC) $(CFLAGS) $(MLX_FLAGS) -o $(NAME) -I $(INCLUDE) $(LIBS) $(OBJS)
-						@echo "$(NAME) successfully compiled!"
 
 clean:
 						@make clean -C $(LIBFT_DIR)
@@ -48,5 +53,7 @@ fclean:				clean
 						@echo "Successfuly cleaned all executable files of $(NAME)!"
 
 re:					fclean	all
+
+rebonus:			fclean	bonus
 
 .PHONY:				all	clean	fclean	re

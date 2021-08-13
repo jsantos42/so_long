@@ -14,8 +14,8 @@ int main(int argc, char **argv)
 	if (vars->connection)
 	{
 		img_init(vars);
+		vars->map->player_current_rotation = vars->player_right;
 		print_map(vars);
-		mlx_put_image_to_window(vars->connection, vars->window, vars->img, 0, 0);
 		mlx_key_hook(vars->window, on_key_press, vars);
 		mlx_hook(vars->window, DESTROY_NOTIFY, 1L, red_cross_click, vars->map);
 		mlx_loop(vars->connection);
@@ -36,7 +36,8 @@ void	img_init(t_vars *vars)
 	vars->exit = load_image_as_texture(vars->connection, "imgs/exit.xpm");
 	vars->enemy = load_image_as_texture(vars->connection, "imgs/enemy.xpm");
 	vars->collectible = load_image_as_texture(vars->connection, "imgs/collectible.xpm");
-	vars->player = load_image_as_texture(vars->connection, "imgs/player.xpm");
+	vars->player_right = load_image_as_texture(vars->connection, "imgs/player_right.xpm");
+	vars->player_left = load_image_as_texture(vars->connection, "imgs/player_left.xpm");
 	vars->end = load_image_as_texture(vars->connection, "imgs/end.xpm");
 }
 

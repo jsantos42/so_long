@@ -40,7 +40,7 @@ void	choose_texture_to_print(t_vars *vars)
 			else if (vars->map->matrix[y][x] == '0')
 				print_texture(vars->free_space, x * IMG_WIDTH, y * IMG_HEIGHT, vars);
 			else if (vars->map->matrix[y][x] == 'P')
-				print_texture(vars->player, x * IMG_WIDTH, y * IMG_HEIGHT, vars);
+				print_texture(vars->map->player_current_rotation, x * IMG_WIDTH, y * IMG_HEIGHT, vars);
 			else if (vars->map->matrix[y][x] == 'C')
 				print_texture(vars->collectible, x * IMG_WIDTH, y * IMG_HEIGHT, vars);
 			else if (vars->map->matrix[y][x] == 'E')

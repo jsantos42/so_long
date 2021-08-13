@@ -12,6 +12,7 @@ typedef struct s_matrix {
 	int		columns;
 	int 	player_coord_x;
 	int 	player_coord_y;
+	int		**player_current_rotation;
 	int 	collectible_count;
 	int 	moves_count;
 	int 	end_of_game;
@@ -45,7 +46,8 @@ typedef struct s_vars {
 	int 		**exit;
 	int 		**enemy;
 	int 		**collectible;
-	int 		**player;
+	int 		**player_right;
+	int 		**player_left;
 	int 		**end;
 }	t_vars;
 

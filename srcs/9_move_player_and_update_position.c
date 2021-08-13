@@ -47,3 +47,12 @@ void	update_player_position(t_matrix *map, int key)
 	else if (key == MOVE_LEFT)
 		map->player_coord_x--;
 }
+
+
+void	update_player_rotation(t_vars *vars, int key)
+{
+	if (key == MOVE_RIGHT)
+		vars->map->player_current_rotation = vars->player_right;
+	else if (key == MOVE_LEFT)
+		vars->map->player_current_rotation = vars->player_left;
+}
