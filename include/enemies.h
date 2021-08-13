@@ -1,8 +1,8 @@
-//
-// Created by João Almeida Santos on 13/08/2021.
-//
+#ifndef ENEMIES_H
+# define ENEMIES_H
 
-#ifndef SO_LONG_ENEMIES_H
-#define SO_LONG_ENEMIES_H
+# include "0_main.h"
 
-#endif //SO_LONG_ENEMIES_H
+void	place_enemies(t_matrix *map);
+
+#endif

@@ -21,6 +21,7 @@
 # include "9_player.h"
 # include "7_put_to_window_img.h"
 # include "5_textures_loading.h"
+# include "enemies.h"
 
 /*
 **	X11 Events
