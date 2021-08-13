@@ -18,7 +18,7 @@
 # include "2_map_checking.h"
 # include "3_map_importing.h"
 # include "6_map_printing.h"
-# include "9_move_player_and_update_position.h"
+# include "9_player.h"
 # include "7_put_to_window_img.h"
 # include "5_textures_loading.h"
 

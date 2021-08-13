@@ -1,4 +1,4 @@
-#include "../include/9_move_player_and_update_position.h"
+#include "../include/9_player.h"
 
 /*
 **	Checks what's on new_position (the position the player would go to in case

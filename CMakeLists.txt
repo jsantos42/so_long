@@ -33,7 +33,8 @@ set(FILES
         include/6_map_printing.h
         include/7_put_to_window_img.h
         include/8_hooks.h
-        include/9_move_player_and_update_position.h
+        include/9_player.h
+        include/enemies.h
         include/types.h
         libs/libft/include/libft.h
         libs/libft/srcs/change_case/ft_tolower.c
@@ -98,7 +99,8 @@ set(FILES
         srcs/6_map_printing.c
         srcs/7_put_to_window_img.c
         srcs/8_hooks.c
-        srcs/9_move_player_and_update_position.c)
+        srcs/9_player.c
+        srcs/enemies.c)
 
 add_executable(so_long_mandatory ${FILES})
 target_link_libraries(so_long_mandatory ${LIBMLX})

@@ -1,5 +1,5 @@
-#ifndef MOVE_PLAYER_AND_UPDATE_POSITION_H
-# define MOVE_PLAYER_AND_UPDATE_POSITION_H
+#ifndef PLAYER_H
+# define PLAYER_H
 
 # include "0_main.h"
 

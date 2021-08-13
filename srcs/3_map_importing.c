@@ -50,6 +50,8 @@ t_matrix *import_map(char *str)
 	map->text_x = IMG_WIDTH * 1;
 	map->text_y = IMG_HEIGHT * 0.57;
 	get_player_xy_and_collectible_count(map);
+	if (BONUS)
+		place_enemies(map);
 	return (map);
 }
 
