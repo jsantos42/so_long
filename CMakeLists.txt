@@ -1,18 +1,18 @@
 #   NOTE: FOR THIS TO RUN, CHANGE THE PROJECT'S RUNNING CONFIGURATIONS.
-#   On the running configurations window, go the "Environment Variables"
-#   field and add:
-#          DYLD_LIBRARY_PATH=<path_to_dylib_folder>
+#   On the running configurations window of both CMake targets:
+#   1) set the "Environment Variables" to DYLD_LIBRARY_PATH=<path_to_dylib_folder>
+#   2) set the "Working Directory" to the absolute path of your project root folder
 #   Note that relative paths don't work! You can just get the absolute
 #   path with the pwd command.
 #   Also, the .c files of the MiniLibX can't be inside the add_executable
-#   rule, otherwise it will raise a looot of warnings.
+#   rule, otherwise it will raise a lot of warnings.
 
 cmake_minimum_required(VERSION 3.17)
 project(so_long C)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_FLAGS "-Wall -Werror -Wextra")
-set(CMAKE_EXE_LINKER_FLAGS "-Wall -Werror -Wextra -framework OpenGL -framework AppKit")
+set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_C_FLAGS}" -framework OpenGL -framework AppKit")
 
 include_directories(include
         libs/libft
@@ -23,7 +23,7 @@ find_library(LIBMLX
         NAMES libmlx.dylib
         PATHS ./)
 
-add_executable(so_long
+set(FILES
         include/0_main.h
         include/1_error_management.h
         include/2_map_checking.h
@@ -100,4 +100,10 @@ add_executable(so_long
         srcs/8_hooks.c
         srcs/9_move_player_and_update_position.c)
 
-target_link_libraries(so_long ${LIBMLX})
+add_executable(so_long_mandatory ${FILES})
+target_link_libraries(so_long_mandatory ${LIBMLX})
+set_target_properties(so_long_mandatory PROPERTIES COMPILE_FLAGS "-D BONUS=0")
+
+add_executable(so_long_bonus ${FILES})
+target_link_libraries(so_long_bonus ${LIBMLX})
+set_target_properties(so_long_bonus PROPERTIES COMPILE_FLAGS "-D BONUS=1")
