@@ -64,8 +64,7 @@ void	free_vars_and_exit(int error, t_vars *vars)
 			free(vars->map->matrix);
 			free(vars->map);
 		}
-		// free the textures!
-
+		free_textures(vars);
 		if (vars->img)
 			mlx_destroy_image(vars->connection, vars->img);
 		if (vars->window)

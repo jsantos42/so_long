@@ -37,9 +37,9 @@ int main(int argc, char **argv)
 	vars->connection = mlx_init();
 	if (!vars->connection)
 		free_vars_and_exit(NO_CONNECTION, vars);
-	// UNTIL HERE it is protected
 	win_img_init(vars);
 	load_textures(vars);
+	// UNTIL HERE it is protected
 	vars->map->player_current_rotation = vars->player_right;
 	print_map(vars);
 	mlx_key_hook(vars->window, on_key_press, vars);

@@ -100,5 +100,5 @@ void			stack_clear(t_stack *stack);
 double			ft_power(double base, double exp);
 int				ft_abs(int number);
 void			ft_str_eraser(void *str);
-
+void			ft_free_matrix(int **matrix, int arrays);
 #endif
