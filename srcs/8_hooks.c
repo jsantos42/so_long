@@ -23,7 +23,7 @@ int on_key_press(int key, t_vars *vars)
 	if (key == ESC)
 	{
 		//mlx_destroy_window needed??
-		free_matrix_and_exit(0, vars);
+		free_vars_and_exit(0, vars);
 	}
 	else if (!vars->map->end_of_game)
 	{
@@ -74,9 +74,9 @@ int	on_click(int button, int x, int y, void *param)
 **	program. In this case, since it is no error, it gives 0 as an argument.
 */
 
-int red_cross_click(t_matrix *map)
+int red_cross_click(t_vars *vars)
 {
 	//mlx_destroy_window needed??
-	free_matrix_and_exit(0, map);
+	free_vars_and_exit(0, vars);
 	return (0);
 }

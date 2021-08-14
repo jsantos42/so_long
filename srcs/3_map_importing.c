@@ -76,6 +76,7 @@ t_list	*map_lines_to_linked_list(int fd, int *line_count, int *line_length, t_va
 
 	*line_count = 0;
 	*line_length = 0;
+	line_list = NULL;
 	while (get_next_line(fd, &line))
 	{
 		if (!line)

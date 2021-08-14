@@ -28,6 +28,8 @@ void	error_management(int error)
 		ft_putstr_fd("Couldn't read one or more of the images files.\n", 1);
 	else if (error == NO_CONNECTION)
 		ft_putstr_fd("Couldn't establish a connection to a window.\n", 1);
+	else if (error == NO_WINDOW)
+		ft_putstr_fd("Couldn't create a window.\n", 1);
 	exit(error);
 }
 
@@ -62,6 +64,12 @@ void	free_vars_and_exit(int error, t_vars *vars)
 			free(vars->map->matrix);
 			free(vars->map);
 		}
+		// free the textures!
+
+		if (vars->img)
+			mlx_destroy_image(vars->connection, vars->img);
+		if (vars->window)
+			mlx_destroy_window(vars->connection, vars->window);
 		free(vars);
 	}
 	if (error)

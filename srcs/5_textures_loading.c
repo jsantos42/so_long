@@ -1,17 +1,28 @@
 #include "../include/5_textures_loading.h"
 
-int	**load_image_as_texture(void *connection, char *path)
+void	load_textures(t_vars *vars)
+{
+	vars->wall = load_image_as_texture(vars, "imgs/wall.xpm");
+	vars->free_space = load_image_as_texture(vars, "imgs/free_space.xpm");
+	vars->exit = load_image_as_texture(vars, "imgs/exit.xpm");
+	vars->enemy = load_image_as_texture(vars, "imgs/enemy.xpm");
+	vars->collectible = load_image_as_texture(vars, "imgs/collectible.xpm");
+	vars->player_right = load_image_as_texture(vars, "imgs/player_right.xpm");
+	vars->player_left = load_image_as_texture(vars, "imgs/player_left.xpm");
+	vars->end = load_image_as_texture(vars, "imgs/end.xpm");
+}
+
+int	**load_image_as_texture(t_vars *vars, char *path)
 {
 	t_temp	temp;
 	int		x;
 	int		y;
-	int	**image;
+	int		**image;
 
-	texture_init(&image);
-	temp.img = mlx_xpm_file_to_image(connection, path, &temp.img_width, &temp.img_height);
+	image = texture_init(vars);
+	temp.img = mlx_xpm_file_to_image(vars->connection, path, &temp.img_width, &temp.img_height);
 	if (!temp.img)
-		error_management(ERROR_READING_IMAGE_FILE);
-	//what do I have to free here??
+		free_vars_and_exit(ERROR_READING_IMAGE_FILE, vars);
 	temp.addr = mlx_get_data_addr(temp.img, &temp.bits_per_pixel, &temp.line_length, &temp.endian);
 	y = 0;
 	while (y < temp.img_height)
@@ -24,24 +35,35 @@ int	**load_image_as_texture(void *connection, char *path)
 		}
 		y++;
 	}
-	mlx_destroy_image(connection, temp.img);
-	//free temp?
+	mlx_destroy_image(vars->connection, temp.img);
 	return (image);
 }
 
 
-void	texture_init(int ***image)
+int	**texture_init(t_vars *vars)
 {
 	int	i;
+	int	**image;
 
-	*image = ft_calloc(IMG_HEIGHT, sizeof(int*));
-	///protect against calloc
+	image = ft_calloc(IMG_HEIGHT, sizeof(int*));
+	if (!image)
+		free_vars_and_exit(FAILED_MALLOC, vars);
 	i = 0;
 	while (i < IMG_HEIGHT)
 	{
-		(*image)[i] = ft_calloc(IMG_WIDTH,sizeof (int));
+		image[i] = ft_calloc(IMG_WIDTH, sizeof(int));
+		if (!image[i])
+		{
+			free_array(image, i);
+			free_vars_and_exit(FAILED_MALLOC, vars);
+		}
 		i++;
 	}
+	return (image);
 }
 
 
+void	free_array(int **image, int allocated_so_far)
+{
+
+}

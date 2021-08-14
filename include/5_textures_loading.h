@@ -3,7 +3,8 @@
 
 # include "0_main.h"
 
-int		**load_image_as_texture(void *connection, char *path);
-void	texture_init(int ***image);
+void	load_textures(t_vars *vars);
+int		**load_image_as_texture(t_vars *vars, char *path);
+int		**texture_init(t_vars *vars);
 
 #endif

@@ -29,6 +29,6 @@
 
 # define DESTROY_NOTIFY	17
 
-void	img_init(t_vars *vars);
+void	win_img_init(t_vars *vars);
 
 #endif
