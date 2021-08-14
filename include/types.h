@@ -4,6 +4,7 @@
 # define IMG_HEIGHT 50
 # define IMG_WIDTH	50
 
+# define NUMBER_OF_ENEMIES	2
 
 
 typedef struct s_matrix {
@@ -13,6 +14,8 @@ typedef struct s_matrix {
 	int 	player_coord_x;
 	int 	player_coord_y;
 	int		**player_current_rotation;
+	int 	enemy_coord_x[NUMBER_OF_ENEMIES];
+	int 	enemy_coord_y[NUMBER_OF_ENEMIES];
 	int 	collectible_count;
 	int 	moves_count;
 	int 	end_of_game;

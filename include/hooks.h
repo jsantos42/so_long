@@ -13,6 +13,10 @@
 # define MOVE_RIGHT 		2
 # define MOVE_LEFT			0
 
+/*
+**	RESULT OF THE MOVE
+*/
+
 # define NOT_ALLOWED		0
 # define SUCCESSFUL_MOVE	1
 # define CAUGHT_COLLECTIBLE	2

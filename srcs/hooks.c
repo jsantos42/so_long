@@ -43,7 +43,10 @@ int on_key_press(int key, t_vars *vars)
 				vars->map->end_of_game = 1;
 			update_player_position(vars->map, key);
 			if (BONUS)
+			{
 				update_player_rotation(vars, key);
+				move_enemies(vars->map);
+			}
 			print_map(vars);
 		}
 	}
