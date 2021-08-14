@@ -1,4 +1,4 @@
-#include "../include/7_put_to_window_img.h"
+#include "../include/put_to_window_img.h"
 
 /*
 **	Here dst gets the sum  of the address of the origin (coordinates 0,0, the

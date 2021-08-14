@@ -24,16 +24,16 @@ find_library(LIBMLX
         PATHS ./)
 
 set(FILES
-        include/0_main.h
-        include/1_error_management.h
-        include/2_map_checking.h
-        include/3_map_importing.h
-        include/4_get_next_line.h
-        include/5_textures_loading.h
-        include/6_map_printing.h
-        include/7_put_to_window_img.h
-        include/8_hooks.h
-        include/9_player.h
+        include/main.h
+        include/error_management.h
+        include/map_checking.h
+        include/map_importing.h
+        include/get_next_line.h
+        include/textures_loading.h
+        include/map_printing.h
+        include/put_to_window_img.h
+        include/hooks.h
+        include/player.h
         include/enemies.h
         include/types.h
         libs/libft/include/libft.h
@@ -55,6 +55,7 @@ set(FILES
         libs/libft/srcs/lst/ft_lstsize.c
         libs/libft/srcs/math/ft_abs.c
         libs/libft/srcs/math/ft_power.c
+        libs/libft/srcs/matrix/ft_free_matrix.c
         libs/libft/srcs/mem/ft_bzero.c
         libs/libft/srcs/mem/ft_calloc.c
         libs/libft/srcs/mem/ft_memccpy.c
@@ -90,16 +91,16 @@ set(FILES
         libs/libft/srcs/type_conversion/ft_atoi.c
         libs/libft/srcs/type_conversion/ft_itoa.c
         libs/minilibx_mms_20200219/mlx.h
-        srcs/0_main.c
-        srcs/1_error_management.c
-        srcs/2_map_checking.c
-        srcs/3_map_importing.c
-        srcs/4_get_next_line.c
-        srcs/5_textures_loading.c
-        srcs/6_map_printing.c
-        srcs/7_put_to_window_img.c
-        srcs/8_hooks.c
-        srcs/9_player.c
+        srcs/main.c
+        srcs/error_management.c
+        srcs/map_checking.c
+        srcs/map_importing.c
+        srcs/get_next_line.c
+        srcs/textures_loading.c
+        srcs/map_printing.c
+        srcs/put_to_window_img.c
+        srcs/hooks.c
+        srcs/player.c
         srcs/enemies.c)
 
 add_executable(so_long_mandatory ${FILES})

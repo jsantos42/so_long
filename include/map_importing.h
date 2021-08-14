@@ -1,7 +1,7 @@
 #ifndef MAP_IMPORTING_H
 # define MAP_IMPORTING_H
 
-#include "0_main.h"
+#include "main.h"
 
 int			check_map_extension(char *str);
 t_vars		*import_map(char *str);

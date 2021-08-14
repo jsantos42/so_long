@@ -1,4 +1,4 @@
-#include "../include/8_hooks.h"
+#include "../include/hooks.h"
 
 /*
 **	If the user presses the ESC key, the program frees the allocated memory and
@@ -21,10 +21,7 @@ int on_key_press(int key, t_vars *vars)
 	y = vars->map->player_coord_y;
 	result = NOT_ALLOWED;
 	if (key == ESC)
-	{
-		//mlx_destroy_window needed??
 		free_vars_and_exit(0, vars);
-	}
 	else if (!vars->map->end_of_game)
 	{
 		if (key == MOVE_UP)
@@ -53,19 +50,6 @@ int on_key_press(int key, t_vars *vars)
 	return (0);
 }
 
-int	on_click(int button, int x, int y, void *param)
-{
-	(void)param;
-
-	ft_putnbr_fd(button, 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(x, 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(y, 1);
-	ft_putchar_fd('\n', 1);
-	return (0);
-}
-
 /*
 **	This function is called when the user clicks the red cross button to close
 **	the window. When doing so, it activates an X11 event called DESTROY_NOTIFY
@@ -76,7 +60,6 @@ int	on_click(int button, int x, int y, void *param)
 
 int red_cross_click(t_vars *vars)
 {
-	//mlx_destroy_window needed??
 	free_vars_and_exit(0, vars);
 	return (0);
 }

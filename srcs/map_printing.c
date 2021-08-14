@@ -1,4 +1,4 @@
-#include "../include/6_map_printing.h"
+#include "../include/map_printing.h"
 
 void	print_map(t_vars *vars)
 {

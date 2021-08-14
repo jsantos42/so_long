@@ -1,4 +1,4 @@
-#include "../include/0_main.h"
+#include "../include/main.h"
 
 /*
 **	1) Starts by checking the number of arguments.
@@ -39,7 +39,6 @@ int main(int argc, char **argv)
 		free_vars_and_exit(NO_CONNECTION, vars);
 	win_img_init(vars);
 	load_textures(vars);
-	// UNTIL HERE it is protected
 	vars->map->player_current_rotation = vars->player_right;
 	print_map(vars);
 	mlx_key_hook(vars->window, on_key_press, vars);

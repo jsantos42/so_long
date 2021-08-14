@@ -1,7 +1,7 @@
 #ifndef ERROR_MANAGEMENT_H
 # define ERROR_MANAGEMENT_H
 
-# include "0_main.h"
+# include "main.h"
 
 /*
 **	ERRORS

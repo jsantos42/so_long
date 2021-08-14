@@ -1,7 +1,7 @@
 #ifndef MAP_PRINTING_H
 # define MAP_PRINTING_H
 
-# include "0_main.h"
+# include "main.h"
 
 void	print_map(t_vars *vars);
 void	choose_texture_to_print(t_vars *vars);

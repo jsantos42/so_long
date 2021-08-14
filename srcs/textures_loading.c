@@ -1,4 +1,4 @@
-#include "../include/5_textures_loading.h"
+#include "../include/textures_loading.h"
 
 void	load_textures(t_vars *vars)
 {
@@ -54,7 +54,7 @@ int	**texture_init(t_vars *vars)
 		image[i] = ft_calloc(IMG_WIDTH, sizeof(int));
 		if (!image[i])
 		{
-			free_matrix(image, i);
+			ft_free_matrix(image, i);
 			free_vars_and_exit(FAILED_MALLOC, vars);
 		}
 		i++;

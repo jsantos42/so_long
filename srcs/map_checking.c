@@ -1,4 +1,4 @@
-#include "../include/2_map_checking.h"
+#include "../include/map_checking.h"
 
 /*
 **	Checks if the map is valid. A valid map must:

@@ -1,7 +1,7 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include "0_main.h"
+# include "main.h"
 
 # define FD_SIZE 4096
 
