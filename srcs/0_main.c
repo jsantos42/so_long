@@ -12,6 +12,7 @@ int main(int argc, char **argv)
 	vars->connection = mlx_init();
 	if (vars->connection)
 	{
+		// UNTIL HERE it is protected
 		img_init(vars);
 		vars->map->player_current_rotation = vars->player_right;
 		print_map(vars);
