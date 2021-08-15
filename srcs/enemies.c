@@ -61,7 +61,7 @@ void	move_enemies(t_matrix *map)
 		else if (map->matrix[y][x - 1] == '0')
 		{
 			map->matrix[y][x - 1] = 'T';
-			map->enemy_coord_x[i]++;
+			map->enemy_coord_x[i]--;
 		}
 		else if (map->matrix[y + 1][x] == '0')
 		{
