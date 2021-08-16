@@ -24,10 +24,10 @@ int	check_map_criteria(t_matrix *map)
 	char_p = find_char_in_map(map, 'P');
 	if (char_0 + char_1 + char_c + char_e + char_p != map->lines * map->columns
 		|| char_c < 1 || char_e < 1 || char_p < 1)
-		return (1);
-	if (check_map_walls(map))
-		return (1);
-	return (0);
+		return (0);
+	if (!check_map_walls(map))
+		return (0);
+	return (1);
 }
 
 /*
@@ -72,15 +72,15 @@ int	check_map_walls(t_matrix *map)
 	{
 		if (map->matrix[0][column] != '1'
 			|| map->matrix[map->lines - 1][column] != '1')
-			return (1);
+			return (0);
 		column++;
 	}
 	while (line < map->lines)
 	{
 		if (map->matrix[line][0] != '1'
 			|| map->matrix[line][map->columns - 1] != '1')
-			return (1);
+			return (0);
 		line++;
 	}
-	return (0);
+	return (1);
 }

@@ -6,14 +6,16 @@
 **	(in order to print to pixel (5,5), for example, it needs to go down y times
 **	(and each step it goes down corresponds to a whole line_length) and needs
 **	to go right x times (and each step it goes right corresponds to the number
-**	of bytes used in each pixel).
+**	of bytes (hence the number 8 on line 18, representing 8 bits) used in each
+**	pixel).
 */
 
 void	put_pixel_to_window(t_vars *vars, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = vars->addr + (y * vars->line_length + (x * (vars->bits_per_pixel / 8)));
+	dst = vars->addr
+		+ (y * vars->line_length + (x * (vars->bits_per_pixel / 8)));
 	*(int *)dst = color;
 }
 
@@ -34,7 +36,7 @@ void	put_str_to_window(t_vars *vars, char *str)
 	y = vars->map->text_y;
 	color = vars->map->text_color;
 	if (BONUS)
-	mlx_string_put(vars->connection, vars->window, x, y, color, str);
+		mlx_string_put(vars->connection, vars->window, x, y, color, str);
 	else
 	{
 		ft_putstr_fd(str, 1);

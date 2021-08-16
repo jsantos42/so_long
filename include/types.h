@@ -6,22 +6,21 @@
 
 # define NUMBER_OF_ENEMIES	2
 
-
 typedef struct s_matrix {
 	char	**matrix;
-	int 	lines;
+	int		lines;
 	int		columns;
-	int 	player_coord_x;
-	int 	player_coord_y;
+	int		player_coord_x;
+	int		player_coord_y;
 	int		**player_rotation;
-	int 	enemy_coord_x[NUMBER_OF_ENEMIES];
-	int 	enemy_coord_y[NUMBER_OF_ENEMIES];
-	int 	collectible_count;
-	int 	moves_count;
-	int 	end_of_game;
-	int 	text_x;
-	int 	text_y;
-	int 	text_color;
+	int		enemy_coord_x[NUMBER_OF_ENEMIES];
+	int		enemy_coord_y[NUMBER_OF_ENEMIES];
+	int		collectible_count;
+	int		moves_count;
+	int		end_of_game;
+	int		text_x;
+	int		text_y;
+	int		text_color;
 }	t_matrix;
 
 /*
@@ -34,33 +33,33 @@ typedef struct s_matrix {
 */
 
 typedef struct s_vars {
-	void 		*connection;
+	void		*connection;
 	void		*window;
 	void		*img;
 	char		*addr;
-	int 		bits_per_pixel;
-	int 		line_length;
-	int 		endian;
-	int 		window_height;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	int			window_height;
 	int			window_width;
 	t_matrix	*map;
-	int 		**wall;
-	int 		**free_space;
-	int 		**exit;
-	int 		**enemy;
-	int 		**collectible;
-	int 		**player_right;
-	int 		**player_left;
-	int 		**end;
+	int			**wall;
+	int			**free_space;
+	int			**exit;
+	int			**enemy;
+	int			**collectible;
+	int			**player_right;
+	int			**player_left;
+	int			**end;
 }	t_vars;
 
 typedef struct s_temp {
 	void	*img;
 	char	*addr;
-	int 	bits_per_pixel;
-	int 	line_length;
-	int 	endian;
-	int 	img_height;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		img_height;
 	int		img_width;
 }	t_temp;
 
@@ -73,10 +72,10 @@ typedef struct s_enemies {
 }	t_enemies;
 
 /*
-** GNL stuff
+** Get Next Line stuff
 */
 
-#define BUFFER_SIZE 2
+# define BUFFER_SIZE 2
 
 typedef struct s_args
 {

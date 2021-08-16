@@ -1,7 +1,7 @@
 #ifndef HOOKS_H
 # define HOOKS_H
 
-#include "main.h"
+# include "main.h"
 
 /*
 **	KEYS
@@ -23,7 +23,7 @@
 # define FINISH_GAME		3
 # define GAMEOVER			4
 
-int on_key_press(int key, t_vars *vars);
-int red_cross_click(t_vars *vars);
+int	on_key_press(int key, t_vars *vars);
+int	red_cross_click(t_vars *vars);
 
 #endif

@@ -40,25 +40,20 @@ t_vars	*import_map(char *str)
 	if (fd < 0)
 		error_management(ERROR_READING_MAP_FILE);
 	vars = malloc(sizeof(t_vars));
-
-//	if (ft_other_malloc(vars))
 	if (!vars)
 		free_vars_and_exit(FAILED_MALLOC, vars);
 	vars->map = malloc(sizeof(t_matrix));
 	if (!vars->map)
 		free_vars_and_exit(FAILED_MALLOC, vars);
-	line_list = map_lines_to_linked_list(fd, &vars->map->lines, &vars->map->columns, vars);
+	line_list = map_to_linked_list(fd, &vars->map->lines,
+			  &vars->map->columns, vars);
 	if (!line_list)
 		free_vars_and_exit(FAILED_MALLOC, vars);
-	vars->map->matrix = linked_list_to_matrix(line_list, vars->map->lines, vars);
-	if (check_map_criteria(vars->map))
+	vars->map->matrix = linked_list_to_matrix(line_list,
+			   vars->map->lines, vars);
+	if (!check_map_criteria(vars->map))
 		free_vars_and_exit(INVALID_MAP, vars);
-	vars->map->moves_count = 0;
-	vars->map->end_of_game = 0;
-	vars->map->text_color = 0xFFFFFF;
-	vars->map->text_x = WIDTH * 1;
-	vars->map->text_y = HEIGHT * 0.57;
-	get_player_xy_and_collectible_count(vars->map);
+	set_map_parameters(vars->map);
 	if (BONUS)
 		place_enemies(vars->map);
 	return (vars);
@@ -70,22 +65,22 @@ t_vars	*import_map(char *str)
 **	because the program requires a rectangular map.
 */
 
-t_list	*map_lines_to_linked_list(int fd, int *line_count, int *line_length, t_vars *vars)
+t_list	*map_to_linked_list(int fd, int *lines, int *columns, t_vars *vars)
 {
 	char	*line;
 	t_list	*temp;
 	t_list	*line_list;
 
-	*line_count = 0;
-	*line_length = 0;
+	*lines = 0;
+	*columns = 0;
 	line_list = NULL;
 	while (get_next_line(fd, &line))
 	{
 		if (!line)
 			return (free_list(line_list));
-		if (!*line_length)
-			*line_length = ft_strlen(line);
-		else if (*line_length != (int)ft_strlen(line))
+		if (!*columns)
+			*columns = ft_strlen(line);
+		else if (*columns != (int)ft_strlen(line))
 		{
 			free_list(line_list);
 			free_vars_and_exit(INVALID_MAP, vars);
@@ -93,11 +88,8 @@ t_list	*map_lines_to_linked_list(int fd, int *line_count, int *line_length, t_va
 		temp = ft_lstnew(line);
 		if (!temp)
 			return (free_list(line_list));
-		if (!line_list)
-			line_list = temp;
-		else
-			ft_lstadd_back(&line_list, temp);
-		(*line_count)++;
+		ft_lstadd_back(&line_list, temp);
+		(*lines)++;
 	}
 	return (line_list);
 }
@@ -106,20 +98,20 @@ t_list	*map_lines_to_linked_list(int fd, int *line_count, int *line_length, t_va
 **	Moves the lines' content to a matrix and frees the linked list.
 */
 
-char	**linked_list_to_matrix(t_list *line_list, size_t line_count, t_vars *vars)
+char	**linked_list_to_matrix(t_list *line_list, int lines, t_vars *vars)
 {
 	t_list	*temp;
-	size_t	i;
+	int		i;
 	char	**matrix;
 
-	matrix = malloc(sizeof(char*) * line_count);
+	matrix = malloc(sizeof(char *) * lines);
 	if (!matrix)
 	{
 		free_list(line_list);
 		free_vars_and_exit(FAILED_MALLOC, vars);
 	}
-	i= 0;
-	while (i < line_count)
+	i = 0;
+	while (i < lines)
 	{
 		temp = line_list->next;
 		matrix[i] = line_list->content;
@@ -130,17 +122,17 @@ char	**linked_list_to_matrix(t_list *line_list, size_t line_count, t_vars *vars)
 	return (matrix);
 }
 
-void	get_player_xy_and_collectible_count(t_matrix *map)
+void	set_map_parameters(t_matrix *map)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	map->collectible_count = 0;
-	y = 0;
-	while (y < map->lines)
+	y = -1;
+	while (++y < map->lines)
 	{
-		x = 0;
-		while (x < map->columns)
+		x = -1;
+		while (++x < map->columns)
 		{
 			if (map->matrix[y][x] == 'P')
 			{
@@ -149,8 +141,11 @@ void	get_player_xy_and_collectible_count(t_matrix *map)
 			}
 			else if (map->matrix[y][x] == 'C')
 				map->collectible_count++;
-			x++;
 		}
-		y++;
 	}
+	map->moves_count = 0;
+	map->end_of_game = 0;
+	map->text_color = 0xFFFFFF;
+	map->text_x = WIDTH * 1;
+	map->text_y = HEIGHT * 0.57;
 }
