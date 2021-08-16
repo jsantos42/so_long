@@ -57,13 +57,16 @@ set(FILES
         libs/libft/srcs/math/ft_power.c
         libs/libft/srcs/matrix/ft_free_matrix.c
         libs/libft/srcs/mem/ft_bzero.c
-        libs/libft/srcs/mem/ft_calloc.c
         libs/libft/srcs/mem/ft_memccpy.c
         libs/libft/srcs/mem/ft_memchr.c
         libs/libft/srcs/mem/ft_memcmp.c
         libs/libft/srcs/mem/ft_memcpy.c
         libs/libft/srcs/mem/ft_memmove.c
         libs/libft/srcs/mem/ft_memset.c
+        libs/libft/srcs/memalloc/ft_array_malloc.c
+        libs/libft/srcs/memalloc/ft_calloc.c
+        libs/libft/srcs/memalloc/ft_other_malloc.c
+        libs/libft/srcs/memalloc/ft_str_malloc.c
         libs/libft/srcs/put/ft_putchar_fd.c
         libs/libft/srcs/put/ft_putendl_fd.c
         libs/libft/srcs/put/ft_putnbr_fd.c

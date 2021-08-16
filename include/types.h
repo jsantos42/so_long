@@ -1,8 +1,8 @@
 #ifndef TYPES_H
 # define TYPES_H
 
-# define IMG_HEIGHT 50
-# define IMG_WIDTH	50
+# define HEIGHT 50
+# define WIDTH	50
 
 # define NUMBER_OF_ENEMIES	2
 
@@ -13,7 +13,7 @@ typedef struct s_matrix {
 	int		columns;
 	int 	player_coord_x;
 	int 	player_coord_y;
-	int		**player_current_rotation;
+	int		**player_rotation;
 	int 	enemy_coord_x[NUMBER_OF_ENEMIES];
 	int 	enemy_coord_y[NUMBER_OF_ENEMIES];
 	int 	collectible_count;

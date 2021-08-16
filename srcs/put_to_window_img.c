@@ -9,14 +9,13 @@
 **	of bytes used in each pixel).
 */
 
-void	my_pixel_put(t_vars *vars, int x, int y, int color)
+void	put_pixel_to_window(t_vars *vars, int x, int y, int color)
 {
 	char	*dst;
 
 	dst = vars->addr + (y * vars->line_length + (x * (vars->bits_per_pixel / 8)));
 	*(int *)dst = color;
 }
-
 
 /*
 **	Allows cleaner code, since the MiniLibX built-in function demands a lot of

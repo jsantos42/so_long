@@ -101,4 +101,7 @@ double			ft_power(double base, double exp);
 int				ft_abs(int number);
 void			ft_str_eraser(void *str);
 void			ft_free_matrix(int **matrix, int arrays);
+int				ft_array_malloc(int *array, int size);
+int				ft_str_malloc(char *str, int length);
+int				ft_other_malloc(void *other);
 #endif

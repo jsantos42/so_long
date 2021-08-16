@@ -72,7 +72,7 @@ void	update_player_position(t_matrix *map, int key)
 void	update_player_rotation(t_vars *vars, int key)
 {
 	if (key == MV_RIGHT)
-		vars->map->player_current_rotation = vars->player_right;
+		vars->map->player_rotation = vars->player_right;
 	else if (key == MV_LEFT)
-		vars->map->player_current_rotation = vars->player_left;
+		vars->map->player_rotation = vars->player_left;
 }

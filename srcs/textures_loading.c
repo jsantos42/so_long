@@ -45,13 +45,13 @@ int	**texture_init(t_vars *vars)
 	int	i;
 	int	**image;
 
-	image = ft_calloc(IMG_HEIGHT, sizeof(int*));
+	image = ft_calloc(HEIGHT, sizeof(int*));
 	if (!image)
 		free_vars_and_exit(FAILED_MALLOC, vars);
 	i = 0;
-	while (i < IMG_HEIGHT)
+	while (i < HEIGHT)
 	{
-		image[i] = ft_calloc(IMG_WIDTH, sizeof(int));
+		image[i] = ft_calloc(WIDTH, sizeof(int));
 		if (!image[i])
 		{
 			ft_free_matrix(image, i);
@@ -64,12 +64,12 @@ int	**texture_init(t_vars *vars)
 
 void	free_textures(t_vars *vars)
 {
-	ft_free_matrix(vars->wall, IMG_HEIGHT);
-	ft_free_matrix(vars->free_space, IMG_HEIGHT);
-	ft_free_matrix(vars->exit, IMG_HEIGHT);
-	ft_free_matrix(vars->enemy, IMG_HEIGHT);
-	ft_free_matrix(vars->collectible, IMG_HEIGHT);
-	ft_free_matrix(vars->player_right, IMG_HEIGHT);
-	ft_free_matrix(vars->player_left, IMG_HEIGHT);
-	ft_free_matrix(vars->end, IMG_HEIGHT);
+	ft_free_matrix(vars->wall, HEIGHT);
+	ft_free_matrix(vars->free_space, HEIGHT);
+	ft_free_matrix(vars->exit, HEIGHT);
+	ft_free_matrix(vars->enemy, HEIGHT);
+	ft_free_matrix(vars->collectible, HEIGHT);
+	ft_free_matrix(vars->player_right, HEIGHT);
+	ft_free_matrix(vars->player_left, HEIGHT);
+	ft_free_matrix(vars->end, HEIGHT);
 }

@@ -6,11 +6,11 @@
 **	corresponds to the difference of characters of the two strings compared.
 */
 
-int		check_map_extension(char *str)
+int	check_map_extension(char *str)
 {
 	size_t	size;
 	char	*extension;
-	int 	output;
+	int		output;
 
 	size = ft_strlen(str);
 	extension = ft_substr(str, size - 4, 4);
@@ -40,6 +40,8 @@ t_vars	*import_map(char *str)
 	if (fd < 0)
 		error_management(ERROR_READING_MAP_FILE);
 	vars = malloc(sizeof(t_vars));
+
+//	if (ft_other_malloc(vars))
 	if (!vars)
 		free_vars_and_exit(FAILED_MALLOC, vars);
 	vars->map = malloc(sizeof(t_matrix));
@@ -54,8 +56,8 @@ t_vars	*import_map(char *str)
 	vars->map->moves_count = 0;
 	vars->map->end_of_game = 0;
 	vars->map->text_color = 0xFFFFFF;
-	vars->map->text_x = IMG_WIDTH * 1;
-	vars->map->text_y = IMG_HEIGHT * 0.57;
+	vars->map->text_x = WIDTH * 1;
+	vars->map->text_y = HEIGHT * 0.57;
 	get_player_xy_and_collectible_count(vars->map);
 	if (BONUS)
 		place_enemies(vars->map);

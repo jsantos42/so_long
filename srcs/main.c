@@ -4,8 +4,8 @@
 **	1) Starts by checking the number of arguments.
 **	2) Checks the  extension of the map file passed as an argument.
 **	3) Imports the map from the file to a matrix.
-**	4) Initiates the connection to a window with MiniLibX. In case establishing
-**	the connection fails, frees the allocated memory before exiting.
+**	4) Initiates the connection to a window with MiniLibX. If establishing the
+**	connection fails, frees the allocated memory before exiting.
 **	5) Initiates the window and gets the parameters needed to create an image
 **	that is going to be manipulated and displayed on that window.
 **	6) Loads the image files (extension .xmp due to the requirements of the MLX)
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 		free_vars_and_exit(NO_CONNECTION, vars);
 	win_img_init(vars);
 	load_textures(vars);
-	vars->map->player_current_rotation = vars->player_right;
+	vars->map->player_rotation = vars->player_right;
 	print_map(vars);
 	mlx_key_hook(vars->window, on_key_press, vars);
 	mlx_hook(vars->window, DESTROY_NOTIFY, 1L, red_cross_click, vars->map);
@@ -49,8 +49,8 @@ int	main(int argc, char **argv)
 
 void	win_img_init(t_vars *vars)
 {
-	vars->window_width = vars->map->columns * IMG_WIDTH;
-	vars->window_height = vars->map->lines * IMG_HEIGHT;
+	vars->window_width = vars->map->columns * WIDTH;
+	vars->window_height = vars->map->lines * HEIGHT;
 	vars->window = mlx_new_window(vars->connection, vars->window_width,
 			   vars->window_height, "SO LONG" );
 	if (!vars->window)

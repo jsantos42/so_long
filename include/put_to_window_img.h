@@ -3,7 +3,7 @@
 
 #include "main.h"
 
-void	my_pixel_put(t_vars *vars, int x, int y, int color);
+void	put_pixel_to_window(t_vars *vars, int x, int y, int color);
 void	put_str_to_window(t_vars *vars, char *str);
 
 #endif
