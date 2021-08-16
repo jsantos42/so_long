@@ -13,42 +13,28 @@
 
 int	on_key_press(int key, t_vars *vars)
 {
-	int x;
-	int y;
-	int result;
+	int		x;
+	int		y;
+	char	*current_position;
+	char	*new_position;
 
 	x = vars->map->player_coord_x;
 	y = vars->map->player_coord_y;
-	result = NOT_ALLOWED;
+	current_position = &vars->map->matrix[y][x];
 	if (key == ESC)
 		free_vars_and_exit(0, vars);
-	else if (!vars->map->end_of_game)
+	if ((key == MV_UP || key == MV_DOWN || key == MV_RIGHT || key == MV_LEFT)
+		&& !vars->map->end_of_game)
 	{
-		if (key == MOVE_UP)
-			result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y - 1][x], vars->map->collectible_count);
-		else if (key == MOVE_DOWN)
-			result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y + 1][x], vars->map->collectible_count);
-		else if (key == MOVE_RIGHT)
-			result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y][x + 1], vars->map->collectible_count);
-		else if (key == MOVE_LEFT)
-			result = move_player(&vars->map->matrix[y][x], &vars->map->matrix[y][x - 1], vars->map->collectible_count);
-		if (result != NOT_ALLOWED)
-		{
-			vars->map->moves_count++;
-			if (result == CAUGHT_COLLECTIBLE)
-				vars->map->collectible_count--;
-			if (result == GAMEOVER)
-				vars->map->end_of_game = -1;
-			if (result == FINISH_GAME)
-				vars->map->end_of_game = 1;
-			update_player_position(vars->map, key);
-			if (BONUS)
-			{
-				update_player_rotation(vars, key);
-				move_enemies(vars->map);
-			}
-			print_map(vars);
-		}
+		if (key == MV_UP)
+			new_position = &vars->map->matrix[y - 1][x];
+		else if (key == MV_DOWN)
+			new_position = &vars->map->matrix[y + 1][x];
+		else if (key == MV_RIGHT)
+			new_position = &vars->map->matrix[y][x + 1];
+		else
+			new_position = &vars->map->matrix[y][x - 1];
+		move_player(vars, key, current_position, new_position);
 	}
 	return (0);
 }
@@ -61,7 +47,7 @@ int	on_key_press(int key, t_vars *vars)
 **	program. In this case, since it is no error, it gives 0 as an argument.
 */
 
-int red_cross_click(t_vars *vars)
+int	red_cross_click(t_vars *vars)
 {
 	free_vars_and_exit(0, vars);
 	return (0);

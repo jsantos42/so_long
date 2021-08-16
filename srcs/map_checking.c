@@ -30,6 +30,10 @@ int	check_map_criteria(t_matrix *map)
 	return (0);
 }
 
+/*
+**	Looks for the character 'letter' in the map and returns the number of
+**	occurrences.
+*/
 
 int	find_char_in_map(t_matrix *map, char letter)
 {
@@ -53,6 +57,9 @@ int	find_char_in_map(t_matrix *map, char letter)
 	return (char_count);
 }
 
+/*
+**	Checks if the map is surrounded by walls (char '1' in the <map.ber> file).
+*/
 
 int	check_map_walls(t_matrix *map)
 {

@@ -11,25 +11,46 @@
 **	 previous function (on_key_press) reprints the map.
 */
 
-int	move_player(char *current_position, char *new_position, int collectible_count)
+void	move_player(t_vars *vars, int key, char *current, char *new)
 {
-	if (*new_position == '1' || (*new_position == 'E' && collectible_count != 0))
-		return (NOT_ALLOWED);
-	*current_position = '0';
-	if (*new_position == 'E' && collectible_count == 0)
-		return (FINISH_GAME);
-	if (*new_position == 'T')
-		return (GAMEOVER);
-	if (*new_position == 'C')
+	int	result;
+
+	if (*new == '1' || (*new == 'E' && vars->map->collectible_count != 0))
+		return ;
+	*current = '0';
+	if (*new == 'E' && vars->map->collectible_count == 0)
+		result = FINISH_GAME;
+	else if (*new == 'T')
+		result = GAMEOVER;
+	else if (*new == 'C')
 	{
-		*new_position = 'P';
-		return (CAUGHT_COLLECTIBLE);
+		*new = 'P';
+		result = CAUGHT_COLLECTIBLE;
 	}
 	else
 	{
-		*new_position = 'P';
-		return (SUCCESSFUL_MOVE);
+		*new = 'P';
+		result = SUCCESSFUL_MOVE;
 	}
+	update_map(vars, key, result);
+}
+
+void	update_map(t_vars *vars, int key, int result)
+{
+	vars->map->moves_count++;
+	if (result == CAUGHT_COLLECTIBLE)
+		vars->map->collectible_count--;
+	if (result == GAMEOVER)
+		vars->map->end_of_game = -1;
+	if (result == FINISH_GAME)
+		vars->map->end_of_game = 1;
+	update_player_position(vars->map, key);
+	if (BONUS)
+	{
+		update_player_rotation(vars, key);
+		move_enemies(vars->map);
+	}
+	print_map(vars);
 }
 
 /*
@@ -38,21 +59,20 @@ int	move_player(char *current_position, char *new_position, int collectible_coun
 
 void	update_player_position(t_matrix *map, int key)
 {
-	if (key == MOVE_UP)
+	if (key == MV_UP)
 		map->player_coord_y--;
-	else if (key == MOVE_DOWN)
+	else if (key == MV_DOWN)
 		map->player_coord_y++;
-	else if (key == MOVE_RIGHT)
+	else if (key == MV_RIGHT)
 		map->player_coord_x++;
-	else if (key == MOVE_LEFT)
+	else if (key == MV_LEFT)
 		map->player_coord_x--;
 }
 
-
 void	update_player_rotation(t_vars *vars, int key)
 {
-	if (key == MOVE_RIGHT)
+	if (key == MV_RIGHT)
 		vars->map->player_current_rotation = vars->player_right;
-	else if (key == MOVE_LEFT)
+	else if (key == MV_LEFT)
 		vars->map->player_current_rotation = vars->player_left;
 }

@@ -8,10 +8,10 @@
 */
 
 # define ESC				53
-# define MOVE_UP 			13
-# define MOVE_DOWN 			1
-# define MOVE_RIGHT 		2
-# define MOVE_LEFT			0
+# define MV_UP 			13
+# define MV_DOWN 			1
+# define MV_RIGHT 		2
+# define MV_LEFT			0
 
 /*
 **	RESULT OF THE MOVE
