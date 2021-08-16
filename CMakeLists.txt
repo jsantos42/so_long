@@ -25,7 +25,7 @@ find_library(LIBMLX
 
 set(FILES
         include/main.h
-        include/error_management.h
+        include/error_and_free.h
         include/map_checking.h
         include/map_importing.h
         include/get_next_line.h
@@ -92,7 +92,7 @@ set(FILES
         libs/libft/srcs/type_conversion/ft_itoa.c
         libs/minilibx_mms_20200219/mlx.h
         srcs/main.c
-        srcs/error_management.c
+        srcs/error_and_free.c
         srcs/map_checking.c
         srcs/map_importing.c
         srcs/get_next_line.c

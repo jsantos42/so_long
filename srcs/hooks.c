@@ -11,7 +11,7 @@
 **	The result variable's content will trigger the GAME OVER or YOU WON message.
 */
 
-int on_key_press(int key, t_vars *vars)
+int	on_key_press(int key, t_vars *vars)
 {
 	int x;
 	int y;

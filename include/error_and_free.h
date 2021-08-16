@@ -1,5 +1,5 @@
-#ifndef ERROR_MANAGEMENT_H
-# define ERROR_MANAGEMENT_H
+#ifndef ERROR_AND_FREE_H
+# define ERROR_AND_FREE_H
 
 # include "main.h"
 

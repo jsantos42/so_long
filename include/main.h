@@ -13,7 +13,7 @@
 
 # include "types.h"
 # include "enemies.h"
-# include "error_management.h"
+# include "error_and_free.h"
 # include "get_next_line.h"
 # include "hooks.h"
 # include "map_checking.h"

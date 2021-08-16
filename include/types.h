@@ -64,13 +64,13 @@ typedef struct s_temp {
 	int		img_width;
 }	t_temp;
 
-typedef struct s_color {
-	int starting_x;
-	int starting_y;
-	int first_color;
-	int second_color;
-//	int orientation_angle; //to set the gradient
-}	t_color;
+typedef struct s_enemies {
+	int	x;
+	int	y;
+	int	enemy_i;
+	int	space_between_enemies;
+	int	space_i;
+}	t_enemies;
 
 /*
 ** GNL stuff

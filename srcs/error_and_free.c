@@ -1,17 +1,18 @@
-#include "../include/error_management.h"
+#include "../include/error_and_free.h"
+
+/*
+**	Prints the correct error message in the CLI before exiting the program.
+*/
 
 void	error_management(int error)
 {
 	ft_putstr_fd("Error\n", 1);
 	if (error == ILLEGAL_INPUT)
-		ft_putstr_fd("Wrong input. Please run ./so_long <path_to_file.ber>\n", 1);
+		ft_putstr_fd("Wrong input. Run ./so_long <path_to_file.ber>\n", 1);
 	else if (error == FAILED_MALLOC)
 		ft_putstr_fd("Memory allocation failed.\n", 1);
 	else if (error == WRONG_EXTENSION)
-	{
 		ft_putstr_fd("The given map has not a .ber extension.\n", 1);
-		ft_putstr_fd("Please provide the correct file.\n", 1);
-	}
 	else if (error == ERROR_READING_MAP_FILE)
 		ft_putstr_fd("Couldn't read the given map file.\n", 1);
 	else if (error == INVALID_MAP)
@@ -20,9 +21,8 @@ void	error_management(int error)
 		ft_putstr_fd("- be rectangular.\n", 1);
 		ft_putstr_fd("- have only the following chars: 0, 1, C, E and P.\n", 1);
 		ft_putstr_fd("- be closed/surrounded by walls (1).\n", 1);
-		ft_putstr_fd("- have at least one exit (E), one collectible (C),", 1);
-		ft_putstr_fd(" and one starting position (P). The rest should", 1);
-		ft_putstr_fd(" be empty space (0).\n", 1);
+		ft_putstr_fd("- have 1 starting position (P), 1 exit (E), and >=\n", 1);
+		ft_putstr_fd(" 1 collectible (C). The rest is empty space (0).\n", 1);
 	}
 	else if (error == ERROR_READING_IMAGE_FILE)
 		ft_putstr_fd("Couldn't read one or more of the images files.\n", 1);
@@ -32,7 +32,6 @@ void	error_management(int error)
 		ft_putstr_fd("Couldn't create a window.\n", 1);
 	exit(error);
 }
-
 
 /*
 **	Deletes and frees the existing nodes on the linked list and returns NULL, so
