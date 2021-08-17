@@ -14,3 +14,5 @@ If using CLion or other editor that uses CMake:
 - you still have to first compile with the Makefile in order to get the libmlx.dylib file
 - on the Run/Debug configurations, add your working directory 
 - on the Run/Debug configurations, add "DYLD_LIBRARY_PATH=/Users/jas/Desktop/42/so_long/" as an environment variable
+
+![screenshot](screenshot.png)
