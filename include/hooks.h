@@ -7,11 +7,11 @@
 **	KEYS
 */
 
-# define ESC				53
+# define ESC			53
 # define MV_UP 			13
-# define MV_DOWN 			1
+# define MV_DOWN 		1
 # define MV_RIGHT 		2
-# define MV_LEFT			0
+# define MV_LEFT		0
 
 /*
 **	RESULT OF THE MOVE

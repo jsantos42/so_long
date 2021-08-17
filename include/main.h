@@ -12,7 +12,8 @@
 */
 
 # include "types.h"
-# include "enemies.h"
+# include "enemies_initial_setup.h"
+# include "enemies_movement.h"
 # include "error_and_free.h"
 # include "get_next_line.h"
 # include "hooks.h"

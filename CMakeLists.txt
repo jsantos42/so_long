@@ -34,7 +34,8 @@ set(FILES
         include/put_to_window_img.h
         include/hooks.h
         include/player.h
-        include/enemies.h
+        include/enemies_initial_setup.h
+        include/enemies_movement.h
         include/types.h
         libs/libft/include/libft.h
         libs/libft/srcs/change_case/ft_tolower.c
@@ -104,7 +105,8 @@ set(FILES
         srcs/put_to_window_img.c
         srcs/hooks.c
         srcs/player.c
-        srcs/enemies.c)
+        srcs/enemies_initial_setup.c
+        srcs/enemies_movement.c)
 
 add_executable(so_long_mandatory ${FILES})
 target_link_libraries(so_long_mandatory ${LIBMLX})
