@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 	vars->map->player_rotation = vars->player_right;
 	print_map(vars);
 	mlx_key_hook(vars->window, on_key_press, vars);
-	mlx_hook(vars->window, DESTROY_NOTIFY, 1L, red_cross_click, vars->map);
+	mlx_hook(vars->window, DESTROY_NOTIFY, 1L, red_cross_click, vars);
 	mlx_loop(vars->connection);
 	return (0);
 }
