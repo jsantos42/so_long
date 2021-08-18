@@ -79,6 +79,7 @@ t_list	*map_to_linked_list(int fd, int *lines, int *columns, t_vars *vars)
 			*columns = ft_strlen(line);
 		else if (*columns != (int)ft_strlen(line))
 		{
+			free(line);
 			free_list(line_list);
 			free_vars_and_exit(INVALID_MAP, vars);
 		}
