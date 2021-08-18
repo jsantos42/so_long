@@ -33,7 +33,8 @@ int	main(int argc, char **argv)
 		error_management(ILLEGAL_INPUT);
 	if (check_map_extension(argv[1]))
 		error_management(WRONG_EXTENSION);
-	vars = import_map(argv[1]);
+	vars_init(&vars);
+	import_map(argv[1], vars);
 	vars->connection = mlx_init();
 	if (!vars->connection)
 		free_vars_and_exit(NO_CONNECTION, vars);

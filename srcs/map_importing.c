@@ -1,5 +1,7 @@
 #include "../include/map_importing.h"
 
+void	vars_init(t_vars **vars);
+
 /*
 **	Checks if the file passed as an argument has a .ber extension. If so,
 **	returns 0; otherwise returns an integer greater than or less than 0, which
@@ -30,21 +32,15 @@ int	check_map_extension(char *str)
 **	the matrix (map) and move the lines' content to the it.
 */
 
-t_vars	*import_map(char *str)
+void	*import_map(char *str, t_vars *vars)
 {
 	int			fd;
 	t_list		*line_list;
-	t_vars		*vars;
 
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
 		error_management(ERROR_READING_MAP_FILE);
-	vars = malloc(sizeof(t_vars));
-	if (!vars)
-		free_vars_and_exit(FAILED_MALLOC, vars);
-	vars->map = malloc(sizeof(t_matrix));
-	if (!vars->map)
-		free_vars_and_exit(FAILED_MALLOC, vars);
+	map_init(vars);
 	line_list = map_to_linked_list(fd, &vars->map->lines,
 			  &vars->map->columns, vars);
 	if (!line_list)
@@ -58,6 +54,7 @@ t_vars	*import_map(char *str)
 		place_enemies(vars->map);
 	return (vars);
 }
+
 
 /*
 **	Parses through the file and saves every read line to a new node on a linked

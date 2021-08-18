@@ -57,10 +57,13 @@ void	free_vars_and_exit(int error, t_vars *vars)
 	{
 		if (vars->map)
 		{
-			line_i = 0;
-			while (line_i < vars->map->lines)
-				free(vars->map->matrix[line_i++]);
-			free(vars->map->matrix);
+			if (vars->map->matrix)
+			{
+				line_i = 0;
+				while (line_i < vars->map->lines)
+					free(vars->map->matrix[line_i++]);
+				free(vars->map->matrix);
+			}
 			free(vars->map);
 		}
 		free_textures(vars);

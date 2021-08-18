@@ -17,6 +17,7 @@
 # include "error_and_free.h"
 # include "get_next_line.h"
 # include "hooks.h"
+# include "init.h"
 # include "map_checking.h"
 # include "map_importing.h"
 # include "map_printing.h"

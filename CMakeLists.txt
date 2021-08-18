@@ -29,6 +29,7 @@ set(FILES
         include/map_checking.h
         include/map_importing.h
         include/get_next_line.h
+        include/init.h
         include/textures_loading.h
         include/map_printing.h
         include/put_to_window_img.h
@@ -100,6 +101,7 @@ set(FILES
         srcs/map_checking.c
         srcs/map_importing.c
         srcs/get_next_line.c
+        srcs/init.c
         srcs/textures_loading.c
         srcs/map_printing.c
         srcs/put_to_window_img.c
