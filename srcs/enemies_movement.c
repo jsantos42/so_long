@@ -1,8 +1,8 @@
 #include "../include/enemies_movement.h"
 
-static int	*get_moves_order(t_matrix *map);
-static int	check_move(t_matrix *map, int enemy_i, int move);
-static int	move_if_possible(char *position, t_matrix *map);
+static int	*get_moves_order(t_map *map);
+static int	check_move(t_map *map, int enemy_i, int move);
+static int	move_if_possible(char *position, t_map *map);
 
 /*
 **	This is a very simple way of moving the enemies around. It could be greatly
@@ -12,7 +12,7 @@ static int	move_if_possible(char *position, t_matrix *map);
 **	movements, by dividing the movement count by 3 prime numbers.
 */
 
-void	move_enemies(t_matrix *map)
+void	move_enemies(t_map *map)
 {
 	int	enemy_i;
 	int	j;
@@ -34,7 +34,7 @@ void	move_enemies(t_matrix *map)
 	free(moves);
 }
 
-static int	*get_moves_order(t_matrix *map)
+static int	*get_moves_order(t_map *map)
 {
 	int	*moves;
 	int	iter;
@@ -56,7 +56,7 @@ static int	*get_moves_order(t_matrix *map)
 	return (moves);
 }
 
-static int	check_move(t_matrix *map, int enemy_i, int move)
+static int	check_move(t_map *map, int enemy_i, int move)
 {
 	int	x;
 	int	y;
@@ -80,7 +80,7 @@ static int	check_move(t_matrix *map, int enemy_i, int move)
 	return (1);
 }
 
-static int	move_if_possible(char *position, t_matrix *map)
+static int	move_if_possible(char *position, t_map *map)
 {
 	if (*position == '0')
 	{

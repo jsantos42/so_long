@@ -1,6 +1,6 @@
 #include "../include/error_and_free.h"
 
-static void	free_map(t_matrix *map);
+static void	free_map(t_map *map);
 static void	free_textures(t_vars *vars);
 
 /*
@@ -71,7 +71,7 @@ void	free_vars_and_exit(int error, t_vars *vars)
 		exit(0);
 }
 
-static void	free_map(t_matrix *map)
+static void	free_map(t_map *map)
 {
 	int	line_i;
 

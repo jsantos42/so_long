@@ -9,7 +9,7 @@
 **	(P). The rest should be empty space (0).
 */
 
-int	check_map_criteria(t_matrix *map)
+int	check_map_criteria(t_map *map)
 {
 	int	char_0;
 	int	char_1;
@@ -35,7 +35,7 @@ int	check_map_criteria(t_matrix *map)
 **	occurrences.
 */
 
-int	find_char_in_map(t_matrix *map, char letter)
+int	find_char_in_map(t_map *map, char letter)
 {
 	int	char_count;
 	int	line;
@@ -61,7 +61,7 @@ int	find_char_in_map(t_matrix *map, char letter)
 **	Checks if the map is surrounded by walls (char '1' in the <map.ber> file).
 */
 
-int	check_map_walls(t_matrix *map)
+int	check_map_walls(t_map *map)
 {
 	int	line;
 	int	column;

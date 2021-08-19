@@ -3,6 +3,6 @@
 
 # include "main.h"
 
-void	move_enemies(t_matrix *map);
+void	move_enemies(t_map *map);
 
 #endif

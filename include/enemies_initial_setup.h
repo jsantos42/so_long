@@ -3,6 +3,6 @@
 
 # include "main.h"
 
-void	place_enemies(t_matrix *map);
+void	place_enemies(t_map *map);
 
 #endif

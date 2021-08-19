@@ -1,6 +1,6 @@
 #include "../include/enemies_initial_setup.h"
 
-static void	enemy_placer(t_matrix *map, t_enemies *bag);
+static void	enemy_placer(t_map *map, t_enemies *bag);
 
 /*
 **	This is a very simple way of placing 2 enemies on the map. The algorithm
@@ -11,7 +11,7 @@ static void	enemy_placer(t_matrix *map, t_enemies *bag);
 **	type to pass all the needed variables.
 */
 
-void	place_enemies(t_matrix *map)
+void	place_enemies(t_map *map)
 {
 	t_enemies	bag;
 
@@ -36,7 +36,7 @@ void	place_enemies(t_matrix *map)
 	}
 }
 
-static void	enemy_placer(t_matrix *map, t_enemies *bag)
+static void	enemy_placer(t_map *map, t_enemies *bag)
 {
 	map->matrix[bag->y][bag->x] = 'T';
 	bag->space_i = 0;

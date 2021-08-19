@@ -22,7 +22,7 @@ void	vars_init(t_vars **vars)
 
 void	map_init(t_vars *vars)
 {
-	vars->map = malloc(sizeof(t_matrix));
+	vars->map = malloc(sizeof(t_map));
 	if (!vars->map)
 		free_vars_and_exit(FAILED_MALLOC, vars);
 	vars->map->lines = 0;

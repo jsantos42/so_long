@@ -115,7 +115,7 @@ char	**linked_list_to_matrix(t_list *line_list, int lines, t_vars *vars)
 	return (matrix);
 }
 
-void	set_map_parameters(t_matrix *map)
+void	set_map_parameters(t_map *map)
 {
 	int	x;
 	int	y;

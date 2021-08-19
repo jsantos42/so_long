@@ -22,7 +22,7 @@ typedef struct s_matrix {
 	int		text_x;
 	int		text_y;
 	int		text_color;
-}	t_matrix;
+}	t_map;
 
 /*
 **	Due to the limitations of the MiniLibX, which has some functions (namely,
@@ -43,7 +43,7 @@ typedef struct s_vars {
 	int			endian;
 	int			window_height;
 	int			window_width;
-	t_matrix	*map;
+	t_map	*map;
 	int			**wall;
 	int			**free_space;
 	int			**exit;

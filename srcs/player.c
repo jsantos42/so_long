@@ -57,7 +57,7 @@ void	update_map(t_vars *vars, int key, int result)
 **	Updates the player's position according to the accepted key.
 */
 
-void	update_player_position(t_matrix *map, int key)
+void	update_player_position(t_map *map, int key)
 {
 	if (key == MV_UP)
 		map->player_coord_y--;
