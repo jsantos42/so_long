@@ -18,5 +18,6 @@ void	ft_free_matrix(int **matrix, int arrays)
 		iter = 0;
 		while (iter < arrays)
 			free(matrix[iter++]);
+		free(matrix);
 	}
 }

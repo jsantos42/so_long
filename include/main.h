@@ -4,8 +4,6 @@
 # include "../libs/minilibx_mms_20200219/mlx.h"
 # include "../libs/libft/include/libft.h"
 # include <fcntl.h>
-//# include <stdlib.h>
-//# include <unistd.h>
 
 /*
 **	Here types.h must come first since it has the defines and typedefs.
@@ -30,7 +28,5 @@
 */
 
 # define DESTROY_NOTIFY	17
-
-void	win_img_init(t_vars *vars);
 
 #endif

@@ -1,7 +1,5 @@
 #include "../include/map_importing.h"
 
-void	vars_init(t_vars **vars);
-
 /*
 **	Checks if the file passed as an argument has a .ber extension. If so,
 **	returns 0; otherwise returns an integer greater than or less than 0, which
@@ -55,7 +53,6 @@ void	*import_map(char *str, t_vars *vars)
 	return (vars);
 }
 
-
 /*
 **	Parses through the file and saves every read line to a new node on a linked
 **	list. Before doing so, it does check if the size of every line is the same,
@@ -68,8 +65,6 @@ t_list	*map_to_linked_list(int fd, int *lines, int *columns, t_vars *vars)
 	t_list	*temp;
 	t_list	*line_list;
 
-	*lines = 0;
-	*columns = 0;
 	line_list = NULL;
 	while (get_next_line(fd, &line))
 	{

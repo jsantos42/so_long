@@ -75,19 +75,3 @@ int	**texture_init(t_vars *vars)
 	}
 	return (image);
 }
-
-/*
-**	Frees the textures. Gets called before terminating the program.
-*/
-
-void	free_textures(t_vars *vars)
-{
-	ft_free_matrix(vars->wall, HEIGHT);
-	ft_free_matrix(vars->free_space, HEIGHT);
-	ft_free_matrix(vars->exit, HEIGHT);
-	ft_free_matrix(vars->enemy, HEIGHT);
-	ft_free_matrix(vars->collectible, HEIGHT);
-	ft_free_matrix(vars->player_right, HEIGHT);
-	ft_free_matrix(vars->player_left, HEIGHT);
-	ft_free_matrix(vars->end, HEIGHT);
-}

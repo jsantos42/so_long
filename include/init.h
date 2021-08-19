@@ -5,5 +5,6 @@
 
 void	vars_init(t_vars **vars);
 void	map_init(t_vars *vars);
+void	win_img_init(t_vars *vars);
 
 #endif

@@ -1,5 +1,8 @@
 #include "../include/error_and_free.h"
 
+static void	free_map(t_matrix *map);
+static void	free_textures(t_vars *vars);
+
 /*
 **	Prints the correct error message in the CLI before exiting the program.
 */
@@ -51,21 +54,10 @@ void	*free_list(t_list *line_list)
 
 void	free_vars_and_exit(int error, t_vars *vars)
 {
-	int	line_i;
-
 	if (vars)
 	{
 		if (vars->map)
-		{
-			if (vars->map->matrix)
-			{
-				line_i = 0;
-				while (line_i < vars->map->lines)
-					free(vars->map->matrix[line_i++]);
-				free(vars->map->matrix);
-			}
-			free(vars->map);
-		}
+			free_map(vars->map);
 		free_textures(vars);
 		if (vars->img)
 			mlx_destroy_image(vars->connection, vars->img);
@@ -77,4 +69,35 @@ void	free_vars_and_exit(int error, t_vars *vars)
 		error_management(error);
 	else
 		exit(0);
+}
+
+static void	free_map(t_matrix *map)
+{
+	int	line_i;
+
+	{
+		if (map->matrix)
+		{
+			line_i = 0;
+			while (line_i < map->lines)
+				free(map->matrix[line_i++]);
+			free(map->matrix);
+		}
+		free(map);
+	}
+}
+/*
+**	Frees the textures. Gets called before terminating the program.
+*/
+
+static void	free_textures(t_vars *vars)
+{
+	ft_free_matrix(vars->wall, HEIGHT);
+	ft_free_matrix(vars->free_space, HEIGHT);
+	ft_free_matrix(vars->exit, HEIGHT);
+	ft_free_matrix(vars->enemy, HEIGHT);
+	ft_free_matrix(vars->collectible, HEIGHT);
+	ft_free_matrix(vars->player_right, HEIGHT);
+	ft_free_matrix(vars->player_left, HEIGHT);
+	ft_free_matrix(vars->end, HEIGHT);
 }

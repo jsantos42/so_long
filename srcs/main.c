@@ -47,19 +47,3 @@ int	main(int argc, char **argv)
 	mlx_loop(vars->connection);
 	return (0);
 }
-
-void	win_img_init(t_vars *vars)
-{
-	vars->window_width = vars->map->columns * WIDTH;
-	vars->window_height = vars->map->lines * HEIGHT;
-	vars->window = mlx_new_window(vars->connection, vars->window_width,
-			   vars->window_height, "SO LONG" );
-	if (!vars->window)
-		free_vars_and_exit(NO_WINDOW, vars);
-	vars->img = mlx_new_image(vars->connection, vars->window_width,
-			   vars->window_height);
-	if (!vars->img)
-		free_vars_and_exit(NO_IMG, vars);
-	vars->addr = mlx_get_data_addr(vars->img, &vars->bits_per_pixel,
-			&vars->line_length, &vars->endian);
-}
