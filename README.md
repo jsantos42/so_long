@@ -21,4 +21,4 @@ The program has two possible compiling modes.
 2) If using CLion or other editor that uses CMake:
 - you still have to first compile with the Makefile in order to get the libmlx.dylib file
 - on the Run/Debug configurations, add your working directory 
-- on the Run/Debug configurations, add "DYLD_LIBRARY_PATH=<working directory>" as an environment variable
+- on the Run/Debug configurations, add "DYLD_LIBRARY_PATH=\<working directory\>" as an environment variable
