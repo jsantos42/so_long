@@ -4,7 +4,7 @@
 # define HEIGHT 50
 # define WIDTH	50
 
-# define NUMBER_OF_ENEMIES	2
+# define NUMBER_OF_ENEMIES	10
 # define NUMBER_OF_MOVES	4
 
 typedef struct s_matrix {
