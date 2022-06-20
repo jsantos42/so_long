@@ -1,8 +1,8 @@
 #ifndef MAIN_H
 # define MAIN_H
 
-# include "../libs/minilibx_mms_20200219/mlx.h"
-# include "../libs/libft/include/libft.h"
+# include "mlx.h"
+# include "../lib/libft/include/libft.h"
 # include <fcntl.h>
 
 /*
