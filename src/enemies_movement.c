@@ -44,13 +44,13 @@ static int	*get_moves_order(t_map *map)
 	while (iter < 4)
 	{
 		if (map->moves_count % 5 == 0)
-			moves[iter] = MV_UP;
+			moves[iter] = MV_UP_W;
 		else if (map->moves_count % 3 == 0)
-			moves[iter] = MV_LEFT;
+			moves[iter] = MV_LEFT_A;
 		else if (map->moves_count % 2 == 0)
-			moves[iter] = MV_DOWN;
+			moves[iter] = MV_DOWN_S;
 		else
-			moves[iter] = MV_RIGHT;
+			moves[iter] = MV_RIGHT_D;
 		iter++;
 	}
 	return (moves);
@@ -64,13 +64,13 @@ static int	check_move(t_map *map, int enemy_i, int move)
 	x = map->enemy_coord_x[enemy_i];
 	y = map->enemy_coord_y[enemy_i];
 	map->matrix[y][x] = '0';
-	if (move == MV_UP && move_if_possible(&map->matrix[y - 1][x], map))
+	if (move == MV_UP_W && move_if_possible(&map->matrix[y - 1][x], map))
 		map->enemy_coord_y[enemy_i]--;
-	else if (move == MV_DOWN && move_if_possible(&map->matrix[y + 1][x], map))
+	else if (move == MV_DOWN_S && move_if_possible(&map->matrix[y + 1][x], map))
 		map->enemy_coord_y[enemy_i]++;
-	else if (move == MV_LEFT && move_if_possible(&map->matrix[y][x - 1], map))
+	else if (move == MV_LEFT_A && move_if_possible(&map->matrix[y][x - 1], map))
 		map->enemy_coord_x[enemy_i]--;
-	else if (move == MV_RIGHT && move_if_possible(&map->matrix[y][x + 1], map))
+	else if (move == MV_RIGHT_D && move_if_possible(&map->matrix[y][x + 1], map))
 		map->enemy_coord_x[enemy_i]++;
 	else
 	{

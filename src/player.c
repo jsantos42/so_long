@@ -59,20 +59,20 @@ void	update_map(t_vars *vars, int key, int result)
 
 void	update_player_position(t_map *map, int key)
 {
-	if (key == MV_UP)
+	if (key == MV_UP_W)
 		map->player_coord_y--;
-	else if (key == MV_DOWN)
+	else if (key == MV_DOWN_S)
 		map->player_coord_y++;
-	else if (key == MV_RIGHT)
+	else if (key == MV_RIGHT_D)
 		map->player_coord_x++;
-	else if (key == MV_LEFT)
+	else if (key == MV_LEFT_A)
 		map->player_coord_x--;
 }
 
 void	update_player_rotation(t_vars *vars, int key)
 {
-	if (key == MV_RIGHT)
+	if (key == MV_RIGHT_D)
 		vars->map->player_rotation = vars->player_right;
-	else if (key == MV_LEFT)
+	else if (key == MV_LEFT_A)
 		vars->map->player_rotation = vars->player_left;
 }

@@ -7,11 +7,24 @@
 **	KEYS
 */
 
-# define ESC			53
-# define MV_UP 			13
-# define MV_DOWN 		1
-# define MV_RIGHT 		2
-# define MV_LEFT		0
+# ifdef __linux__
+
+#  define ESC			65307
+#  define MV_UP_W 		119
+#  define MV_DOWN_S 	115
+#  define MV_RIGHT_D 	100
+#  define MV_LEFT_A		97
+
+# else
+#  ifdef __APPLE__
+
+#  define ESC			53
+#  define MV_UP_W 		13
+#  define MV_DOWN_S 	1
+#  define MV_RIGHT_D 	2
+#  define MV_LEFT_A		0
+#  endif
+# endif
 
 /*
 **	RESULT OF THE MOVE

@@ -23,14 +23,14 @@ int	on_key_press(int key, t_vars *vars)
 	current_position = &vars->map->matrix[y][x];
 	if (key == ESC)
 		free_vars_and_exit(0, vars);
-	if ((key == MV_UP || key == MV_DOWN || key == MV_RIGHT || key == MV_LEFT)
+	if ((key == MV_UP_W || key == MV_DOWN_S || key == MV_RIGHT_D || key == MV_LEFT_A)
 		&& !vars->map->end_of_game)
 	{
-		if (key == MV_UP)
+		if (key == MV_UP_W)
 			new_position = &vars->map->matrix[y - 1][x];
-		else if (key == MV_DOWN)
+		else if (key == MV_DOWN_S)
 			new_position = &vars->map->matrix[y + 1][x];
-		else if (key == MV_RIGHT)
+		else if (key == MV_RIGHT_D)
 			new_position = &vars->map->matrix[y][x + 1];
 		else
 			new_position = &vars->map->matrix[y][x - 1];
