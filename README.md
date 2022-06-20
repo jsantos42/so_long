@@ -29,3 +29,5 @@ The program has two possible compiling modes.
 - you still have to first compile the MiniLibX lib with the Makefile
 - on the Run/Debug configurations, set your working directory as ``$ProjectFileDir$``
 - on the Run/Debug configurations, add ``DYLD_LIBRARY_PATH=\<working directory\>`` as an environment variable (not sure if this one is still needed)
+
+3)  The enemy movement algorithm could be seriously improved and would benefit of a random generator, but the subject limits the usable functions.
